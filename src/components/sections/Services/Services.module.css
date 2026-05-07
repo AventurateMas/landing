@@ -1,0 +1,148 @@
+.servicesSection {
+  padding: 80px 24px;
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.waves {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  object-fit: cover;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1;
+  color: var(--color-navy);
+  margin-top: 20px;
+}
+
+.italic {
+  font-style: italic;
+  color: var(--color-rosa);
+}
+
+.subtitle {
+  font-size: 16px;
+  color: rgba(51, 56, 109, 0.7);
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  padding: 32px;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.tag {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.cardDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.pointsList {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dash {
+  font-size: 16px;
+}
+
+@media (min-width: 1024px) {
+  .servicesSection {
+    padding: 120px 56px;
+  }
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

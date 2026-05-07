@@ -1,0 +1,40 @@
+.marqueeSection {
+  background: var(--color-navy);
+  padding: 24px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 40px;
+  white-space: nowrap;
+  animation: marquee 32s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marqueeItem {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.text {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 32px;
+  letter-spacing: -0.03em;
+}
+
+.textAmarillo { color: var(--color-amarillo); }
+.textCream { color: #fff; }
+
+.star {
+  color: var(--color-rosa);
+  font-size: 24px;
+}

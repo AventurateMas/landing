@@ -1,0 +1,99 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s var(--ease-out);
+  padding: 20px var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scrolled {
+  background: rgba(254, 246, 240, 0.85);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid rgba(51, 56, 109, 0.06);
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoMark {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--color-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 18px;
+  color: var(--color-amarillo);
+  letter-spacing: -0.04em;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  color: var(--color-navy);
+}
+
+.desktopLinks {
+  display: none;
+}
+
+.mobileToggle {
+  display: block;
+}
+
+.hamburgerBtn {
+  background: transparent;
+  border: none;
+  color: var(--color-navy);
+  cursor: pointer;
+  padding: 4px;
+}
+
+
+@media (min-width: 768px) {
+  .nav {
+    padding: 20px 56px;
+  }
+
+  .desktopLinks {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .link {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--color-navy);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .link:hover {
+    opacity: 1;
+  }
+
+  .navBtn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .mobileToggle {
+    display: none;
+  }
+}

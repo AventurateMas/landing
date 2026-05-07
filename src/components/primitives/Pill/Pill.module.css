@@ -1,0 +1,31 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.005em;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.cream { background: rgba(51, 56, 109, 0.06); color: var(--color-navy); }
+.cream .dot { background: var(--color-navy); }
+
+.rosa { background: rgba(255, 88, 94, 0.12); color: var(--color-rosa); }
+.rosa .dot { background: var(--color-rosa); }
+
+.azul { background: rgba(47, 54, 255, 0.1); color: var(--color-azul); }
+.azul .dot { background: var(--color-azul); }
+
+.verde { background: rgba(126, 212, 99, 0.18); color: #3a7d2a; }
+.verde .dot { background: #3a7d2a; }
+
+.dark { background: rgba(255, 255, 255, 0.1); color: #fff; }
+.dark .dot { background: #fff; }
