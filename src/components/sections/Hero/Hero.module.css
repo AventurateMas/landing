@@ -1,285 +1,340 @@
-.hero {
-  min-height: calc(100vh - 80px);
-  padding: 40px 24px 80px;
-  position: relative;
-  overflow: hidden;
-  background-color: var(--color-bg);
-}
+                                                                                         .hero {
+                                                                                           min-height: calc(100vh - 80px);
+                                                                                           padding: 40px 24px 80px;
+                                                                                           position: relative;
+                                                                                           overflow: hidden;
+                                                                                           background-color: var(--color-bg);
+                                                                                         }
 
-.bgGradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top right, rgba(255, 221, 120, 0.4), transparent 60%),
-              radial-gradient(ellipse at bottom left, rgba(255, 88, 94, 0.08), transparent 50%);
-  pointer-events: none;
-}
+                                                                                         .bgGradient {
+                                                                                           position: absolute;
+                                                                                           inset: 0;
+                                                                                           background: radial-gradient(ellipse at top right, rgba(255, 221, 120, 0.4), transparent 60%),
+                                                                                             radial-gradient(ellipse at bottom left, rgba(255, 88, 94, 0.08), transparent 50%);
+                                                                                           pointer-events: none;
+                                                                                         }
 
-.shapeAmarillo {
-  position: absolute;
-  left: -20px;
-  top: 40px;
-  width: 80px;
-  opacity: 0.5;
-  pointer-events: none;
-  animation: float 7s ease-in-out infinite;
-}
+                                                                                         .shapeAmarillo {
+                                                                                           position: absolute;
+                                                                                           left: -20px;
+                                                                                           top: 40px;
+                                                                                           width: 80px;
+                                                                                           opacity: 0.5;
+                                                                                           pointer-events: none;
+                                                                                           animation: float 7s ease-in-out infinite;
+                                                                                         }
 
-.shapeRosado {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  width: 60px;
-  opacity: 0.55;
-  pointer-events: none;
-}
+                                                                                         .shapeRosado {
+                                                                                           position: absolute;
+                                                                                           right: 20px;
+                                                                                           bottom: 20px;
+                                                                                           width: 60px;
+                                                                                           opacity: 0.55;
+                                                                                           pointer-events: none;
+                                                                                           animation: float 8s ease-in-out infinite reverse;
+                                                                                         }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 60px;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
+                                                                                         .grid {
+                                                                                           display: grid;
+                                                                                           grid-template-columns: 1fr;
+                                                                                           gap: 60px;
+                                                                                           align-items: center;
+                                                                                           position: relative;
+                                                                                           z-index: 2;
+                                                                                         }
 
-.textContent {
-  animation: fade-up 0.8s ease;
-}
+                                                                                         .textContent>* {
+                                                                                           animation: fadeInUp 0.8s ease backwards;
+                                                                                         }
 
-.titleWrapper {
-  margin-top: 28px;
-  margin-bottom: 28px;
-}
+                                                                                         .textContent>*:nth-child(1) {
+                                                                                           animation-delay: 0.1s;
+                                                                                         }
 
-.title {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: clamp(48px, 8vw, 92px);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  color: var(--color-navy);
-  margin: 0;
-}
+                                                                                         .textContent>*:nth-child(2) {
+                                                                                           animation-delay: 0.2s;
+                                                                                         }
 
-.italic {
-  font-style: italic;
-  color: var(--color-rosa);
-}
+                                                                                         .textContent>*:nth-child(3) {
+                                                                                           animation-delay: 0.3s;
+                                                                                         }
 
-.paragraph {
-  font-size: 18px;
-  color: rgba(51, 56, 109, 0.75);
-  line-height: 1.6;
-  max-width: 480px;
-  margin-bottom: 36px;
-}
+                                                                                         .textContent>*:nth-child(4) {
+                                                                                           animation-delay: 0.4s;
+                                                                                         }
 
-.actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-}
+                                                                                         .textContent>*:nth-child(5) {
+                                                                                           animation-delay: 0.5s;
+                                                                                         }
 
-.trustStrip {
-  margin-top: 64px;
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
+                                                                                         .titleWrapper {
+                                                                                           margin-top: 28px;
+                                                                                           margin-bottom: 28px;
+                                                                                         }
 
-.trustCircles {
-  display: flex;
-}
+                                                                                         .title {
+                                                                                           font-family: var(--font-display);
+                                                                                           font-weight: var(--fw-bold);
+                                                                                           font-size: clamp(48px, 8vw, 92px);
+                                                                                           line-height: 0.98;
+                                                                                           letter-spacing: -0.04em;
+                                                                                           color: var(--color-navy);
+                                                                                           margin: 0;
+                                                                                         }
 
-.trustCircle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2.5px solid var(--color-bg);
-}
-.trustCircle + .trustCircle {
-  margin-left: -10px;
-}
+                                                                                         .italic {
+                                                                                           font-style: italic;
+                                                                                           color: var(--color-rosa);
+                                                                                         }
 
-.trustTitle {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-navy);
-}
+                                                                                         .paragraph {
+                                                                                           font-size: 18px;
+                                                                                           color: rgba(51, 56, 109, 0.75);
+                                                                                           line-height: 1.6;
+                                                                                           max-width: 480px;
+                                                                                           margin-bottom: 36px;
+                                                                                         }
 
-.trustSubtitle {
-  font-size: 12px;
-  color: rgba(51, 56, 109, 0.55);
-  margin-top: 2px;
-}
+                                                                                         .actions {
+                                                                                           display: flex;
+                                                                                           gap: 12px;
+                                                                                           flex-wrap: wrap;
+                                                                                           align-items: center;
+                                                                                         }
 
-.visualCluster {
-  position: relative;
-  height: 540px;
-  display: none; /* Oculto en móvil por defecto o ajustado */
-}
+                                                                                         .trustStrip {
+                                                                                           margin-top: 64px;
+                                                                                           display: flex;
+                                                                                           gap: 24px;
+                                                                                           align-items: center;
+                                                                                         }
 
-@media (min-width: 1024px) {
-  .hero {
-    padding: 40px 56px 80px;
-  }
-  .grid {
-    grid-template-columns: 1.15fr 1fr;
-  }
-  .visualCluster {
-    display: block;
-  }
-  .shapeAmarillo {
-    left: -40px;
-    top: 80px;
-    width: 120px;
-  }
-  .shapeRosado {
-    right: 40px;
-    bottom: 60px;
-    width: 90px;
-  }
-}
+                                                                                         .trustCircles {
+                                                                                           display: flex;
+                                                                                         }
 
-/* Cluster elements */
-.largeCard {
-  position: absolute;
-  right: 0;
-  top: 20px;
-  width: 78%;
-  height: 420px;
-  background: var(--color-rosa);
-  border-radius: 36px;
-  overflow: hidden;
-  box-shadow: 0 40px 80px -20px rgba(255, 88, 94, 0.4);
-}
+                                                                                         .trustCircle {
+                                                                                           width: 36px;
+                                                                                           height: 36px;
+                                                                                           border-radius: 50%;
+                                                                                           border: 2.5px solid var(--color-bg);
+                                                                                         }
 
-.cardGradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 221, 120, 0.5), transparent 50%);
-}
+                                                                                         .trustCircle+.trustCircle {
+                                                                                           margin-left: -10px;
+                                                                                         }
 
-.cardContent {
-  padding: 32px;
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+                                                                                         .trustTitle {
+                                                                                           font-size: 13px;
+                                                                                           font-weight: 600;
+                                                                                           color: var(--color-navy);
+                                                                                         }
 
-.cardHeader {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: 28px;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-.dot { color: var(--color-amarillo); }
+                                                                                         .trustSubtitle {
+                                                                                           font-size: 12px;
+                                                                                           color: rgba(51, 56, 109, 0.55);
+                                                                                           margin-top: 2px;
+                                                                                         }
 
-.cardCenter {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: 92px;
-  color: #fff;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  opacity: 0.95;
-}
+                                                                                         .visualCluster {
+                                                                                           position: relative;
+                                                                                           height: 540px;
+                                                                                           display: none;
+                                                                                           /* Oculto en móvil por defecto o ajustado */
+                                                                                         }
 
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  color: #fff;
-}
+                                                                                         @media (min-width: 1024px) {
+                                                                                           .hero {
+                                                                                             padding: 40px 56px 80px;
+                                                                                           }
 
-.specialtyLabel {
-  font-size: 11px;
-  opacity: 0.7;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+                                                                                           .grid {
+                                                                                             grid-template-columns: 1.15fr 1fr;
+                                                                                           }
 
-.specialtyValue {
-  font-size: 15px;
-  font-weight: 600;
-  margin-top: 4px;
-}
+                                                                                           .visualCluster {
+                                                                                             display: block;
+                                                                                           }
 
-.arrowIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-amarillo);
-  color: var(--color-navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-}
+                                                                                           .shapeAmarillo {
+                                                                                             left: -40px;
+                                                                                             top: 80px;
+                                                                                             width: 120px;
+                                                                                           }
 
-.floatingCardAmarilla {
-  position: absolute;
-  left: 0;
-  top: 100px;
-  background: var(--color-amarillo);
-  padding: 20px 22px;
-  border-radius: 22px;
-  box-shadow: 0 20px 40px -10px rgba(255, 221, 120, 0.5);
-  animation: float 5s ease-in-out infinite;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+                                                                                           .shapeRosado {
+                                                                                             right: 40px;
+                                                                                             bottom: 60px;
+                                                                                             width: 90px;
+                                                                                           }
+                                                                                         }
 
-.greenDot {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #7ED463;
-}
+                                                                                         /* Cluster elements */
+                                                                                         .largeCard {
+                                                                                           position: absolute;
+                                                                                           right: 0;
+                                                                                           top: 20px;
+                                                                                           width: 78%;
+                                                                                           height: 420px;
+                                                                                           background: var(--color-rosa);
+                                                                                           border-radius: 36px;
+                                                                                           overflow: hidden;
+                                                                                           box-shadow: 0 40px 80px -20px rgba(255, 88, 94, 0.4);
+                                                                                           animation: fadeInUp 0.8s ease 0.4s both;
+                                                                                         }
 
-.floatingLabel {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(51, 56, 109, 0.6);
-}
+                                                                                         .cardGradient {
+                                                                                           position: absolute;
+                                                                                           inset: 0;
+                                                                                           background: radial-gradient(circle at 30% 30%, rgba(255, 221, 120, 0.5), transparent 50%);
+                                                                                         }
 
-.floatingValue {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-navy);
-}
+                                                                                         .cardContent {
+                                                                                           padding: 32px;
+                                                                                           position: relative;
+                                                                                           height: 100%;
+                                                                                           display: flex;
+                                                                                           flex-direction: column;
+                                                                                           justify-content: space-between;
+                                                                                         }
 
-.floatingCardNavy {
-  position: absolute;
-  left: 20px;
-  bottom: 0;
-  width: 240px;
-  background: var(--color-navy);
-  color: #fff;
-  padding: 20px 22px;
-  border-radius: 22px;
-  animation: float 6s ease-in-out infinite 1s;
-}
+                                                                                         .cardHeader {
+                                                                                           font-family: var(--font-display);
+                                                                                           font-weight: var(--fw-bold);
+                                                                                           font-size: 28px;
+                                                                                           color: #fff;
+                                                                                           line-height: 1;
+                                                                                           letter-spacing: -0.03em;
+                                                                                         }
 
-.quoteIcon {
-  font-size: 32px;
-  color: var(--color-amarillo);
-  line-height: 1;
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-}
+                                                                                         .dot {
+                                                                                           color: var(--color-amarillo);
+                                                                                         }
 
-.quoteText {
-  font-size: 13px;
-  line-height: 1.5;
-  margin-top: 4px;
-  opacity: 0.9;
-}
+                                                                                         .cardCenter {
+                                                                                           font-family: var(--font-display);
+                                                                                           font-weight: var(--fw-bold);
+                                                                                           font-size: 92px;
+                                                                                           color: #fff;
+                                                                                           line-height: 0.85;
+                                                                                           letter-spacing: -0.05em;
+                                                                                           opacity: 0.95;
+                                                                                         }
+
+                                                                                         .cardFooter {
+                                                                                           display: flex;
+                                                                                           justify-content: space-between;
+                                                                                           align-items: flex-end;
+                                                                                           color: #fff;
+                                                                                         }
+
+                                                                                         .specialtyLabel {
+                                                                                           font-size: 11px;
+                                                                                           opacity: 0.7;
+                                                                                           font-weight: 500;
+                                                                                           text-transform: uppercase;
+                                                                                           letter-spacing: 0.08em;
+                                                                                         }
+
+                                                                                         .specialtyValue {
+                                                                                           font-size: 15px;
+                                                                                           font-weight: 600;
+                                                                                           margin-top: 4px;
+                                                                                         }
+
+                                                                                         .arrowIcon {
+                                                                                           width: 56px;
+                                                                                           height: 56px;
+                                                                                           border-radius: 50%;
+                                                                                           background: var(--color-amarillo);
+                                                                                           color: var(--color-navy);
+                                                                                           display: flex;
+                                                                                           align-items: center;
+                                                                                           justify-content: center;
+                                                                                           font-size: 24px;
+                                                                                         }
+
+                                                                                         .floatingCardAmarilla {
+                                                                                           position: absolute;
+                                                                                           left: 0;
+                                                                                           top: 100px;
+                                                                                           background: var(--color-amarillo);
+                                                                                           padding: 20px 22px;
+                                                                                           border-radius: 22px;
+                                                                                           box-shadow: 0 20px 40px -10px rgba(255, 221, 120, 0.5);
+                                                                                           animation: fadeInUp 0.8s ease 0.6s both, float 5s ease-in-out infinite 1.4s;
+                                                                                           z-index: 3;
+                                                                                           display: flex;
+                                                                                           align-items: center;
+                                                                                           gap: 12px;
+                                                                                         }
+
+                                                                                         .greenDot {
+                                                                                           width: 32px;
+                                                                                           height: 32px;
+                                                                                           border-radius: 50%;
+                                                                                           background: #7ED463;
+                                                                                         }
+
+                                                                                         .floatingLabel {
+                                                                                           font-size: 11px;
+                                                                                           font-weight: 600;
+                                                                                           color: rgba(51, 56, 109, 0.6);
+                                                                                         }
+
+                                                                                         .floatingValue {
+                                                                                           font-size: 13px;
+                                                                                           font-weight: 700;
+                                                                                           color: var(--color-navy);
+                                                                                         }
+
+                                                                                         .floatingCardNavy {
+                                                                                           position: absolute;
+                                                                                           left: 20px;
+                                                                                           bottom: 0;
+                                                                                           width: 240px;
+                                                                                           background: var(--color-navy);
+                                                                                           color: #fff;
+                                                                                           padding: 20px 22px;
+                                                                                           border-radius: 22px;
+                                                                                           animation: fadeInUp 0.8s ease 0.8s both, float 6s ease-in-out infinite 1.6s;
+                                                                                         }
+
+                                                                                         .quoteIcon {
+                                                                                           font-size: 32px;
+                                                                                           color: var(--color-amarillo);
+                                                                                           line-height: 1;
+                                                                                           font-family: var(--font-display);
+                                                                                           font-weight: var(--fw-bold);
+                                                                                         }
+
+                                                                                         .quoteText {
+                                                                                           font-size: 13px;
+                                                                                           line-height: 1.5;
+                                                                                           margin-top: 4px;
+                                                                                           opacity: 0.9;
+                                                                                         }
+
+                                                                                         @keyframes fadeInUp {
+                                                                                           from {
+                                                                                             opacity: 0;
+                                                                                             transform: translateY(24px);
+                                                                                           }
+
+                                                                                           to {
+                                                                                             opacity: 1;
+                                                                                             transform: translateY(0);
+                                                                                           }
+                                                                                         }
+
+                                                                                         @keyframes float {
+
+                                                                                           0%,
+                                                                                           100% {
+                                                                                             transform: translateY(0);
+                                                                                           }
+
+                                                                                           50% {
+                                                                                             transform: translateY(-20px);
+                                                                                           }
+                                                                                         }

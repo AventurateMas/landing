@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './Services.module.css';
 import { Pill } from '@/components/primitives/Pill/Pill';
+import { Reveal } from '@/components/animations/Reveal';
 
 const services = [
   {
@@ -29,44 +30,46 @@ const services = [
 export function Services() {
   return (
     <section id="Servicios" className={styles.servicesSection}>
-      <Image src="/assets/ondas-rosadas.png" alt="" width={1440} height={60} className={styles.waves} />
-      
       <div className={`container ${styles.container}`}>
-        <div className={styles.header}>
-          <div>
-            <Pill color="rosa">Servicios</Pill>
-            <h2 className={styles.title}>
-              ¿Cómo podemos<br/>
-              <em className={styles.italic}>acompañarte</em>?
-            </h2>
+        <Reveal>
+          <div className={styles.header}>
+            <div>
+              <Pill color="rosa">Servicios</Pill>
+              <h2 className={styles.title}>
+                ¿Cómo podemos<br />
+                <em className={styles.italic}>acompañarte</em>?
+              </h2>
+            </div>
+            <p className={styles.subtitle}>
+              Tres maneras de trabajar juntos para potenciar tu liderazgo y el de tu equipo.
+            </p>
           </div>
-          <p className={styles.subtitle}>
-            Tres maneras de trabajar juntos para potenciar tu liderazgo y el de tu equipo.
-          </p>
-        </div>
+        </Reveal>
 
         <div className={styles.grid}>
           {services.map((s, i) => (
-            <div key={i} className={styles.card} style={{ background: s.bg, color: s.fg }}>
-              <div className={styles.cardTop}>
-                <span className={styles.tag} style={{ color: s.accent }}>{s.tag}</span>
-                <div className={styles.arrow} style={{ background: s.accent, color: s.bg }}>↗</div>
-              </div>
+            <Reveal key={i} delay={i * 150} className={styles.cardWrapper}>
+              <div className={styles.card} style={{ background: s.bg, color: s.fg }}>
+                <div className={styles.cardTop}>
+                  <span className={styles.tag} style={{ color: s.accent }}>{s.tag}</span>
+                  <div className={styles.arrow} style={{ background: s.accent, color: s.bg }}>↗</div>
+                </div>
 
-              <div>
-                <div className={styles.cardTitle}>{s.title}</div>
-                <p className={styles.cardDesc}>{s.desc}</p>
+                <div>
+                  <div className={styles.cardTitle}>{s.title}</div>
+                  <p className={styles.cardDesc}>{s.desc}</p>
 
-                <div className={styles.pointsList} style={{ borderTopColor: `rgba(255, 255, 255, 0.15)` }}>
-                  {s.points.map(p => (
-                    <div key={p} className={styles.point}>
-                      <span className={styles.dash} style={{ color: s.accent }}>—</span>
-                      {p}
-                    </div>
-                  ))}
+                  <div className={styles.pointsList} style={{ borderTopColor: `rgba(255, 255, 255, 0.15)` }}>
+                    {s.points.map(p => (
+                      <div key={p} className={styles.point}>
+                        <span className={styles.dash} style={{ color: s.accent }}>—</span>
+                        {p}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

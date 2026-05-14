@@ -1,5 +1,6 @@
 import styles from './Testimonial.module.css';
 import { Pill } from '@/components/primitives/Pill/Pill';
+import { Reveal } from '@/components/animations/Reveal';
 
 const testimonials = [
   { name: 'Ana García', role: 'Directora RRHH · Bogotá', q: 'Maritza tiene una capacidad única de hacer que te sientas vista y escuchada.', color: 'var(--color-amarillo)' },
@@ -11,30 +12,34 @@ export function Testimonial() {
   return (
     <section id="testimonio" className={styles.testimonialSection}>
       <div className={`container ${styles.container}`}>
-        <div className={styles.header}>
-          <div>
-            <Pill color="cream">Testimonios</Pill>
-            <h2 className={styles.title}>
-              Lo que dicen<br/>
-              quienes han <em className={styles.italic}>caminado</em>.
-            </h2>
+        <Reveal>
+          <div className={styles.header}>
+            <div>
+              <Pill color="cream">Testimonios</Pill>
+              <h2 className={styles.title}>
+                Lo que dicen<br/>
+                quienes han <em className={styles.italic}>caminado</em>.
+              </h2>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         <div className={styles.grid}>
           {testimonials.map((t, i) => (
-            <div key={i} className={styles.card}>
-              <div className={styles.quoteMark} style={{ color: t.color }}>&quot;</div>
-              <p className={styles.quote}>{t.q}</p>
-              
-              <div className={styles.author}>
-                <div className={styles.avatar} style={{ background: t.color }}></div>
-                <div>
-                  <div className={styles.name}>{t.name}</div>
-                  <div className={styles.role}>{t.role}</div>
+            <Reveal key={i} delay={i * 150} className={styles.cardWrapper}>
+              <div className={styles.card}>
+                <div className={styles.quoteMark} style={{ color: t.color }}>&quot;</div>
+                <p className={styles.quote}>{t.q}</p>
+                
+                <div className={styles.author}>
+                  <div className={styles.avatar} style={{ background: t.color }}></div>
+                  <div>
+                    <div className={styles.name}>{t.name}</div>
+                    <div className={styles.role}>{t.role}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 .servicesSection {
   padding: 80px 24px;
-  background: var(--color-bg);
+  background: var(--color-cream-rojo);
   position: relative;
   overflow: hidden;
 }
@@ -10,7 +10,8 @@
   left: 0;
   top: 0;
   width: 100%;
-  height: 60px;
+  height: auto;
+  min-height: 60px;
   object-fit: cover;
   opacity: 0.35;
   pointer-events: none;
@@ -137,11 +138,13 @@
   .servicesSection {
     padding: 120px 56px;
   }
+
   .header {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
   }
+
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
