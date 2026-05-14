@@ -1,340 +1,387 @@
-                                                                                         .hero {
-                                                                                           min-height: calc(100vh - 80px);
-                                                                                           padding: 40px 24px 80px;
-                                                                                           position: relative;
-                                                                                           overflow: hidden;
-                                                                                           background-color: var(--color-bg);
-                                                                                         }
+.hero {
+  min-height: calc(100vh - 80px);
+  padding: 40px 24px 80px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-                                                                                         .bgGradient {
-                                                                                           position: absolute;
-                                                                                           inset: 0;
-                                                                                           background: radial-gradient(ellipse at top right, rgba(255, 221, 120, 0.4), transparent 60%),
-                                                                                             radial-gradient(ellipse at bottom left, rgba(255, 88, 94, 0.08), transparent 50%);
-                                                                                           pointer-events: none;
-                                                                                         }
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(255, 221, 120, 0.4), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(255, 88, 94, 0.08), transparent 50%);
+  pointer-events: none;
+}
 
-                                                                                         .shapeAmarillo {
-                                                                                           position: absolute;
-                                                                                           left: -20px;
-                                                                                           top: 40px;
-                                                                                           width: 80px;
-                                                                                           opacity: 0.5;
-                                                                                           pointer-events: none;
-                                                                                           animation: float 7s ease-in-out infinite;
-                                                                                         }
+.shapeAmarillo {
+  position: absolute;
+  left: -20px;
+  top: 40px;
+  width: 80px;
+  opacity: 0.5;
+  pointer-events: none;
+  animation: float 7s ease-in-out infinite;
+}
 
-                                                                                         .shapeRosado {
-                                                                                           position: absolute;
-                                                                                           right: 20px;
-                                                                                           bottom: 20px;
-                                                                                           width: 60px;
-                                                                                           opacity: 0.55;
-                                                                                           pointer-events: none;
-                                                                                           animation: float 8s ease-in-out infinite reverse;
-                                                                                         }
+.shapeRosado {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  width: 60px;
+  opacity: 0.55;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite reverse;
+}
 
-                                                                                         .grid {
-                                                                                           display: grid;
-                                                                                           grid-template-columns: 1fr;
-                                                                                           gap: 60px;
-                                                                                           align-items: center;
-                                                                                           position: relative;
-                                                                                           z-index: 2;
-                                                                                         }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
 
-                                                                                         .textContent>* {
-                                                                                           animation: fadeInUp 0.8s ease backwards;
-                                                                                         }
+.textContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-                                                                                         .textContent>*:nth-child(1) {
-                                                                                           animation-delay: 0.1s;
-                                                                                         }
+.textContent>* {
+  animation: fadeInUp 0.8s ease backwards;
+}
 
-                                                                                         .textContent>*:nth-child(2) {
-                                                                                           animation-delay: 0.2s;
-                                                                                         }
+.textContent>*:nth-child(1) {
+  animation-delay: 0.1s;
+}
 
-                                                                                         .textContent>*:nth-child(3) {
-                                                                                           animation-delay: 0.3s;
-                                                                                         }
+.textContent>*:nth-child(2) {
+  animation-delay: 0.2s;
+}
 
-                                                                                         .textContent>*:nth-child(4) {
-                                                                                           animation-delay: 0.4s;
-                                                                                         }
+.textContent>*:nth-child(3) {
+  animation-delay: 0.3s;
+}
 
-                                                                                         .textContent>*:nth-child(5) {
-                                                                                           animation-delay: 0.5s;
-                                                                                         }
+.textContent>*:nth-child(4) {
+  animation-delay: 0.4s;
+}
 
-                                                                                         .titleWrapper {
-                                                                                           margin-top: 28px;
-                                                                                           margin-bottom: 28px;
-                                                                                         }
+.textContent>*:nth-child(5) {
+  animation-delay: 0.5s;
+}
 
-                                                                                         .title {
-                                                                                           font-family: var(--font-display);
-                                                                                           font-weight: var(--fw-bold);
-                                                                                           font-size: clamp(48px, 8vw, 92px);
-                                                                                           line-height: 0.98;
-                                                                                           letter-spacing: -0.04em;
-                                                                                           color: var(--color-navy);
-                                                                                           margin: 0;
-                                                                                         }
+.titleWrapper {
+  margin-top: 28px;
+  margin-bottom: 28px;
+  text-align: center;
+}
 
-                                                                                         .italic {
-                                                                                           font-style: italic;
-                                                                                           color: var(--color-rosa);
-                                                                                         }
+.title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: var(--color-navy);
+  margin: 0;
+}
 
-                                                                                         .paragraph {
-                                                                                           font-size: 18px;
-                                                                                           color: rgba(51, 56, 109, 0.75);
-                                                                                           line-height: 1.6;
-                                                                                           max-width: 480px;
-                                                                                           margin-bottom: 36px;
-                                                                                         }
+.italic {
+  font-style: italic;
+  color: var(--color-rosa);
+  text-shadow: var(--title-shadow);
+}
 
-                                                                                         .actions {
-                                                                                           display: flex;
-                                                                                           gap: 12px;
-                                                                                           flex-wrap: wrap;
-                                                                                           align-items: center;
-                                                                                         }
+.cursor {
+  font-weight: var(--fw-light);
+  color: var(--color-rosa);
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+  margin-left: 4px;
+}
 
-                                                                                         .trustStrip {
-                                                                                           margin-top: 64px;
-                                                                                           display: flex;
-                                                                                           gap: 24px;
-                                                                                           align-items: center;
-                                                                                         }
+@keyframes blink {
 
-                                                                                         .trustCircles {
-                                                                                           display: flex;
-                                                                                         }
+  0%,
+  100% {
+    opacity: 1;
+  }
 
-                                                                                         .trustCircle {
-                                                                                           width: 36px;
-                                                                                           height: 36px;
-                                                                                           border-radius: 50%;
-                                                                                           border: 2.5px solid var(--color-bg);
-                                                                                         }
+  50% {
+    opacity: 0;
+  }
+}
 
-                                                                                         .trustCircle+.trustCircle {
-                                                                                           margin-left: -10px;
-                                                                                         }
+.paragraph {
+  font-size: 18px;
+  color: rgba(51, 56, 109, 0.75);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 36px;
+  margin-inline: auto;
+}
 
-                                                                                         .trustTitle {
-                                                                                           font-size: 13px;
-                                                                                           font-weight: 600;
-                                                                                           color: var(--color-navy);
-                                                                                         }
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 
-                                                                                         .trustSubtitle {
-                                                                                           font-size: 12px;
-                                                                                           color: rgba(51, 56, 109, 0.55);
-                                                                                           margin-top: 2px;
-                                                                                         }
+.trustStrip {
+  margin-top: 64px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
 
-                                                                                         .visualCluster {
-                                                                                           position: relative;
-                                                                                           height: 540px;
-                                                                                           display: none;
-                                                                                           /* Oculto en móvil por defecto o ajustado */
-                                                                                         }
+.trustCircles {
+  display: flex;
+}
 
-                                                                                         @media (min-width: 1024px) {
-                                                                                           .hero {
-                                                                                             padding: 40px 56px 80px;
-                                                                                           }
+.trustCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid var(--color-bg);
+}
 
-                                                                                           .grid {
-                                                                                             grid-template-columns: 1.15fr 1fr;
-                                                                                           }
+.trustCircle+.trustCircle {
+  margin-left: -10px;
+}
 
-                                                                                           .visualCluster {
-                                                                                             display: block;
-                                                                                           }
+.trustTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-navy);
+}
 
-                                                                                           .shapeAmarillo {
-                                                                                             left: -40px;
-                                                                                             top: 80px;
-                                                                                             width: 120px;
-                                                                                           }
+.trustSubtitle {
+  font-size: 12px;
+  color: rgba(51, 56, 109, 0.55);
+  margin-top: 2px;
+}
 
-                                                                                           .shapeRosado {
-                                                                                             right: 40px;
-                                                                                             bottom: 60px;
-                                                                                             width: 90px;
-                                                                                           }
-                                                                                         }
+.visualCluster {
+  position: relative;
+  height: 540px;
+  display: none;
+  /* Oculto en móvil por defecto o ajustado */
+}
 
-                                                                                         /* Cluster elements */
-                                                                                         .largeCard {
-                                                                                           position: absolute;
-                                                                                           right: 0;
-                                                                                           top: 20px;
-                                                                                           width: 78%;
-                                                                                           height: 420px;
-                                                                                           background: var(--color-rosa);
-                                                                                           border-radius: 36px;
-                                                                                           overflow: hidden;
-                                                                                           box-shadow: 0 40px 80px -20px rgba(255, 88, 94, 0.4);
-                                                                                           animation: fadeInUp 0.8s ease 0.4s both;
-                                                                                         }
+@media (min-width: 1024px) {
+  .hero {
+    padding: 40px 56px 80px;
+  }
 
-                                                                                         .cardGradient {
-                                                                                           position: absolute;
-                                                                                           inset: 0;
-                                                                                           background: radial-gradient(circle at 30% 30%, rgba(255, 221, 120, 0.5), transparent 50%);
-                                                                                         }
+  .grid {
+    grid-template-columns: 1.15fr 1fr;
+  }
 
-                                                                                         .cardContent {
-                                                                                           padding: 32px;
-                                                                                           position: relative;
-                                                                                           height: 100%;
-                                                                                           display: flex;
-                                                                                           flex-direction: column;
-                                                                                           justify-content: space-between;
-                                                                                         }
+  .visualCluster {
+    display: block;
+  }
 
-                                                                                         .cardHeader {
-                                                                                           font-family: var(--font-display);
-                                                                                           font-weight: var(--fw-bold);
-                                                                                           font-size: 28px;
-                                                                                           color: #fff;
-                                                                                           line-height: 1;
-                                                                                           letter-spacing: -0.03em;
-                                                                                         }
+  .shapeAmarillo {
+    left: -40px;
+    top: 80px;
+    width: 120px;
+  }
 
-                                                                                         .dot {
-                                                                                           color: var(--color-amarillo);
-                                                                                         }
+  .shapeRosado {
+    right: 40px;
+    bottom: 60px;
+    width: 90px;
+  }
+}
 
-                                                                                         .cardCenter {
-                                                                                           font-family: var(--font-display);
-                                                                                           font-weight: var(--fw-bold);
-                                                                                           font-size: 92px;
-                                                                                           color: #fff;
-                                                                                           line-height: 0.85;
-                                                                                           letter-spacing: -0.05em;
-                                                                                           opacity: 0.95;
-                                                                                         }
+/* Cluster elements */
+.largeCard {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  width: 78%;
+  height: 420px;
+  background: var(--color-rosa);
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -20px rgba(255, 88, 94, 0.4);
+  animation: fadeInUp 0.8s ease 0.4s both;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-                                                                                         .cardFooter {
-                                                                                           display: flex;
-                                                                                           justify-content: space-between;
-                                                                                           align-items: flex-end;
-                                                                                           color: #fff;
-                                                                                         }
+.largeCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 50px 90px -15px rgba(255, 88, 94, 0.6);
+}
 
-                                                                                         .specialtyLabel {
-                                                                                           font-size: 11px;
-                                                                                           opacity: 0.7;
-                                                                                           font-weight: 500;
-                                                                                           text-transform: uppercase;
-                                                                                           letter-spacing: 0.08em;
-                                                                                         }
+.cardGradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 221, 120, 0.5), transparent 50%);
+}
 
-                                                                                         .specialtyValue {
-                                                                                           font-size: 15px;
-                                                                                           font-weight: 600;
-                                                                                           margin-top: 4px;
-                                                                                         }
+.cardContent {
+  padding: 32px;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-                                                                                         .arrowIcon {
-                                                                                           width: 56px;
-                                                                                           height: 56px;
-                                                                                           border-radius: 50%;
-                                                                                           background: var(--color-amarillo);
-                                                                                           color: var(--color-navy);
-                                                                                           display: flex;
-                                                                                           align-items: center;
-                                                                                           justify-content: center;
-                                                                                           font-size: 24px;
-                                                                                         }
+.cardHeader {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 28px;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
 
-                                                                                         .floatingCardAmarilla {
-                                                                                           position: absolute;
-                                                                                           left: 0;
-                                                                                           top: 100px;
-                                                                                           background: var(--color-amarillo);
-                                                                                           padding: 20px 22px;
-                                                                                           border-radius: 22px;
-                                                                                           box-shadow: 0 20px 40px -10px rgba(255, 221, 120, 0.5);
-                                                                                           animation: fadeInUp 0.8s ease 0.6s both, float 5s ease-in-out infinite 1.4s;
-                                                                                           z-index: 3;
-                                                                                           display: flex;
-                                                                                           align-items: center;
-                                                                                           gap: 12px;
-                                                                                         }
+.dot {
+  color: var(--color-amarillo);
+}
 
-                                                                                         .greenDot {
-                                                                                           width: 32px;
-                                                                                           height: 32px;
-                                                                                           border-radius: 50%;
-                                                                                           background: #7ED463;
-                                                                                         }
+.cardCenter {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 92px;
+  color: #fff;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  opacity: 0.95;
+}
 
-                                                                                         .floatingLabel {
-                                                                                           font-size: 11px;
-                                                                                           font-weight: 600;
-                                                                                           color: rgba(51, 56, 109, 0.6);
-                                                                                         }
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #fff;
+}
 
-                                                                                         .floatingValue {
-                                                                                           font-size: 13px;
-                                                                                           font-weight: 700;
-                                                                                           color: var(--color-navy);
-                                                                                         }
+.specialtyLabel {
+  font-size: 11px;
+  opacity: 0.7;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 
-                                                                                         .floatingCardNavy {
-                                                                                           position: absolute;
-                                                                                           left: 20px;
-                                                                                           bottom: 0;
-                                                                                           width: 240px;
-                                                                                           background: var(--color-navy);
-                                                                                           color: #fff;
-                                                                                           padding: 20px 22px;
-                                                                                           border-radius: 22px;
-                                                                                           animation: fadeInUp 0.8s ease 0.8s both, float 6s ease-in-out infinite 1.6s;
-                                                                                         }
+.specialtyValue {
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 4px;
+}
 
-                                                                                         .quoteIcon {
-                                                                                           font-size: 32px;
-                                                                                           color: var(--color-amarillo);
-                                                                                           line-height: 1;
-                                                                                           font-family: var(--font-display);
-                                                                                           font-weight: var(--fw-bold);
-                                                                                         }
+.arrowIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-amarillo);
+  color: var(--color-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
 
-                                                                                         .quoteText {
-                                                                                           font-size: 13px;
-                                                                                           line-height: 1.5;
-                                                                                           margin-top: 4px;
-                                                                                           opacity: 0.9;
-                                                                                         }
+.largeCard:hover .arrowIcon {
+  transform: translate(4px, -4px);
+  background: #fff;
+}
 
-                                                                                         @keyframes fadeInUp {
-                                                                                           from {
-                                                                                             opacity: 0;
-                                                                                             transform: translateY(24px);
-                                                                                           }
+.floatingCardAmarilla {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  background: var(--color-amarillo);
+  padding: 20px 22px;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px -10px rgba(255, 221, 120, 0.5);
+  animation: fadeInUp 0.8s ease 0.6s both, float 5s ease-in-out infinite 1.4s;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-                                                                                           to {
-                                                                                             opacity: 1;
-                                                                                             transform: translateY(0);
-                                                                                           }
-                                                                                         }
+.greenDot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #7ED463;
+}
 
-                                                                                         @keyframes float {
+.floatingLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(51, 56, 109, 0.6);
+}
 
-                                                                                           0%,
-                                                                                           100% {
-                                                                                             transform: translateY(0);
-                                                                                           }
+.floatingValue {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-navy);
+}
 
-                                                                                           50% {
-                                                                                             transform: translateY(-20px);
-                                                                                           }
-                                                                                         }
+.floatingCardNavy {
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  width: 240px;
+  background: var(--color-navy);
+  color: #fff;
+  padding: 20px 22px;
+  border-radius: 22px;
+  animation: fadeInUp 0.8s ease 0.8s both, float 6s ease-in-out infinite 1.6s;
+}
+
+.quoteIcon {
+  font-size: 32px;
+  color: var(--color-amarillo);
+  line-height: 1;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+}
+
+.quoteText {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}

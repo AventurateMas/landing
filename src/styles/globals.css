@@ -3,7 +3,9 @@
 @import './utilities.css';
 
 /* CSS reset minimal */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -21,7 +23,8 @@ body {
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Prevent horizontal scroll from blobs */
+  overflow-x: hidden;
+  /* Prevent horizontal scroll from blobs */
 }
 
 a {
@@ -45,27 +48,28 @@ button {
 }
 
 /* Typography elements */
-h1, .h1 {
+h1,
+.h1 {
   font-family: var(--font-display);
   font-weight: var(--fw-extrabold);
   font-size: clamp(40px, 8vw, 72px);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   color: var(--color-rosa);
-  text-shadow: var(--title-shadow);
 }
 
-h2, .h2 {
+h2,
+.h2 {
   font-family: var(--font-display);
   font-weight: var(--fw-extrabold);
   font-size: clamp(32px, 5vw, 48px);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   color: var(--color-rosa);
-  text-shadow: var(--title-shadow);
 }
 
-h3, .h3 {
+h3,
+.h3 {
   font-family: var(--font-body);
   font-weight: var(--fw-bold);
   font-size: var(--text-xl);
@@ -73,7 +77,8 @@ h3, .h3 {
   color: var(--color-azul);
 }
 
-h4, .h4 {
+h4,
+.h4 {
   font-family: var(--font-body);
   font-weight: var(--fw-semibold);
   font-size: var(--text-lg);
@@ -81,7 +86,8 @@ h4, .h4 {
   color: var(--color-navy);
 }
 
-p, .body {
+p,
+.body {
   font-family: var(--font-body);
   font-weight: var(--fw-light);
   font-size: var(--text-base);
