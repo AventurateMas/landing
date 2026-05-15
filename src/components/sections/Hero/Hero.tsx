@@ -7,6 +7,7 @@ import styles from './Hero.module.css';
 import { Button } from '@/components/primitives/Button/Button';
 import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
+import { SectionDivider } from '@/components/decor/SectionDivider/SectionDivider';
 
 // Lista de palabras para la animación de escritura (fácil de modificar)
 const ANIMATED_WORDS = ['liderar', 'inspirar', 'transformar', 'crecer', 'jugar', 'más'];
@@ -88,6 +89,7 @@ export function Hero() {
           </Reveal>
         </div>
       </div>
+      <SectionDivider src="/assets/ondas-rosadas.png" variant="start" />
     </section>
   );
 }

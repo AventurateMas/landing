@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import React from 'react';
 import styles from './Services.module.css';
 import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
@@ -9,13 +9,15 @@ const services = [
     desc: 'Sesiones 1:1 para potenciar tu liderazgo y descubrir tu talento.',
     points: ['8 sesiones', 'Plan personalizado', 'Acompañamiento continuo'],
     bg: 'var(--color-navy)', fg: '#fff', accent: 'var(--color-amarillo)',
+    descColor: 'rgba(255, 255, 255, 0.8)',
     tag: '01',
   },
   {
     title: 'Talleres de equipo',
     desc: 'Dinámicas colaborativas para construir cultura laboral.',
     points: ['Hasta 20 personas', 'Presencial · Online', 'Materiales incluidos'],
-    bg: 'var(--color-rosa)', fg: '#fff', accent: 'var(--color-amarillo)',
+    bg: 'var(--color-verde)', fg: 'var(--color-navy)', accent: 'var(--color-amarillo)',
+    descColor: 'rgba(51, 56, 109, 0.8)',
     tag: '02',
   },
   {
@@ -23,6 +25,7 @@ const services = [
     desc: 'Charlas inspiradoras sobre talento humano y cultura.',
     points: ['45–90 min', 'Q&A incluido', 'Eventos abiertos'],
     bg: 'var(--color-amarillo)', fg: 'var(--color-navy)', accent: 'var(--color-rosa)',
+    descColor: 'rgba(51, 56, 109, 0.8)',
     tag: '03',
   },
 ];
@@ -34,7 +37,6 @@ export function Services() {
         <Reveal>
           <div className={styles.header}>
             <div>
-              <Pill color="rosa">Servicios</Pill>
               <h2 className={styles.title}>
                 ¿Cómo podemos<br />
                 <em className={styles.italic}>acompañarte</em>?
@@ -57,7 +59,12 @@ export function Services() {
 
                 <div>
                   <div className={styles.cardTitle}>{s.title}</div>
-                  <p className={styles.cardDesc}>{s.desc}</p>
+                  <p
+                    className={styles.cardDesc}
+                    style={{ color: s.descColor || 'inherit' }}
+                  >
+                    {s.desc}
+                  </p>
 
                   <div className={styles.pointsList} style={{ borderTopColor: `rgba(255, 255, 255, 0.15)` }}>
                     {s.points.map(p => (

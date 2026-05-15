@@ -1,0 +1,32 @@
+.dividerWrapper {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.dividerWrapper[data-variant="start"] {
+  bottom: 0;
+}
+
+.dividerWrapper[data-variant="end"] {
+  transform: scaleY(-1);
+  /* Invertimos verticalmente para el final de la sección */
+}
+
+.dividerImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 40px;
+}
+
+@media (min-width: 1024px) {
+  .dividerImg {
+    min-height: 60px;
+  }
+}
