@@ -1,18 +1,16 @@
 import Image from 'next/image';
 import styles from './Values.module.css';
-import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
 
 export function Values() {
   return (
     <section className={styles.valuesSection}>
-      <Image src="/assets/puntos-amarillos.png" alt="" width={100} height={100} className={styles.puntosAmarillos} />
+      <Image src="/assets/puntos-rosados.png" alt="" width={100} height={100} className={styles.puntosAmarillos} />
       <Image src="/assets/circulo-verde.png" alt="" width={110} height={110} className={styles.circuloVerde} />
-      
+
       <div className={`container ${styles.container}`}>
         <Reveal>
           <div className={styles.header}>
-            <Pill color="verde">Filosofía</Pill>
             <h2 className={styles.title}>
               5 valores que <em className={styles.italic}>guían</em> el trabajo.
             </h2>

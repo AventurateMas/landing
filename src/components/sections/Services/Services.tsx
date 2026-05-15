@@ -8,7 +8,7 @@ const services = [
     title: 'Coaching individual',
     desc: 'Sesiones 1:1 para potenciar tu liderazgo y descubrir tu talento.',
     points: ['8 sesiones', 'Plan personalizado', 'Acompañamiento continuo'],
-    bg: 'var(--color-navy)', fg: '#fff', accent: 'var(--color-amarillo)',
+    bg: 'var(--color-navy)', fg: 'var(--color-text-light)', accent: 'var(--color-amarillo)',
     descColor: 'rgba(255, 255, 255, 0.8)',
     tag: '01',
   },
@@ -38,7 +38,7 @@ export function Services() {
           <div className={styles.header}>
             <div>
               <h2 className={styles.title}>
-                ¿Cómo podemos<br />
+                ¿Cómo puedo<br />
                 <em className={styles.italic}>acompañarte</em>?
               </h2>
             </div>

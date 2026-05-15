@@ -35,8 +35,8 @@
 
 .subtitle {
   font-weight: var(--fw-bold);
-  font-size: 15px;
-  color: var(--color-navy);
+  font-size: 18px;
+  color: var(--color-text-light);
   max-width: 320px;
   line-height: 1.6;
 }
@@ -97,9 +97,9 @@
 }
 
 .cardDesc {
-  font-size: 14px;
+  font-weight: var(--fw-regular);
+  font-size: 18px;
   line-height: 1.6;
-  opacity: 0.8;
 }
 
 .pointsList {
