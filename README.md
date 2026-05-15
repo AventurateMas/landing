@@ -28,7 +28,7 @@ Este proyecto está construido con las siguientes tecnologías:
 1. **Clonar el repositorio**:
    ```bash
    git clone <url-del-repositorio>
-   cd aventurate-mas-landing-ver-2
+   cd landing
    ```
 
 2. **Instalar las dependencias**:
