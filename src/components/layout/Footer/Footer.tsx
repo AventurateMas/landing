@@ -35,7 +35,7 @@ export function Footer() {
 
         <div className={styles.bottom}>
           <span>© 2026 Aventúrate Más · Todos los derechos reservados</span>
-          <span>Hecho con calma · Bogotá</span>
+          <span><a className={styles.link} href="https://nosterlabs.com" target="_blank" rel="noopener noreferrer">Powered by NosterLabs <span className={styles.externalArrow}>↗</span></a></span>
         </div>
       </div>
     </footer>

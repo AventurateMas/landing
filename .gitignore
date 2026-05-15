@@ -46,3 +46,8 @@ next-env.d.ts
 PLAN.md
 CLAUDE.md
 AGENTS.md
+
+# AI & Workspace metadata
+.gemini/
+scratch/
+artifacts/

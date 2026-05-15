@@ -4,7 +4,6 @@ import Image from 'next/image';
 import styles from './Team.module.css';
 import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
-import { SectionDivider } from '@/components/decor/SectionDivider/SectionDivider';
 
 const team = [
   {

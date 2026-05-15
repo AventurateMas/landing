@@ -25,6 +25,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   /* Prevent horizontal scroll from blobs */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 a {
@@ -38,6 +46,11 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 /* Foco visible global */

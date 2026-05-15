@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aventúrate Más - Landing Page
 
-## Getting Started
+Bienvenido al repositorio de la landing page para **Aventúrate Más**, un programa vocacional de coaching y desarrollo personal diseñado para acompañar a personas y equipos a descubrir su talento.
 
-First, run the development server:
+## 🚀 Tecnologías
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Este proyecto está construido con las siguientes tecnologías:
+- **Next.js 14+** (App Router)
+- **React 18+**
+- **TypeScript**
+- **CSS Modules** para estilos mantenibles, de alto rendimiento y modulares.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📦 Estructura del Proyecto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/app/`: Rutas de la aplicación según convención de App Router de Next.js.
+- `src/components/`: Componentes de la interfaz clasificados en:
+  - `animations/`: Componentes wrapper para la intercesión y animaciones (ej. `Reveal`).
+  - `decor/`: Elementos visuales decorativos como los divisores de secciones (`SectionDivider`).
+  - `layout/`: Estructura principal y general (`Nav`, `Footer`, etc.).
+  - `primitives/`: Botones y pills de uso general.
+  - `sections/`: Bloques principales de la landing page (`Hero`, `Team`, `Services`, `CTA`, etc.).
+- `src/styles/`: Constantes y utilidades globales de CSS.
+- `src/hooks/`: Custom hooks de React (como `useScrollReveal`).
+- `public/assets/`: Imágenes de diseño y recursos estáticos.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Instalación y Configuración
 
-## Learn More
+1. **Clonar el repositorio**:
+   ```bash
+   git clone <url-del-repositorio>
+   cd aventurate-mas-landing-ver-2
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Instalar las dependencias**:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Ejecutar el servidor de desarrollo**:
+   ```bash
+   npm run dev
+   ```
+   Abre [http://localhost:3000](http://localhost:3000) en el navegador para ver el resultado.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧹 Scripts Disponibles
 
-## Deploy on Vercel
+- `npm run dev`: Inicia el modo desarrollo.
+- `npm run lint`: Ejecuta el linter (ESLint) para garantizar la calidad del código.
+- `npm run build`: Construye la aplicación optimizada lista para producción.
+- `npm run start`: Inicia la aplicación usando el build de producción.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✨ Diseño y Rendimiento
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+El proyecto cuenta con animaciones fluidas y está fuertemente optimizado para garantizar un rendimiento óptimo de carga (LCP) y uso de procesador. Se evitan grandes cantidades de JavaScript delegando las animaciones e interacciones mediante CSS animations o utilizando APIs nativas eficientes como IntersectionObserver.

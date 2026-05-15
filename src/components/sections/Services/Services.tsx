@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Services.module.css';
-import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
 
 const services = [

@@ -1,8 +1,13 @@
 .marqueeSection {
   background: var(--color-navy);
-  padding: 24px 0;
+  padding: 230px 0 40px;
   overflow: hidden;
   position: relative;
+  user-select: none;
+}
+
+.dividerTop {
+  top: 0;
 }
 
 .marqueeTrack {
@@ -14,8 +19,13 @@
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .marqueeItem {
@@ -31,8 +41,13 @@
   letter-spacing: -0.03em;
 }
 
-.textAmarillo { color: var(--color-amarillo); }
-.textCream { color: #fff; }
+.textAmarillo {
+  color: var(--color-amarillo);
+}
+
+.textCream {
+  color: #fff;
+}
 
 .star {
   color: var(--color-rosa);

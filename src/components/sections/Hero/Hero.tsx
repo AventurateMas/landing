@@ -5,7 +5,6 @@ import Image from 'next/image';
 import styles from './Hero.module.css';
 
 import { Button } from '@/components/primitives/Button/Button';
-import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
 import { SectionDivider } from '@/components/decor/SectionDivider/SectionDivider';
 
@@ -26,8 +25,10 @@ export function Hero() {
       timer = setTimeout(() => setIsDeleting(true), 2500);
     } else if (isDeleting && currentText === '') {
       // Cuando se termina de borrar, pasamos a la siguiente palabra
-      setIsDeleting(false);
-      setWordIndex((prev) => (prev + 1) % ANIMATED_WORDS.length);
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % ANIMATED_WORDS.length);
+      }, 50);
     } else {
       // Proceso de escritura / borrado
       const speed = isDeleting ? 75 : 150;
