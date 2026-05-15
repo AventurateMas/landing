@@ -27,7 +27,7 @@ Este proyecto está construido con las siguientes tecnologías:
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/AventurateMas/landing
    cd landing
    ```
 
