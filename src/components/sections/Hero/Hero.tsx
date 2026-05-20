@@ -15,6 +15,7 @@ export function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState(ANIMATED_WORDS[0]);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     const fullWord = ANIMATED_WORDS[wordIndex];
@@ -40,12 +41,54 @@ export function Hero() {
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, wordIndex]);
 
+  // Muestra el scroll indicator solo si el usuario no scrolea en 5s.
+  // Una vez que scrollea, se oculta definitivamente.
+  useEffect(() => {
+    let hasScrolled = false;
+
+    const onScroll = () => {
+      if (!hasScrolled) {
+        hasScrolled = true;
+        setShowScroll(false);
+      }
+    };
+
+    const timer = setTimeout(() => {
+      if (!hasScrolled) {
+        setShowScroll(true);
+      }
+    }, 5000);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
   return (
     <section id="inicio" className={styles.hero}>
       <div className={styles.bgGradient} aria-hidden="true"></div>
 
-      <Image src="/assets/circulo-amarillo.png" alt="" width={120} height={120} className={styles.shapeAmarillo} />
-      <Image src="/assets/puntos-rosados.png" alt="" width={90} height={90} className={styles.shapeRosado} />
+      <Image 
+        src="/assets/circulo-amarillo.png" 
+        alt="" 
+        width={120} 
+        height={120} 
+        className={styles.shapeAmarillo} 
+        priority
+        sizes="(max-width: 768px) 80px, 120px"
+      />
+      <Image 
+        src="/assets/puntos-rosados.png" 
+        alt="" 
+        width={90} 
+        height={90} 
+        className={styles.shapeRosado} 
+        priority
+        sizes="(max-width: 768px) 60px, 90px"
+      />
 
       <div className={`container ${styles.grid}`}>
         <div className={styles.textContent}>
@@ -87,9 +130,18 @@ export function Hero() {
                 </div>
               </div>
             </a>
+
           </Reveal>
         </div>
       </div>
+      {showScroll && (
+        <a href="#servicios" className={`${styles.scrollIndicator} ${styles.scrollVisible}`} aria-label="Scroll hacia abajo">
+          <div className={styles.scrollMouse}>
+            <div className={styles.scrollDot}></div>
+          </div>
+          <span className={styles.scrollLabel}>Scroll</span>
+        </a>
+      )}
       <SectionDivider src="/assets/ondas-rosadas.png" variant="start" />
     </section>
   );

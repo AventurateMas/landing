@@ -25,8 +25,12 @@ export function Nav() {
 
       {/* Desktop Links */}
       <div className={styles.desktopLinks}>
-        {['Servicios', 'Equipo', 'Casos', 'Recursos'].map(item => (
-          <a key={item} href={`#${item}`} className={styles.link}>{item}</a>
+        {[
+          { label: 'Servicios', href: '#servicios' },
+          { label: 'Valores', href: '#valores' },
+          { label: 'Equipo', href: '#equipo' }
+        ].map(item => (
+          <a key={item.label} href={item.href} className={styles.link}>{item.label}</a>
         ))}
         <Button as="a" href="#contacto" variant="primary" className={styles.navBtn}>Agendar →</Button>
       </div>

@@ -2,6 +2,11 @@
 @import './animations.css';
 @import './utilities.css';
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px; /* Offset for sticky nav bar */
+}
+
 /* CSS reset minimal */
 *,
 *::before,

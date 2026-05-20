@@ -31,7 +31,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="Servicios" className={styles.servicesSection}>
+    <section id="servicios" className={styles.servicesSection}>
       <div className={`container ${styles.container}`}>
         <Reveal>
           <div className={styles.header}>

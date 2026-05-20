@@ -48,10 +48,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </button>
         </div>
         <nav className={styles.nav} aria-label="Navegación móvil">
-          <Link href="#Servicios" className={styles.navLink} onClick={onClose}>Servicios</Link>
-          <Link href="#Equipo" className={styles.navLink} onClick={onClose}>Equipo</Link>
-          <Link href="#Casos" className={styles.navLink} onClick={onClose}>Casos</Link>
-          <Link href="#Recursos" className={styles.navLink} onClick={onClose}>Recursos</Link>
+          <Link href="#servicios" className={styles.navLink} onClick={onClose}>Servicios</Link>
+          <Link href="#valores" className={styles.navLink} onClick={onClose}>Valores</Link>
+          <Link href="#equipo" className={styles.navLink} onClick={onClose}>Equipo</Link>
+          <Link href="#contacto" className={styles.navLink} onClick={onClose}>Agendar</Link>
         </nav>
       </div>
     </dialog>

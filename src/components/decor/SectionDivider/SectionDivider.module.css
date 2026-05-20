@@ -13,6 +13,7 @@
 }
 
 .dividerWrapper[data-variant="end"] {
+  top: 0;
   transform: scaleY(-1);
   /* Invertimos verticalmente para el final de la sección */
 }
