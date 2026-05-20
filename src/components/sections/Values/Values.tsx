@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import styles from './Values.module.css';
 import { Reveal } from '@/components/animations/Reveal';
+import { SectionDivider } from '@/components/decor/SectionDivider/SectionDivider';
 
 export function Values() {
   return (
-    <section className={styles.valuesSection}>
+    <section id="valores" className={styles.valuesSection}>
       <Image src="/assets/puntos-rosados.png" alt="" width={100} height={100} className={styles.puntosAmarillos} />
       <Image src="/assets/circulo-verde.png" alt="" width={110} height={110} className={styles.circuloVerde} />
+
+      <SectionDivider src="/assets/ondas-claras.png" variant="end" />
 
       <div className={`container ${styles.container}`}>
         <Reveal>

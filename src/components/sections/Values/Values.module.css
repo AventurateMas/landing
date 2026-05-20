@@ -1,6 +1,6 @@
 .valuesSection {
-  padding: 80px 24px;
-  background: #FFFAF1;
+  padding: 130px 24px 80px;
+  background: var(--color-cream);
   position: relative;
   overflow: hidden;
 }
@@ -66,11 +66,11 @@
 }
 
 /* Internal contents transition smoothly */
-.bentoItem > * {
+.bentoItem>* {
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.bentoItem:hover > * {
+.bentoItem:hover>* {
   transform: scale(1.02);
 }
 
@@ -83,10 +83,29 @@
   min-height: 240px;
 }
 
-.itemRosa { background: var(--color-rosa); color: #fff; padding: 28px; }
-.itemVerde { background: #7ED463; color: var(--color-navy); padding: 24px; }
-.itemAmarillo { background: var(--color-amarillo); color: var(--color-navy); padding: 24px; }
-.itemAzul { background: var(--color-azul); color: #fff; padding: 24px; }
+.itemRosa {
+  background: var(--color-rosa);
+  color: #fff;
+  padding: 28px;
+}
+
+.itemVerde {
+  background: #7ED463;
+  color: var(--color-navy);
+  padding: 24px;
+}
+
+.itemAmarillo {
+  background: var(--color-amarillo);
+  color: var(--color-navy);
+  padding: 24px;
+}
+
+.itemAzul {
+  background: var(--color-azul);
+  color: #fff;
+  padding: 24px;
+}
 
 .itemTagAmarillo {
   font-size: 13px;
@@ -146,6 +165,7 @@
   .bentoGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .itemNavy {
     grid-column: span 2;
   }
@@ -153,9 +173,9 @@
 
 @media (min-width: 1024px) {
   .valuesSection {
-    padding: 120px 56px;
+    padding: 190px 56px 120px;
   }
-  
+
   .bentoGrid {
     /* Define dynamic custom properties for grid tracks */
     --c-left: 1fr;
@@ -163,11 +183,11 @@
     --r1: 220px;
     --r2: 220px;
     --r3: 220px;
-    
+
     grid-template-columns: var(--c-left) var(--c-left) var(--c-left) var(--c-right) var(--c-right) var(--c-right);
     grid-template-rows: var(--r1) var(--r2) var(--r3);
-    transition: grid-template-columns 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-                grid-template-rows 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: grid-template-columns 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+      grid-template-rows 0.5s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   /* Grid Item Spans (Static Structure) */
@@ -176,17 +196,29 @@
     grid-row: span 2;
     min-height: auto;
   }
-  .itemRosa { grid-column: span 3; }
-  .itemVerde { grid-column: span 3; }
-  .itemAmarillo { grid-column: span 3; }
-  .itemAzul { grid-column: span 3; }
+
+  .itemRosa {
+    grid-column: span 3;
+  }
+
+  .itemVerde {
+    grid-column: span 3;
+  }
+
+  .itemAmarillo {
+    grid-column: span 3;
+  }
+
+  .itemAzul {
+    grid-column: span 3;
+  }
 
   /* 
     DYNAMIC HOVER STATES
     When hovering an item, we adjust the fr units and row heights 
     so the hovered item expands and others compress naturally.
   */
-  
+
   /* Hover Navy (cols 1-3, rows 1-2) */
   .bentoGrid:has(.itemNavy:hover) {
     --c-left: 1.4fr;
@@ -195,7 +227,7 @@
     --r2: 240px;
     --r3: 180px;
   }
-  
+
   /* Hover Rosa (cols 4-6, row 1) */
   .bentoGrid:has(.itemRosa:hover) {
     --c-left: 0.7fr;
@@ -203,7 +235,7 @@
     --r1: 280px;
     --r2: 160px;
   }
-  
+
   /* Hover Verde (cols 4-6, row 2) */
   .bentoGrid:has(.itemVerde:hover) {
     --c-left: 0.7fr;
@@ -211,7 +243,7 @@
     --r1: 160px;
     --r2: 280px;
   }
-  
+
   /* Hover Amarillo (cols 1-3, row 3) */
   .bentoGrid:has(.itemAmarillo:hover) {
     --c-left: 1.3fr;
@@ -220,7 +252,7 @@
     --r2: 180px;
     --r3: 300px;
   }
-  
+
   /* Hover Azul (cols 4-6, row 3) */
   .bentoGrid:has(.itemAzul:hover) {
     --c-left: 0.7fr;
@@ -232,9 +264,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-20px);
   }

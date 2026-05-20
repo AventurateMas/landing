@@ -1,14 +1,10 @@
 .marqueeSection {
   background: var(--color-navy);
-  padding: 230px 0 40px;
+  padding: 40px 0;
   overflow: hidden;
-  position: relative;
   user-select: none;
 }
 
-.dividerTop {
-  top: 0;
-}
 
 .marqueeTrack {
   display: flex;

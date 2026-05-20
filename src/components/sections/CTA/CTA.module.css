@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 100px 24px;
-  background: var(--color-navy);
-  color: #fff;
+  background: var(--color-bg);
   position: relative;
   overflow: hidden;
 }
@@ -56,7 +55,7 @@
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
   font-size: clamp(36px, 5vw, 64px);
-  color: #fff;
+  color: var(--color-navy);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -82,11 +81,12 @@
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 48px 24px;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+  padding: 40px;
   min-height: 240px;
+  width: 100%;
 }
 
 .actionCard:hover {
@@ -100,8 +100,66 @@
   font-size: clamp(24px, 3vw, 32px);
   line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: 16px;
+  margin-bottom: 0;
   color: var(--color-navy);
+  transition: margin-bottom 0.3s ease;
+}
+
+.actionCard:hover .cardTitle {
+  margin-bottom: 16px;
+}
+
+.cardContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardDetails {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease, margin-top 0.3s ease;
+  margin-top: 0;
+  width: 100%;
+}
+
+.actionCard:hover .cardDetails {
+  max-height: 240px;
+  opacity: 1;
+}
+
+.cardDesc {
+  font-weight: var(--fw-regular);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.pointsList {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardVerde .pointsList,
+.cardAmarillo .pointsList {
+  border-top: 1px solid rgba(51, 56, 109, 0.15);
+}
+
+.point {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dash {
+  font-size: 16px;
 }
 
 .arrow {
@@ -109,7 +167,7 @@
   font-weight: bold;
   opacity: 0.8;
   transition: transform 0.3s ease;
-  margin-top: auto;
+  margin-top: 24px;
 }
 
 .actionCard:hover .arrow {
@@ -117,9 +175,13 @@
   opacity: 1;
 }
 
-.cardRosa {
-  background: var(--color-rosa);
-  color: #fff;
+.cardNavy {
+  background: var(--color-navy);
+  color: var(--color-text-light);
+}
+
+.cardNavy .cardTitle {
+  color: var(--color-text-light);
 }
 
 .cardVerde {
