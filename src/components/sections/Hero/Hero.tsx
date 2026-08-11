@@ -7,9 +7,10 @@ import styles from './Hero.module.css';
 import { Button } from '@/components/primitives/Button/Button';
 import { Reveal } from '@/components/animations/Reveal';
 import { SectionDivider } from '@/components/decor/SectionDivider/SectionDivider';
+import { circuloAmarillo, puntosRosados } from '@/lib/decor';
 
 // Lista de palabras para la animación de escritura (fácil de modificar)
-const ANIMATED_WORDS = ['liderar', 'inspirar', 'transformar', 'crecer', 'jugar', 'más'];
+const ANIMATED_WORDS = ['aprender', 'transformar', 'liderar', 'crecer', 'decidir', 'jugar en equipo', 'reinventarte', 'conocerte', 'cambiar', 'explorar', 'avanzar', 'descubrir', 'conectar', 'más'];
 
 export function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
@@ -71,24 +72,8 @@ export function Hero() {
     <section id="inicio" className={styles.hero}>
       <div className={styles.bgGradient} aria-hidden="true"></div>
 
-      <Image 
-        src="/assets/circulo-amarillo.png" 
-        alt="" 
-        width={120} 
-        height={120} 
-        className={styles.shapeAmarillo} 
-        priority
-        sizes="(max-width: 768px) 80px, 120px"
-      />
-      <Image 
-        src="/assets/puntos-rosados.png" 
-        alt="" 
-        width={90} 
-        height={90} 
-        className={styles.shapeRosado} 
-        priority
-        sizes="(max-width: 768px) 60px, 90px"
-      />
+      <Image src={circuloAmarillo} alt="" className={styles.shapeAmarillo} priority />
+      <Image src={puntosRosados} alt="" className={styles.shapeRosado} priority />
 
       <div className={`container ${styles.grid}`}>
         <div className={styles.textContent}>
@@ -104,19 +89,21 @@ export function Hero() {
 
           <Reveal delay={200}>
             <p className={styles.paragraph}>
-              Acompaño a personas y equipos a descubrir su talento, construir relaciones horizontales y crear una cultura laboral más humana.
+              <mark className={styles.mark}>Aprendizaje lúdico</mark>, coaching y desarrollo humano
+              para que personas y equipos ganen claridad y se animen a avanzar. Porque crecer
+              también puede ser <mark className={`${styles.mark} ${styles.markLate}`}>una aventura</mark>.
             </p>
           </Reveal>
 
           <Reveal delay={300} className={styles.actions}>
             <Button as="a" href="#contacto" variant="primary">Agendar sesión</Button>
-            <Button as="a" href="#servicios" variant="ghost">Conoce mis programas</Button>
+            <Button as="a" href="#propuestas" variant="ghost">Conoce mis programas</Button>
           </Reveal>
         </div>
 
         <div className={styles.visualCluster}>
           <Reveal delay={200} className={styles.largeCardWrapper}>
-            <a href="#servicios" className={styles.largeCard}>
+            <a href="#personas" className={styles.largeCard}>
               <div className={styles.cardGradient} aria-hidden="true"></div>
               <div className={styles.cardContent}>
                 <div className={styles.cardHeader}>Programa<br />vocacional<span className={styles.dot}>.</span></div>
@@ -135,7 +122,7 @@ export function Hero() {
         </div>
       </div>
       {showScroll && (
-        <a href="#servicios" className={`${styles.scrollIndicator} ${styles.scrollVisible}`} aria-label="Scroll hacia abajo">
+        <a href="#propuestas" className={`${styles.scrollIndicator} ${styles.scrollVisible}`} aria-label="Scroll hacia abajo">
           <div className={styles.scrollMouse}>
             <div className={styles.scrollDot}></div>
           </div>
