@@ -22,29 +22,21 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  transition: opacity var(--dur-fast) var(--ease-out);
 }
 
-.logoMark {
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background: var(--color-navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: 18px;
-  color: var(--color-amarillo);
-  letter-spacing: -0.04em;
+.logoGroup:hover {
+  opacity: 0.8;
 }
 
-.logoText {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: -0.03em;
-  color: var(--color-navy);
+.logoGroup:active {
+  transform: scale(0.99);
+}
+
+.logo {
+  width: auto;
+  height: 26px;
+  display: block;
 }
 
 .desktopLinks {
@@ -71,7 +63,7 @@
 
   .desktopLinks {
     display: flex;
-    gap: 36px;
+    gap: var(--space-5);
     align-items: center;
   }
 
@@ -88,6 +80,22 @@
     opacity: 1;
   }
 
+  /* Sin cambio de peso: movería el ancho del link */
+  .linkActive {
+    opacity: 1;
+    color: var(--color-rosa);
+  }
+
+  .linkActive::after {
+    content: '';
+    display: block;
+    height: 2px;
+    margin-top: 4px;
+    border-radius: var(--radius-full);
+    background: var(--color-rosa);
+    animation: fadeIn var(--dur-fast) var(--ease-out);
+  }
+
   .navBtn {
     padding: 10px 20px;
     font-size: 13px;
@@ -95,5 +103,11 @@
 
   .mobileToggle {
     display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktopLinks {
+    gap: var(--space-6);
   }
 }
