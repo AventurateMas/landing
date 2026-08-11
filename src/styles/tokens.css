@@ -4,8 +4,6 @@
   /* Rosa claro — default background */
   --color-cream: #FFFAF1;
   /* Crema — secondary background */
-  --color-cream-rojo: #ff575d;
-  /* Crema — secondary background */
 
   /* Brand palette */
   --color-rosa: #FF585E;
@@ -81,9 +79,11 @@
   --tracking-wide: 0.06em;
 
   /* ── SHADOWS ─────────────────────────────────────────────── */
+  /* Tinted with navy so shadows sit in the palette instead of muddying it */
   --shadow-sm: 0 2px 8px rgba(51, 56, 109, 0.10);
   --shadow-md: 0 4px 20px rgba(51, 56, 109, 0.14);
   --shadow-lg: 0 8px 40px rgba(51, 56, 109, 0.18);
+  --shadow-xl: 0 24px 60px rgba(51, 56, 109, 0.22);
 
   /* Title duo-tone offset effect (blue shadow behind rosa text) */
   --title-shadow: -3px 3px 0 var(--color-azul);
