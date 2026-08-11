@@ -3,12 +3,15 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import styles from './MobileMenu.module.css';
 
+import { NAV_SECTIONS } from '../navSections';
+
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  activeId?: string;
 }
 
-export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -48,10 +51,18 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </button>
         </div>
         <nav className={styles.nav} aria-label="Navegación móvil">
-          <Link href="#servicios" className={styles.navLink} onClick={onClose}>Servicios</Link>
-          <Link href="#valores" className={styles.navLink} onClick={onClose}>Valores</Link>
-          <Link href="#equipo" className={styles.navLink} onClick={onClose}>Equipo</Link>
-          <Link href="#contacto" className={styles.navLink} onClick={onClose}>Agendar</Link>
+          {NAV_SECTIONS.map(item => (
+            <Link
+              key={item.id}
+              href={`/#${item.id}`}
+              className={`${styles.navLink} ${activeId === item.id ? styles.navLinkActive : ''}`}
+              aria-current={activeId === item.id ? 'true' : undefined}
+              onClick={onClose}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link href="/#contacto" className={styles.navLink} onClick={onClose}>Agendar</Link>
         </nav>
       </div>
     </dialog>

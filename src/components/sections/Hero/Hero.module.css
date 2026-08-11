@@ -1,5 +1,5 @@
 .hero {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100dvh - 80px);
   padding: 40px 24px 80px;
   position: relative;
   overflow: hidden;
@@ -128,6 +128,39 @@
   max-width: 480px;
   margin-bottom: 36px;
   margin-inline: auto;
+}
+
+/* Trazo de resaltador: se pinta debajo del texto y se dibuja de izquierda a
+   derecha una vez que el párrafo terminó de entrar */
+.mark {
+  background-color: transparent;
+  color: var(--color-navy);
+  font-weight: var(--fw-regular);
+  background-image: linear-gradient(rgba(255, 221, 120, 0.85), rgba(255, 221, 120, 0.85));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0 42%;
+  padding-inline: 2px;
+  animation: markerSweep 620ms var(--ease-out) 900ms both;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.markLate {
+  animation-delay: 1180ms;
+}
+
+@keyframes markerSweep {
+  to {
+    background-size: 100% 42%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark {
+    animation: none;
+    background-size: 100% 42%;
+  }
 }
 
 .actions {

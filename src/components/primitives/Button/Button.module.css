@@ -12,6 +12,12 @@
 }
 .button:hover {
   transform: scale(1.04);
+  box-shadow: var(--shadow-md);
+}
+
+.button:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Variantes */
@@ -31,6 +37,12 @@
 }
 .button[data-variant="ghost"]:hover {
   transform: translateX(4px);
+  box-shadow: none;
+  color: var(--color-rosa);
+}
+
+.button[data-variant="ghost"]:active {
+  transform: translateX(2px) scale(0.99);
 }
 .button[data-variant="navy"] {
   background-color: var(--color-navy);

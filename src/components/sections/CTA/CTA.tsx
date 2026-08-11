@@ -1,75 +1,78 @@
 import styles from './CTA.module.css';
 import { Reveal } from '@/components/animations/Reveal';
+import { CONTACT, mailtoHref } from '@/lib/contact';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Me escribes',
+    desc: 'Cuéntame qué está pasando contigo, con tu equipo o con tu carrera. Un párrafo alcanza.',
+  },
+  {
+    n: '02',
+    title: 'Charlamos 45 minutos',
+    desc: 'Una videollamada sin costo para entender el contexto y ver si soy la persona indicada.',
+  },
+  {
+    n: '03',
+    title: 'Te mando una propuesta',
+    desc: 'Objetivos, cantidad de sesiones, fechas y precio. Sin letra chica.',
+  },
+];
 
 export function CTA() {
-  const options = [
-    {
-      title: 'Coaching individual',
-      desc: 'Sesiones 1:1 para potenciar tu liderazgo y descubrir tu talento.',
-      points: ['8 sesiones', 'Plan personalizado', 'Acompañamiento continuo'],
-      href: '#agendar-individual',
-      styleClass: styles.cardNavy,
-      accent: 'var(--color-amarillo)',
-      descColor: 'rgba(255, 255, 255, 0.8)',
-    },
-    {
-      title: 'Talleres de equipo',
-      desc: 'Dinámicas colaborativas para construir cultura laboral.',
-      points: ['Hasta 20 personas', 'Presencial · Online', 'Materiales incluidos'],
-      href: '#agendar-talleres',
-      styleClass: styles.cardVerde,
-      accent: 'var(--color-amarillo)',
-      descColor: 'rgba(51, 56, 109, 0.8)',
-    },
-    {
-      title: 'Conferencias',
-      desc: 'Charlas inspiradoras sobre talento humano y cultura.',
-      points: ['45–90 min', 'Q&A incluido', 'Eventos abiertos'],
-      href: '#agendar-conferencias',
-      styleClass: styles.cardAmarillo,
-      accent: 'var(--color-rosa)',
-      descColor: 'rgba(51, 56, 109, 0.8)',
-    },
-  ];
-
   return (
     <section id="contacto" className={styles.ctaSection}>
       <div className={styles.bgDeco} aria-hidden="true"></div>
+
       <div className={`container ${styles.container}`}>
-        <Reveal delay={0} className={styles.header}>
+        <Reveal className={styles.intro}>
+          <p className={styles.eyebrow}>Siguiente paso</p>
           <h2 className={styles.title}>
-            Da el primer paso y <em className={styles.italic}>agendá</em> un espacio
+            Da el primer paso y <em className={styles.italic}>agenda</em> un espacio
           </h2>
+          <p className={styles.lead}>
+            La primera conversación es gratuita y dura 45 minutos. Sales de ahí con una
+            lectura clara de tu situación, trabajemos juntos después o no.
+          </p>
+
+          <div className={styles.actions}>
+            <a href={mailtoHref} className={styles.primaryAction}>
+              Escríbeme un correo
+              <span className={styles.actionArrow} aria-hidden="true">→</span>
+            </a>
+            <a
+              href={CONTACT.instagram}
+              className={styles.secondaryAction}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              o por Instagram
+            </a>
+          </div>
+
+          <p className={styles.meta}>
+            Respondo en menos de 48 horas hábiles ·{' '}
+            <a className={styles.metaLink} href={`mailto:${CONTACT.email}`}>
+              {CONTACT.email}
+            </a>
+          </p>
         </Reveal>
 
-        <div className={styles.cardsGrid}>
-          {options.map((opt, i) => (
-            <Reveal key={opt.title} delay={100 * (i + 1)}>
-              <a href={opt.href} className={`${styles.actionCard} ${opt.styleClass}`}>
-                <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{opt.title}</h3>
-                  
-                  <div className={styles.cardDetails}>
-                    <p className={styles.cardDesc} style={{ color: opt.descColor }}>
-                      {opt.desc}
-                    </p>
-                    <div className={styles.pointsList}>
-                      {opt.points.map((p) => (
-                        <div key={p} className={styles.point}>
-                          <span className={styles.dash} style={{ color: opt.accent }}>—</span>
-                          {p}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+        <Reveal delay={150} className={styles.stepsWrapper}>
+          <ol className={styles.steps}>
+            {steps.map((step) => (
+              <li key={step.n} className={styles.step}>
+                <span className={styles.stepNumber}>{step.n}</span>
+                <div>
+                  <h3 className={styles.stepTitle}>{step.title}</h3>
+                  <p className={styles.stepDesc}>{step.desc}</p>
                 </div>
-                <span className={styles.arrow}>→</span>
-              </a>
-            </Reveal>
-          ))}
-        </div>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
       </div>
     </section>
   );
 }
-

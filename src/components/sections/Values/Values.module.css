@@ -10,6 +10,7 @@
   left: 32px;
   top: 80px;
   width: 100px;
+  height: auto;
   opacity: 0.5;
   pointer-events: none;
   animation: float 6s ease-in-out infinite alternate;
@@ -20,13 +21,14 @@
   right: 40px;
   bottom: 60px;
   width: 110px;
+  height: auto;
   opacity: 0.4;
   pointer-events: none;
   animation: float 8s ease-in-out infinite;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--container-max);
   margin: 0 auto;
   position: relative;
 }
@@ -50,115 +52,136 @@
   color: var(--color-rosa);
 }
 
+/* ── Bento ────────────────────────────────────────────────── */
 .bentoGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
-.bentoItem {
-  border-radius: 28px;
+.cell {
+  display: flex;
+}
+
+.item {
+  width: 100%;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px;
+  border-radius: 28px;
+  text-align: left;
   position: relative;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 
-/* Internal contents transition smoothly */
-.bentoItem>* {
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+.item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-.bentoItem:hover>* {
-  transform: scale(1.02);
+.item:active {
+  transform: translateY(-1px) scale(0.995);
 }
 
-/* Individual Styles */
-.itemNavy {
+.navy {
   background: var(--color-navy);
-  color: #fff;
-  padding: 32px;
-  justify-content: space-between;
-  min-height: 240px;
+  color: var(--color-text-light);
 }
 
-.itemRosa {
+.rosa {
   background: var(--color-rosa);
-  color: #fff;
-  padding: 28px;
+  color: var(--color-text-light);
 }
 
-.itemVerde {
-  background: #7ED463;
+.verde {
+  background: var(--color-verde);
   color: var(--color-navy);
-  padding: 24px;
 }
 
-.itemAmarillo {
+.amarillo {
   background: var(--color-amarillo);
   color: var(--color-navy);
-  padding: 24px;
 }
 
-.itemAzul {
+.azul {
   background: var(--color-azul);
-  color: #fff;
-  padding: 24px;
+  color: var(--color-text-light);
 }
 
-.itemTagAmarillo {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-amarillo);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.itemTagLight {
+.tag {
   font-size: 12px;
-  font-weight: 600;
-  opacity: 0.7;
-}
-
-.itemTagDark {
-  font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-wide);
   opacity: 0.6;
 }
 
-.itemTitleLarge {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+.navy .tag,
+.azul .tag {
+  color: var(--color-amarillo);
+  opacity: 0.9;
 }
 
-.itemDescLarge {
-  margin-top: 14px;
-  opacity: 0.8;
-  font-size: 15px;
-  line-height: 1.6;
-  max-width: 360px;
+.rosa .tag {
+  color: var(--color-amarillo);
+  opacity: 0.9;
 }
 
+/* El título se apoya abajo; el número queda arriba */
 .itemTitle {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: 28px;
-  line-height: 1;
-  margin-top: 8px;
-  letter-spacing: -0.03em;
-}
-
-.itemTitleSmall {
+  margin-top: auto;
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
   font-size: 22px;
-  line-height: 1;
-  margin-top: 6px;
+  line-height: 1.05;
   letter-spacing: -0.02em;
+}
+
+.itemDesc {
+  font-size: 15px;
+  line-height: 1.55;
+  opacity: 0.85;
+  max-width: 46ch;
+  /* Móvil: se ve recortada hasta que se toca la tarjeta */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+
+.item[data-open='true'] .itemDesc {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+.cue {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* óptico: el signo carga hacia arriba dentro de su caja */
+  padding-bottom: 2px;
+  border-radius: var(--radius-full);
+  background: rgba(254, 246, 240, 0.18);
+  color: inherit;
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.verde .cue,
+.amarillo .cue {
+  background: rgba(51, 56, 109, 0.12);
 }
 
 @media (min-width: 768px) {
@@ -166,7 +189,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .itemNavy {
+  .slotHero {
+    grid-column: span 2;
+  }
+
+  .cell:last-child {
     grid-column: span 2;
   }
 }
@@ -177,94 +204,63 @@
   }
 
   .bentoGrid {
-    /* Define dynamic custom properties for grid tracks */
-    --c-left: 1fr;
-    --c-right: 1fr;
-    --r1: 220px;
-    --r2: 220px;
-    --r3: 220px;
-
-    grid-template-columns: var(--c-left) var(--c-left) var(--c-left) var(--c-right) var(--c-right) var(--c-right);
-    grid-template-rows: var(--r1) var(--r2) var(--r3);
-    transition: grid-template-columns 0.5s cubic-bezier(0.25, 1, 0.5, 1),
-      grid-template-rows 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 236px;
   }
 
-  /* Grid Item Spans (Static Structure) */
-  .itemNavy {
+  .slotHero {
     grid-column: span 3;
     grid-row: span 2;
-    min-height: auto;
   }
 
-  .itemRosa {
+  .slotWide {
     grid-column: span 3;
   }
 
-  .itemVerde {
-    grid-column: span 3;
+  .slotSmall,
+  .cell:last-child {
+    grid-column: span 2;
   }
 
-  .itemAmarillo {
-    grid-column: span 3;
+  .item {
+    padding: 28px;
   }
 
-  .itemAzul {
-    grid-column: span 3;
+  .slotHero .item {
+    padding: 36px;
   }
 
-  /* 
-    DYNAMIC HOVER STATES
-    When hovering an item, we adjust the fr units and row heights 
-    so the hovered item expands and others compress naturally.
-  */
-
-  /* Hover Navy (cols 1-3, rows 1-2) */
-  .bentoGrid:has(.itemNavy:hover) {
-    --c-left: 1.4fr;
-    --c-right: 0.6fr;
-    --r1: 240px;
-    --r2: 240px;
-    --r3: 180px;
+  .slotHero .itemTitle {
+    font-size: clamp(36px, 4vw, 52px);
+    letter-spacing: -0.04em;
   }
 
-  /* Hover Rosa (cols 4-6, row 1) */
-  .bentoGrid:has(.itemRosa:hover) {
-    --c-left: 0.7fr;
-    --c-right: 1.3fr;
-    --r1: 280px;
-    --r2: 160px;
+  .slotHero .itemDesc {
+    font-size: 17px;
   }
 
-  /* Hover Verde (cols 4-6, row 2) */
-  .bentoGrid:has(.itemVerde:hover) {
-    --c-left: 0.7fr;
-    --c-right: 1.3fr;
-    --r1: 160px;
-    --r2: 280px;
+  /* El espacio de la descripción queda reservado: al aparecer no mueve la grilla */
+  .itemDesc {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    opacity: 0;
+    transform: translateY(6px);
   }
 
-  /* Hover Amarillo (cols 1-3, row 3) */
-  .bentoGrid:has(.itemAmarillo:hover) {
-    --c-left: 1.3fr;
-    --c-right: 0.7fr;
-    --r1: 180px;
-    --r2: 180px;
-    --r3: 300px;
+  .item:hover .itemDesc,
+  .item:focus-visible .itemDesc,
+  .item[data-open='true'] .itemDesc {
+    opacity: 0.85;
+    transform: none;
   }
 
-  /* Hover Azul (cols 4-6, row 3) */
-  .bentoGrid:has(.itemAzul:hover) {
-    --c-left: 0.7fr;
-    --c-right: 1.3fr;
-    --r1: 180px;
-    --r2: 180px;
-    --r3: 300px;
+  /* Con cursor disponible no hace falta el signo de desplegar */
+  .cue {
+    display: none;
   }
 }
 
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0);

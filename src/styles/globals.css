@@ -30,8 +30,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   /* Prevent horizontal scroll from blobs */
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 img {
@@ -53,9 +51,10 @@ button {
   cursor: pointer;
 }
 
-input, textarea {
-  user-select: text;
-  -webkit-user-select: text;
+/* Avoid orphaned words */
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4 {
+  text-wrap: balance;
 }
 
 /* Foco visible global */
@@ -111,6 +110,7 @@ p,
   font-size: var(--text-base);
   line-height: var(--leading-normal);
   color: var(--color-navy);
+  text-wrap: pretty;
 }
 
 .subtitle {
