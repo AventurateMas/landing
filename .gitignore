@@ -50,5 +50,7 @@ AGENTS.md
 
 # AI & Workspace metadata
 .gemini/
+.claude/
+.impeccable/
 scratch/
 artifacts/
