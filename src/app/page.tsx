@@ -1,15 +1,16 @@
 import { Hero } from '@/components/sections/Hero/Hero';
+import { Propuestas } from '@/components/sections/Propuestas/Propuestas';
 import { Marquee } from '@/components/sections/Marquee/Marquee';
 import { Team } from '@/components/sections/Team/Team';
-import { Services } from '@/components/sections/Services/Services';
 import { Values } from '@/components/sections/Values/Values';
 import { CTA } from '@/components/sections/CTA/CTA';
+import { getPropuestas } from '@/lib/getPropuestas';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Services />
+      <Propuestas personas={getPropuestas('personas')} empresas={getPropuestas('empresas')} />
       <Marquee />
       <CTA />
       <Values />
