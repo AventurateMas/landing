@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "titulo": "Talleres de equipo",
+      "descripcion": "Dinámicas colaborativas para construir cultura laboral.",
+      "puntos": ["Hasta 20 personas", "Presencial · Online", "Materiales incluidos"],
+      "imagen": "",
+      "imagenAlt": "",
+      "ctaTexto": "Pedir una propuesta",
+      "ctaHref": "",
+      "color": "verde",
+      "visible": true
+    },
+    {
+      "titulo": "Conferencias",
+      "descripcion": "Charlas sobre talento humano y cultura para eventos y encuentros internos.",
+      "puntos": ["45–90 min", "Q&A incluido", "Eventos abiertos"],
+      "imagen": "",
+      "imagenAlt": "",
+      "ctaTexto": "Consultar disponibilidad",
+      "ctaHref": "",
+      "color": "amarillo",
+      "visible": true
+    },
+    {
+      "titulo": "Diagnóstico de cultura",
+      "descripcion": "Entrevistas y encuestas para entender cómo se trabaja hoy y qué conviene cambiar.",
+      "puntos": ["2 a 4 semanas", "Informe con hallazgos", "Plan de acción"],
+      "imagen": "",
+      "imagenAlt": "",
+      "ctaTexto": "Pedir una propuesta",
+      "ctaHref": "",
+      "color": "azul",
+      "visible": true
+    }
+  ]
+}

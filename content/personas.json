@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "titulo": "Coaching individual",
+      "descripcion": "Sesiones 1:1 para potenciar tu liderazgo y descubrir tu talento.",
+      "puntos": ["8 sesiones", "Plan personalizado", "Acompañamiento continuo"],
+      "imagen": "",
+      "imagenAlt": "",
+      "ctaTexto": "Reservar una sesión",
+      "ctaHref": "",
+      "color": "navy",
+      "visible": true
+    },
+    {
+      "titulo": "Programa vocacional",
+      "descripcion": "Para quienes están eligiendo carrera o replanteando su camino profesional.",
+      "puntos": ["6 encuentros", "Mapa de intereses", "Informe final"],
+      "imagen": "",
+      "imagenAlt": "",
+      "ctaTexto": "Quiero empezar",
+      "ctaHref": "",
+      "color": "amarillo",
+      "visible": true
+    },
+    {
+      "titulo": "Sesión de descubrimiento",
+      "descripcion": "Una conversación de 45 minutos para poner en claro qué te está frenando.",
+      "puntos": ["45 minutos", "Sin costo", "Online"],
+      "imagen": "",
+      "imagenAlt": "",
+      "ctaTexto": "Agendar la llamada",
+      "ctaHref": "",
+      "color": "verde",
+      "visible": true
+    }
+  ]
+}
