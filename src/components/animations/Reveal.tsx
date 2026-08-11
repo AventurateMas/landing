@@ -24,10 +24,10 @@ export function Reveal({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
+        // Reveal once: re-hiding on scroll-up makes content vanish behind the user
         if (entry.isIntersecting) {
           setIsVisible(true);
-        } else {
-          setIsVisible(false);
+          observer.unobserve(entry.target);
         }
       },
       {

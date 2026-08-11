@@ -2,26 +2,26 @@
 
 import Image from 'next/image';
 import styles from './Team.module.css';
-import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
+import { formaManchaVerde, puntosRosados } from '@/lib/decor';
 
 export function Team() {
   const profile = {
     name: 'Maritza Rodríguez',
-    role: 'Fundadora · Coach de talento humano',
-    bio: 'Más de 6 años acompañando personas y equipos a descubrir su talento. Promotora de una nueva cultura social y laboral basada en el liderazgo facilitador y las relaciones horizontales.',
-    tags: ['Coaching 1:1', 'Liderazgo', 'Cultura', 'Talleres'],
+    role: 'Fundadora de Aventúrate más',
+    bio: 'Hace más de diez años acompaño a personas y equipos a crecer, comunicarse mejor y dar lo mejor de sí: a reconocer sus talentos, a animarse a los cambios y a construir vínculos más sanos y colaborativos.',
+    tags: ['Coach Ontológica profesional', 'Licenciada en Psicología', 'Scrum Master', 'Aprendizaje Lúdico'],
     color: 'var(--color-rosa)',
     accent: 'var(--color-amarillo)',
     label: 'Fundadora',
-    years: '+6 años',
+    years: '+10 años',
     image: '/assets/itza.webp'
   };
 
   return (
     <section id="equipo" className={styles.teamSection}>
-      <Image src="/assets/forma-mancha-verde.png" alt="" width={220} height={220} className={styles.blobVerde} />
-      <Image src="/assets/puntos-rosados.png" alt="" width={90} height={90} className={styles.puntosRosados} />
+      <Image src={formaManchaVerde} alt="" className={styles.blobVerde} />
+      <Image src={puntosRosados} alt="" className={styles.puntosRosados} />
 
       <div className={`container ${styles.container}`}>
         <Reveal>
@@ -81,14 +81,14 @@ export function Team() {
                 {profile.bio}
               </p>
               <p className={styles.bioSecondary}>
-                Mi enfoque une herramientas de psicología positiva, dinámicas lúdicas y coaching ontológico para crear experiencias de aprendizaje que de verdad transforman la manera de liderar y convivir en los espacios de trabajo.
+                Trabajo desde una mirada profesional pero profundamente humana, integrando la psicología organizacional, el coaching ontológico, aprendizaje lúdico y los marcos de agilidad. Esa combinación me permite acompañar tanto a una empresa que quiere fortalecer a su equipo, como a una persona que busca reencontrarse, decidir o reinventarse.
               </p>
             </Reveal>
 
             <Reveal delay={400} className={styles.quoteBlock}>
               <span className={styles.quoteIcon}>“</span>
               <p className={styles.quoteText}>
-                Creo en un mundo laboral más humano, donde el talento individual brille y las relaciones se construyan con empatía y horizontalidad.
+                Detrás de cada equipo y de cada proceso hay personas: con historias, talentos y posibilidades. Y ahí es donde me gusta estar.
               </p>
             </Reveal>
 

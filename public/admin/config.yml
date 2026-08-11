@@ -1,0 +1,146 @@
+backend:
+  name: github
+  repo: AventurateMas/landing
+  branch: master
+  # Para entrar con usuario y contraseña de GitHub en vez de token, descomentar
+  # y apuntar a un cliente OAuth (ver README):
+  # base_url: https://TU-AUTENTICADOR.workers.dev
+
+locale: es
+publish_mode: simple
+
+media_folder: public/assets/propuestas
+public_folder: /assets/propuestas
+
+collections:
+  - name: propuestas
+    label: Propuestas
+    icon: description
+    files:
+      - name: personas
+        label: Propuestas para personas
+        file: content/personas.json
+        description: >-
+          Tarjetas de la sección "Para ti". El orden de la lista es el orden en
+          que se muestran en la web.
+        fields:
+          - label: Propuestas
+            name: items
+            widget: list
+            label_singular: Propuesta
+            summary: '{{fields.titulo}}'
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - label: Descripción
+                name: descripcion
+                widget: text
+                hint: Una o dos frases. Se ve debajo del título.
+              - label: Puntos
+                name: puntos
+                widget: list
+                field: { label: Punto, name: punto, widget: string }
+                hint: 'Datos cortos: duración, formato, qué incluye.'
+              - label: Imagen
+                name: imagen
+                widget: image
+                required: false
+                hint: Opcional. Se recorta sola a formato apaisado.
+              - label: Descripción de la imagen
+                name: imagenAlt
+                widget: string
+                required: false
+                hint: >-
+                  Qué se ve en la foto, para quien no puede verla. Si se deja
+                  vacío se usa el título.
+              - label: Texto del botón
+                name: ctaTexto
+                widget: string
+                default: Reservar una sesión
+              - label: Link del botón
+                name: ctaHref
+                widget: string
+                required: false
+                pattern:
+                  - '^(https://.*|/#.*|#.*)?$'
+                  - 'Tiene que empezar con https:// o con # (una sección de la web)'
+                hint: >-
+                  Link del formulario de Google. Si se deja vacío, el botón
+                  lleva a la sección de contacto de la web.
+              - label: Color
+                name: color
+                widget: select
+                default: navy
+                options:
+                  - { label: Amarillo, value: amarillo }
+                  - { label: Verde, value: verde }
+                  - { label: Azul oscuro, value: navy }
+                  - { label: Azul, value: azul }
+              - label: Visible en la web
+                name: visible
+                widget: boolean
+                default: true
+                hint: Apagar esconde la propuesta sin borrarla.
+
+      - name: empresas
+        label: Propuestas para empresas
+        file: content/empresas.json
+        description: >-
+          Tarjetas de la sección "Para tu organización". El orden de la lista es
+          el orden en que se muestran en la web.
+        fields:
+          - label: Propuestas
+            name: items
+            widget: list
+            label_singular: Propuesta
+            summary: '{{fields.titulo}}'
+            fields:
+              - { label: Título, name: titulo, widget: string }
+              - label: Descripción
+                name: descripcion
+                widget: text
+                hint: Una o dos frases. Se ve debajo del título.
+              - label: Puntos
+                name: puntos
+                widget: list
+                field: { label: Punto, name: punto, widget: string }
+                hint: 'Datos cortos: duración, formato, qué incluye.'
+              - label: Imagen
+                name: imagen
+                widget: image
+                required: false
+                hint: Opcional. Se recorta sola a formato apaisado.
+              - label: Descripción de la imagen
+                name: imagenAlt
+                widget: string
+                required: false
+                hint: >-
+                  Qué se ve en la foto, para quien no puede verla. Si se deja
+                  vacío se usa el título.
+              - label: Texto del botón
+                name: ctaTexto
+                widget: string
+                default: Pedir una propuesta
+              - label: Link del botón
+                name: ctaHref
+                widget: string
+                required: false
+                pattern:
+                  - '^(https://.*|/#.*|#.*)?$'
+                  - 'Tiene que empezar con https:// o con # (una sección de la web)'
+                hint: >-
+                  Link del formulario de Google. Si se deja vacío, el botón
+                  lleva a la sección de contacto de la web.
+              - label: Color
+                name: color
+                widget: select
+                default: verde
+                options:
+                  - { label: Amarillo, value: amarillo }
+                  - { label: Verde, value: verde }
+                  - { label: Azul oscuro, value: navy }
+                  - { label: Azul, value: azul }
+              - label: Visible en la web
+                name: visible
+                widget: boolean
+                default: true
+                hint: Apagar esconde la propuesta sin borrarla.

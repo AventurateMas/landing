@@ -2,12 +2,12 @@ import styles from './Marquee.module.css';
 
 export function Marquee() {
   const items = [
-    'Liderazgo facilitador',
-    'Cultura colaborativa',
-    'Talento humano',
-    'Relaciones horizontales',
-    'Trabajo en equipo',
-    'Valor humano'
+    'Valor humano',
+    'Cercanía',
+    'Aprendizaje lúdico',
+    'Impacto con propósito',
+    'Autenticidad',
+    'Acción consciente'
   ];
   const items2 = [...items, ...items];
 
