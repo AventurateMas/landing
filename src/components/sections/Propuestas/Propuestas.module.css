@@ -46,19 +46,19 @@
   font-weight: var(--fw-bold);
   font-size: clamp(40px, 6vw, 64px);
   line-height: 1;
-  color: #fff;
+  color: var(--color-ink);
   margin-top: 20px;
 }
 
 .italic {
   font-style: italic;
-  color: var(--color-navy);
+  color: #fff;
 }
 
 .subtitle {
   font-weight: var(--fw-bold);
   font-size: 18px;
-  color: var(--color-text-light);
+  color: var(--color-ink);
   max-width: 340px;
   line-height: 1.6;
 }
@@ -79,7 +79,7 @@
   text-align: left;
   padding: 28px;
   border-radius: 28px;
-  opacity: 0.55;
+  opacity: 0.8;
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out),
     box-shadow var(--dur-base) var(--ease-out);
 }
@@ -95,7 +95,7 @@
 }
 
 .tab:hover {
-  opacity: 0.8;
+  opacity: 0.92;
 }
 
 /* La pestaña elegida queda a plena luz; la otra se apaga, igual que las
@@ -110,11 +110,11 @@
 }
 
 .tabKicker {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: var(--fw-bold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .tabTitle {
@@ -130,9 +130,8 @@
 }
 
 .tabResumen {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
-  opacity: 0.85;
   max-width: 40ch;
 }
 
@@ -175,7 +174,7 @@
   font-size: 18px;
   line-height: 1.6;
   max-width: 52ch;
-  color: var(--color-text-light);
+  color: var(--color-ink);
 }
 
 /* ── Variante tarjetas (personas) ─────────────────────────── */
@@ -251,7 +250,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: var(--fw-semibold);
 }
 
@@ -339,7 +338,7 @@
   margin-top: 12px;
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(254, 246, 240, 0.75);
+  color: rgba(254, 246, 240, 0.85);
   max-width: 46ch;
 }
 
@@ -361,7 +360,7 @@
   gap: 10px;
   align-self: flex-start;
   font-weight: var(--fw-bold);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--card-accent-dark);
   text-decoration: underline;
   text-underline-offset: 5px;
@@ -378,11 +377,12 @@
   padding: 40px 0;
   font-size: 18px;
   max-width: 46ch;
-  color: var(--color-text-light);
+  color: var(--color-ink);
 }
 
 .vacioLink {
-  color: var(--color-amarillo);
+  color: inherit;
+  font-weight: var(--fw-bold);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -394,15 +394,14 @@
   gap: 10px;
   font-family: var(--font-body);
   font-weight: var(--fw-bold);
-  font-size: 14px;
-  color: rgba(254, 246, 240, 0.8);
+  font-size: 16px;
+  color: var(--color-ink);
   text-decoration: underline;
   text-underline-offset: 4px;
-  transition: color var(--dur-fast) var(--ease-out);
 }
 
 .cruce:hover {
-  color: var(--color-amarillo);
+  text-decoration-thickness: 2px;
 }
 
 .cruceArrow {
