@@ -1,9 +1,9 @@
 {
   "items": [
     {
-      "titulo": "Talleres de equipo",
-      "descripcion": "Dinámicas colaborativas para construir cultura laboral.",
-      "puntos": ["Hasta 20 personas", "Presencial · Online", "Materiales incluidos"],
+      "titulo": "Coaching de equipos",
+      "descripcion": "Sesiones grupales para alinear objetivos, mejorar la comunicación y fortalecer la confianza dentro del equipo.",
+      "puntos": ["Diagnóstico inicial del equipo", "Sesiones grupales", "Presencial · Online"],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Pedir una propuesta",
@@ -12,20 +12,20 @@
       "visible": true
     },
     {
-      "titulo": "Conferencias",
-      "descripcion": "Charlas sobre talento humano y cultura para eventos y encuentros internos.",
-      "puntos": ["45–90 min", "Q&A incluido", "Eventos abiertos"],
+      "titulo": "Capacitación y formación",
+      "descripcion": "Talleres y programas a medida para desarrollar liderazgo, comunicación y trabajo colaborativo.",
+      "puntos": ["Contenidos a medida", "Talleres prácticos", "Presencial · Online"],
       "imagen": "",
       "imagenAlt": "",
-      "ctaTexto": "Consultar disponibilidad",
+      "ctaTexto": "Pedir una propuesta",
       "ctaHref": "",
       "color": "amarillo",
       "visible": true
     },
     {
-      "titulo": "Diagnóstico de cultura",
-      "descripcion": "Entrevistas y encuestas para entender cómo se trabaja hoy y qué conviene cambiar.",
-      "puntos": ["2 a 4 semanas", "Informe con hallazgos", "Plan de acción"],
+      "titulo": "Selección y desarrollo de talentos",
+      "descripcion": "Acompañamiento para atraer, elegir y hacer crecer a las personas adecuadas para cada rol.",
+      "puntos": ["Definición de perfiles", "Entrevistas y evaluación", "Planes de desarrollo"],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Pedir una propuesta",
