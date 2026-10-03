@@ -115,8 +115,8 @@
 
 .meta {
   margin-top: var(--space-6);
-  font-size: var(--text-sm);
-  color: rgba(51, 56, 109, 0.7);
+  font-size: 15px;
+  color: rgba(51, 56, 109, 0.85);
 }
 
 .metaLink {
@@ -171,9 +171,9 @@
 
 .stepDesc {
   margin-top: var(--space-2);
-  font-size: var(--text-sm);
+  font-size: 15px;
   line-height: var(--leading-normal);
-  color: rgba(254, 246, 240, 0.75);
+  color: rgba(254, 246, 240, 0.85);
   max-width: 42ch;
 }
 

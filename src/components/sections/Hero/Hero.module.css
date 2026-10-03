@@ -123,7 +123,7 @@
 
 .paragraph {
   font-size: 18px;
-  color: rgba(51, 56, 109, 0.75);
+  color: rgba(51, 56, 109, 0.88);
   line-height: 1.6;
   max-width: 480px;
   margin-bottom: 36px;
@@ -194,14 +194,14 @@
 }
 
 .trustTitle {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--color-navy);
 }
 
 .trustSubtitle {
-  font-size: 12px;
-  color: rgba(51, 56, 109, 0.55);
+  font-size: 14px;
+  color: rgba(51, 56, 109, 0.8);
   margin-top: 2px;
 }
 
@@ -252,7 +252,7 @@
 }
 
 .scrollLabel {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -379,13 +379,13 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  color: #fff;
+  color: var(--color-ink);
 }
 
 .specialtyLabel {
-  font-size: 11px;
-  opacity: 0.7;
-  font-weight: 500;
+  font-size: 12px;
+  opacity: 0.85;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -446,8 +446,8 @@
 }
 
 .badgeLabel {
-  font-size: 10px;
-  opacity: 0.7;
+  font-size: 11px;
+  opacity: 0.85;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -483,13 +483,13 @@
 }
 
 .floatingLabel {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  color: rgba(51, 56, 109, 0.6);
+  color: rgba(51, 56, 109, 0.8);
 }
 
 .floatingValue {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-navy);
 }
@@ -515,10 +515,10 @@
 }
 
 .quoteText {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   margin-top: 4px;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 @keyframes fadeInUp {

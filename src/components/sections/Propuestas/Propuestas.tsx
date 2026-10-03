@@ -63,6 +63,16 @@ export function Propuestas({ personas, empresas }: Props) {
     if (mueveFoco) tabsRef.current[audiencia]?.focus();
   }, []);
 
+  // Con clic (no con flechas) bajamos hasta las propuestas: en móvil quedan
+  // fuera de pantalla debajo de las pestañas. rAF espera a que el panel deje de
+  // estar `hidden`; el smooth y el offset del nav los pone el CSS de <html>.
+  const elegirYVer = (audiencia: Audiencia) => {
+    elegir(audiencia);
+    requestAnimationFrame(() =>
+      document.getElementById(`panel-${audiencia}`)?.scrollIntoView({ block: 'start' }),
+    );
+  };
+
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const teclas = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
     if (!teclas.includes(event.key)) return;
@@ -122,7 +132,7 @@ export function Propuestas({ personas, empresas }: Props) {
                   aria-controls={`panel-${audiencia}`}
                   tabIndex={activo ? 0 : -1}
                   className={`${styles.tab} ${styles[audiencia]}`}
-                  onClick={() => elegir(audiencia)}
+                  onClick={() => elegirYVer(audiencia)}
                 >
                   <span className={styles.tabKicker}>{copy.kicker}</span>
                   <span className={styles.tabTitle}>{copy.titulo}</span>
@@ -179,7 +189,7 @@ export function Propuestas({ personas, empresas }: Props) {
                 </div>
               )}
 
-              <button type="button" className={styles.cruce} onClick={() => elegir(otra)}>
+              <button type="button" className={styles.cruce} onClick={() => elegirYVer(otra)}>
                 {otra === 'empresas'
                   ? '¿Buscabas algo para tu equipo? Ver propuestas para empresas'
                   : '¿Buscabas algo para ti? Ver propuestas para personas'}
