@@ -34,7 +34,8 @@ export const PALETTE: Record<
   amarillo: {
     bg: 'var(--color-amarillo)',
     fg: 'var(--color-navy)',
-    accent: 'var(--color-rosa)',
+    // rosa sobre amarillo da 2.3:1, ilegible en el número de la tarjeta
+    accent: 'var(--color-azul)',
     accentDark: 'var(--color-amarillo)',
     rule: 'rgba(51, 56, 109, 0.2)',
   },

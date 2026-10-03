@@ -16,6 +16,8 @@
   /* Principal II — accent lines, title shadow, logo */
   --color-navy: #33386D;
   /* Neutral oscuro — body text */
+  --color-ink: #1A1C45;
+  /* Navy profundo — texto sobre rosa (navy solo da 3.5:1 ahí, ink 5.2:1) */
 
   /* ── SEMANTIC COLOR TOKENS ──────────────────────────────── */
   --color-surface: var(--color-bg);

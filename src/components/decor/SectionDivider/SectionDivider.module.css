@@ -5,7 +5,9 @@
   pointer-events: none;
   z-index: 1;
   line-height: 0;
-  overflow: hidden;
+  /* clip y no hidden: corta el sobrante lateral pero deja crecer la cresta */
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .dividerWrapper[data-variant="start"] {
@@ -18,12 +20,46 @@
   /* Invertimos verticalmente para el final de la sección */
 }
 
+/* Más ancha que el contenedor para poder mecerse sin mostrar el borde del PNG
+   (no es repetible, así que no puede correr en loop infinito) */
 .dividerImg {
-  width: 100%;
+  width: 112%;
+  max-width: none;
   height: auto;
   display: block;
   object-fit: cover;
   min-height: 40px;
+  /* Asoma 2px fuera de la sección (que la recorta con overflow: hidden):
+     el borde antialiasado de la base queda afuera y no aparece la línea */
+  margin-bottom: -2px;
+  transform-origin: 50% 100%;
+  animation: waveSway 9s ease-in-out infinite alternate;
+}
+
+/* Desfasada para que las olas de arriba y abajo no se muevan en espejo */
+.dividerWrapper[data-variant="end"] .dividerImg {
+  animation-duration: 11s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes waveSway {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+
+  50% {
+    transform: translateX(-5%) scaleY(1.12);
+  }
+
+  100% {
+    transform: translateX(-10%) scaleY(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dividerImg {
+    animation: none;
+  }
 }
 
 @media (min-width: 1024px) {
