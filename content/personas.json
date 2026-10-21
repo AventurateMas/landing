@@ -1,35 +1,35 @@
 {
   "items": [
     {
-      "titulo": "Coaching individual",
+      "titulo": "Aventurate a Liderar",
       "descripcion": "Sesiones 1:1 para potenciar tu liderazgo y descubrir tu talento.",
       "puntos": ["8 sesiones", "Plan personalizado", "Acompañamiento continuo"],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Reservar una sesión",
-      "ctaHref": "",
+      "ctaHref": "https://forms.gle/kiLVHXCec11kgwwh9",
       "color": "navy",
       "visible": true
     },
     {
       "titulo": "Programa vocacional",
       "descripcion": "Para quienes están eligiendo carrera o replanteando su camino profesional.",
-      "puntos": ["6 encuentros", "Mapa de intereses", "Informe final"],
+      "puntos": ["4 encuentros grupales", "3 sesiones 1 a 1", "Diseño de plan de acción"],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Quiero empezar",
-      "ctaHref": "",
+      "ctaHref": "https://forms.gle/ronBm6m1dMsFQgZ69",
       "color": "amarillo",
       "visible": true
     },
     {
-      "titulo": "Sesión de descubrimiento",
+      "titulo": "Coaching individual",
       "descripcion": "Una conversación de 45 minutos para poner en claro qué te está frenando.",
-      "puntos": ["45 minutos", "Sin costo", "Online"],
+      "puntos": ["45 minutos", "Primera sesión sin costo", "Online"],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Agendar la llamada",
-      "ctaHref": "",
+      "ctaHref": "https://forms.gle/kiLVHXCec11kgwwh9",
       "color": "verde",
       "visible": true
     }
