@@ -18,7 +18,7 @@
 .cream { background: rgba(51, 56, 109, 0.06); color: var(--color-navy); }
 .cream .dot { background: var(--color-navy); }
 
-.rosa { background: rgba(255, 88, 94, 0.12); color: var(--color-rosa); }
+.rosa { background: rgba(255, 88, 94, 0.12); color: var(--color-rosa-texto); }
 .rosa .dot { background: var(--color-rosa); }
 
 .azul { background: rgba(47, 54, 255, 0.1); color: var(--color-azul); }
