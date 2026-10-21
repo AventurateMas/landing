@@ -24,7 +24,7 @@ export default function LegalPage() {
           <p>
             Este sitio es una página informativa. No incluye formularios, no instala cookies
             propias y no ejecuta herramientas de analítica ni de publicidad. Navegar por aquí
-            no crea ningún registro asociado a vos.
+            no crea ningún registro asociado a ti.
           </p>
           <p>
             El único dato que se recibe es el que envías por tu cuenta al escribir a{' '}
@@ -66,7 +66,6 @@ export default function LegalPage() {
         <div className={styles.actions}>
           <Link href="/" className={styles.action}>
             Volver al inicio
-            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>
