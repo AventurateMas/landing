@@ -4,7 +4,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px; /* Offset for sticky nav bar */
+  scroll-padding-top: 104px; /* Alto del nav (94px) más un respiro */
 }
 
 /* CSS reset minimal */
@@ -30,6 +30,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   /* Prevent horizontal scroll from blobs */
+}
+
+/* Sin selección de texto al arrastrar (pedido de la marca). Excepción: el correo,
+   que la gente necesita poder copiar. No es protección real: el texto sigue
+   en el código de la página */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+a[href^="mailto:"],
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 img {
@@ -72,7 +87,7 @@ h1,
   font-size: clamp(40px, 8vw, 72px);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  color: var(--color-rosa);
+  color: var(--color-rosa-titulo);
 }
 
 h2,
@@ -82,7 +97,7 @@ h2,
   font-size: clamp(32px, 5vw, 48px);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
-  color: var(--color-rosa);
+  color: var(--color-rosa-titulo);
 }
 
 h3,
@@ -126,7 +141,5 @@ p,
   font-family: var(--font-body);
   font-weight: var(--fw-bold);
   font-size: var(--text-sm);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
   color: var(--color-azul);
 }
