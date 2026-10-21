@@ -53,10 +53,11 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: "/assets/itza.webp",
-        width: 1024,
-        height: 1024,
-        alt: "Maritza Rodríguez, fundadora de Aventúrate Más",
+        // Vista previa al compartir (WhatsApp, redes): logo sobre el rosa claro de la marca
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Logo de Aventúrate Más",
       },
     ],
   },
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aventúrate Más · Maritza Rodríguez",
     description,
-    images: ["/assets/itza.webp"],
+    images: ["/og.png"],
   },
 };
 

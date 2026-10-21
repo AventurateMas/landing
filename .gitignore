@@ -24,9 +24,13 @@
 .DS_Store
 Thumbs.db
 ehthumbs.db
+desktop.ini
 *.pem
 *.swp
 *.swo
+*.tmp
+*.bak
+*~
 
 # IDEs
 .vscode/
