@@ -9,14 +9,6 @@
   justify-content: center;
 }
 
-.bgGradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top right, rgba(255, 221, 120, 0.4), transparent 60%),
-    radial-gradient(ellipse at bottom left, rgba(255, 88, 94, 0.08), transparent 50%);
-  pointer-events: none;
-}
-
 .shapeAmarillo {
   position: absolute;
   left: -20px;
@@ -25,7 +17,6 @@
   height: auto;
   opacity: 0.5;
   pointer-events: none;
-  animation: float 7s ease-in-out infinite;
 }
 
 .shapeRosado {
@@ -36,7 +27,6 @@
   height: auto;
   opacity: 0.55;
   pointer-events: none;
-  animation: float 8s ease-in-out infinite reverse;
 }
 
 .grid {
@@ -86,38 +76,81 @@
 }
 
 .title {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: clamp(48px, 8vw, 92px);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  color: var(--color-navy);
   margin: 0;
+  color: var(--color-navy);
 }
 
-.italic {
-  font-style: italic;
-  color: var(--color-rosa);
-  text-shadow: var(--title-shadow);
+/* Las letras suben una tras otra al cargar */
+.titleLead {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: clamp(44px, 12vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.letra {
+  display: inline-block;
+  animation: letraSube 700ms var(--ease-out) backwards;
+  animation-delay: calc(150ms + var(--l) * 45ms);
+}
+
+.wordRow {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* La cápsula crece sola con cada letra: el ancho lo da el texto */
+.capsula {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.06em 0.3em 0.12em;
+  border-radius: 0.3em;
+  background: var(--color-rosa);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: var(--fw-bold);
+  font-size: clamp(34px, 9vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  rotate: -2deg;
+  box-shadow: 6px 6px 0 var(--color-azul);
+  animation: capsulaEntra 800ms cubic-bezier(0.34, 1.56, 0.64, 1) 650ms backwards;
 }
 
 .cursor {
-  font-weight: var(--fw-light);
-  color: var(--color-rosa);
-  animation: blink 1s step-end infinite;
   display: inline-block;
+  width: 3px;
+  height: 0.72em;
   margin-left: 4px;
+  background: var(--color-ink);
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
   50% {
     opacity: 0;
+  }
+}
+
+@keyframes letraSube {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em) rotate(8deg);
+  }
+}
+
+@keyframes capsulaEntra {
+  from {
+    opacity: 0;
+    scale: 0.6;
+    rotate: -10deg;
   }
 }
 
@@ -146,8 +179,199 @@
   box-decoration-break: clone;
 }
 
-.markLate {
-  animation-delay: 1180ms;
+/* ── Subtítulo: de la duda a la acción ───────────────────── */
+/* Un ciclo de 3.2s compartido: la duda tambalea, el punto cruza el camino
+   y la acción late justo cuando llega */
+.trayecto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.duda {
+  position: relative;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 2px dashed rgba(51, 56, 109, 0.45);
+  color: var(--color-navy);
+  font-style: italic;
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  animation: dudar 3.2s ease-in-out infinite;
+}
+
+.dudaSigno {
+  position: absolute;
+  right: -8px;
+  top: -14px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 20px;
+  font-style: normal;
+  color: var(--color-rosa);
+  animation: signo 3.2s ease-in-out infinite;
+}
+
+.camino {
+  position: relative;
+  flex: 0 0 64px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(51, 56, 109, 0.45) 0 6px, transparent 6px 11px);
+}
+
+/* Punta de flecha */
+.camino::before {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid rgba(51, 56, 109, 0.6);
+  border-right: 2px solid rgba(51, 56, 109, 0.6);
+  rotate: 45deg;
+}
+
+/* El punto que viaja */
+.camino::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-rosa);
+  animation: viajar 3.2s var(--ease-out) infinite;
+}
+
+.accion {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: var(--color-navy);
+  color: var(--color-amarillo);
+  font-weight: var(--fw-bold);
+  white-space: nowrap;
+  box-shadow: 4px 4px 0 var(--color-rosa);
+  animation: latir 3.2s ease-in-out infinite;
+}
+
+/* Las columnas no se ensanchan por un contenido que no corta (botón, cápsula) */
+.grid > * {
+  min-width: 0;
+}
+
+/* Teléfonos angostos: letra un poco menor para que el botón entre en una línea
+   (debe quedar en una sola: al transformarse en el ícono de scroll se encoge a 44px) */
+@media (max-width: 360px) {
+  /* .actions delante: esta regla está antes que el estilo base del botón en el archivo */
+  .actions .servicios {
+    gap: 10px;
+    padding-left: 18px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .camino {
+    flex-basis: 32px;
+  }
+
+  .trayecto {
+    gap: 8px;
+  }
+
+  .duda,
+  .accion {
+    padding-inline: 12px;
+  }
+}
+
+@keyframes dudar {
+  0%,
+  30%,
+  100% {
+    rotate: 0deg;
+  }
+
+  8% {
+    rotate: -4deg;
+  }
+
+  16% {
+    rotate: 3deg;
+  }
+
+  24% {
+    rotate: -2deg;
+  }
+}
+
+@keyframes signo {
+  0%,
+  30%,
+  100% {
+    translate: 0 0;
+    opacity: 1;
+  }
+
+  15% {
+    translate: 0 -4px;
+  }
+
+  60% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes viajar {
+  0%,
+  25% {
+    left: 0;
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  60% {
+    left: calc(100% - 10px);
+    opacity: 1;
+  }
+
+  70%,
+  100% {
+    left: calc(100% - 10px);
+    opacity: 0;
+  }
+}
+
+@keyframes latir {
+  0%,
+  58%,
+  100% {
+    scale: 1;
+  }
+
+  66% {
+    scale: 1.1;
+  }
+
+  74% {
+    scale: 0.98;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .duda,
+  .dudaSigno,
+  .camino::after,
+  .accion {
+    animation: none;
+  }
 }
 
 @keyframes markerSweep {
@@ -165,111 +389,153 @@
 
 .actions {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 16px 24px;
 }
 
-.trustStrip {
-  margin-top: 64px;
-  display: flex;
-  gap: 24px;
+.servicios {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-flex;
   align-items: center;
+  gap: 14px;
+  height: 56px;
+  max-width: 340px;
+  padding: 8px 8px 8px 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-navy);
+  color: var(--color-cream);
+  font-weight: var(--fw-bold);
+  font-size: 16px;
+  box-shadow: none;
+  transition: background-color var(--dur-base) var(--ease-out), transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out), max-width 650ms var(--ease-out), padding 650ms var(--ease-out);
 }
 
-.trustCircles {
-  display: flex;
+.serviciosTexto,
+.serviciosIcono {
+  transition: opacity 250ms var(--ease-out) 250ms;
 }
 
-.trustCircle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2.5px solid var(--color-bg);
-}
-
-.trustCircle+.trustCircle {
-  margin-left: -10px;
-}
-
-.trustTitle {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-navy);
-}
-
-.trustSubtitle {
-  font-size: 14px;
-  color: rgba(51, 56, 109, 0.8);
-  margin-top: 2px;
-}
-
-/* ── Scroll Indicator ─────────────────────────────────── */
-.scrollIndicator {
+/* ── Invitación a bajar: el botón se vuelve el ícono de scroll ── */
+/* Un mouse con la rueda que baja. El texto sigue en el DOM (lo lee el lector de
+   pantalla) y el enlace sigue funcionando: al tocarlo lleva a los servicios */
+.raton {
   position: absolute;
-  bottom: 110px;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  width: 28px;
+  height: 44px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 10;
-  text-decoration: none;
+  justify-content: center;
+  padding-top: 8px;
+  border: 2.5px solid var(--color-navy);
+  border-radius: var(--radius-full);
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transform: translate(-50%, -30%);
+  transition: opacity 250ms var(--ease-out), transform 400ms var(--ease-out);
   pointer-events: none;
 }
 
-.scrollVisible {
-  opacity: 0.7;
-  pointer-events: auto;
-  animation: fadeInUp 0.6s ease both;
-}
-
-.scrollIndicator:hover {
-  opacity: 1;
-}
-
-.scrollMouse {
-  width: 26px;
-  height: 42px;
-  border: 2.5px solid var(--color-navy);
-  border-radius: 999px;
-  display: flex;
-  justify-content: center;
-  padding-top: 7px;
-  position: relative;
-}
-
-.scrollDot {
+.rueda {
   width: 4px;
-  height: 8px;
+  height: 9px;
+  border-radius: var(--radius-full);
   background: var(--color-rosa);
-  border-radius: 999px;
-  animation: scrollBounce 1.6s ease-in-out infinite;
 }
 
-.scrollLabel {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.servicios[data-invita='true'] {
+  max-width: 44px;
+  padding: 0;
+  background: transparent;
+}
+
+.servicios[data-invita='true']:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.servicios[data-invita='true'] .serviciosTexto,
+.servicios[data-invita='true'] .serviciosIcono {
+  opacity: 0;
+  transition-delay: 0ms;
+}
+
+.servicios[data-invita='true'] .raton {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition-delay: 450ms;
+}
+
+.servicios[data-invita='true'] .rueda {
+  animation: rueda 1.6s ease-in-out infinite;
+}
+
+@keyframes rueda {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translateY(12px);
+    opacity: 0.15;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.servicios:hover {
+  background: var(--color-azul);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.servicios:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.serviciosIcono {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: var(--color-amarillo);
   color: var(--color-navy);
 }
 
-@keyframes scrollBounce {
-  0%   { transform: translateY(0); opacity: 1; }
-  60%  { transform: translateY(10px); opacity: 0.2; }
-  100% { transform: translateY(0); opacity: 1; }
+/* La flecha baja un poco al pasar el cursor: indica que el enlace lleva más abajo */
+.serviciosFlecha {
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
-.visualCluster {
-  position: relative;
-  height: 540px;
-  display: none;
-  /* Oculto en móvil por defecto o ajustado */
+.servicios:hover .serviciosFlecha {
+  transform: translateY(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letra,
+  .capsula,
+  .cursor,
+  .servicios[data-invita='true'] .rueda {
+    animation: none;
+  }
+
+  .servicios,
+  .raton,
+  .serviciosTexto,
+  .serviciosIcono {
+    transition: none;
+  }
+
 }
 
 @media (min-width: 1024px) {
@@ -278,11 +544,25 @@
   }
 
   .grid {
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .visualCluster {
-    display: block;
+  .titleLead {
+    font-size: clamp(72px, 7.4vw, 108px);
+  }
+
+  .capsula {
+    font-size: clamp(68px, 7vw, 100px);
+  }
+
+  .paragraph {
+    max-width: 620px;
+    font-size: 22px;
+  }
+
+  .trayecto {
+    margin-top: 22px;
+    font-size: 20px;
   }
 
   .shapeAmarillo {
@@ -298,229 +578,6 @@
   }
 }
 
-/* Cluster elements */
-.largeCardWrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.largeCard {
-  position: absolute;
-  right: 0;
-  top: 20px;
-  width: 78%;
-  height: 420px;
-  background: var(--color-rosa);
-  border-radius: 36px;
-  overflow: hidden;
-  box-shadow: 0 40px 80px -20px rgba(255, 88, 94, 0.4);
-  animation: fadeInUp 0.8s ease 0.4s both, floatCard 7s ease-in-out infinite 1.2s;
-  display: block;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.largeCard:hover {
-  transform: translateY(-10px) rotate(1deg) scale(1.01);
-  box-shadow: 0 55px 100px -15px rgba(255, 88, 94, 0.65);
-}
-
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33%       { transform: translateY(-6px) rotate(0.4deg); }
-  66%       { transform: translateY(-3px) rotate(-0.3deg); }
-}
-
-.cardGradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 221, 120, 0.5), transparent 55%);
-  z-index: 2;
-  transition: opacity 0.4s ease;
-}
-
-.largeCard:hover .cardGradient {
-  opacity: 0.85;
-}
-
-.cardContent {
-  padding: 32px;
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.cardHeader {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: 28px;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-.dot {
-  color: var(--color-amarillo);
-}
-
-.cardCenter {
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-  font-size: 92px;
-  color: #fff;
-  line-height: 0.85;
-  letter-spacing: -0.05em;
-  opacity: 0.95;
-}
-
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  color: var(--color-ink);
-}
-
-.specialtyLabel {
-  font-size: 12px;
-  opacity: 0.85;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.specialtyValue {
-  font-size: 15px;
-  font-weight: 600;
-  margin-top: 4px;
-}
-
-.arrowIcon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-amarillo);
-  color: var(--color-navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 20px rgba(255, 221, 120, 0.4);
-}
-
-.largeCard:hover .arrowIcon {
-  transform: translate(5px, -5px) rotate(10deg);
-  background: #fff;
-  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.35);
-}
-
-/* ── Floating badge overlays (Team-style) ──────────────── */
-.heroBadgeRight {
-  position: absolute;
-  right: -16px;
-  bottom: 60px;
-  background: var(--color-navy);
-  color: #fff;
-  padding: 14px 18px;
-  border-radius: 18px;
-  animation: fadeInUp 0.8s ease 0.9s both, float 5s ease-in-out infinite 1.7s;
-  box-shadow: 0 12px 24px rgba(51, 56, 109, 0.28);
-  z-index: 4;
-  pointer-events: none;
-}
-
-.heroBadgeLeft {
-  position: absolute;
-  left: -8px;
-  top: 50px;
-  background: var(--color-amarillo);
-  color: var(--color-navy);
-  padding: 14px 18px;
-  border-radius: 18px;
-  animation: fadeInUp 0.8s ease 1.0s both, float 6s ease-in-out infinite reverse 1.9s;
-  box-shadow: 0 12px 24px rgba(255, 221, 120, 0.4);
-  z-index: 4;
-  pointer-events: none;
-}
-
-.badgeLabel {
-  font-size: 11px;
-  opacity: 0.85;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.badgeValue {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  margin-top: 2px;
-}
-
-.floatingCardAmarilla {
-  position: absolute;
-  left: 0;
-  top: 100px;
-  background: var(--color-amarillo);
-  padding: 20px 22px;
-  border-radius: 22px;
-  box-shadow: 0 20px 40px -10px rgba(255, 221, 120, 0.5);
-  animation: fadeInUp 0.8s ease 0.6s both, float 5s ease-in-out infinite 1.4s;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.greenDot {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #7ED463;
-}
-
-.floatingLabel {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(51, 56, 109, 0.8);
-}
-
-.floatingValue {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-navy);
-}
-
-.floatingCardNavy {
-  position: absolute;
-  left: 20px;
-  bottom: 0;
-  width: 240px;
-  background: var(--color-navy);
-  color: #fff;
-  padding: 20px 22px;
-  border-radius: 22px;
-  animation: fadeInUp 0.8s ease 0.8s both, float 6s ease-in-out infinite 1.6s;
-}
-
-.quoteIcon {
-  font-size: 32px;
-  color: var(--color-amarillo);
-  line-height: 1;
-  font-family: var(--font-display);
-  font-weight: var(--fw-bold);
-}
-
-.quoteText {
-  font-size: 14px;
-  line-height: 1.5;
-  margin-top: 4px;
-  opacity: 0.95;
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -530,17 +587,5 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-20px);
   }
 }

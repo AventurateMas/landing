@@ -1,3 +1,6 @@
+/* Solo tema claro, a propósito: la identidad de Aventúrate Más es cálida y luminosa
+   (fondo rosa claro, crema, colores de marca plenos). Un modo oscuro apagaría esa
+   calidez, y es una landing de lectura corta, no una herramienta de uso prolongado. */
 :root {
   /* Backgrounds */
   --color-bg: #fef6f0ff;
@@ -17,13 +20,19 @@
   --color-navy: #33386D;
   /* Neutral oscuro — body text */
   --color-ink: #1A1C45;
+  --color-rosa-titulo: #F5525A;
+  /* Rosa para TÍTULOS grandes (24px+ o 19px+ en negrita): casi el rosa de marca y
+     llega a 3.15:1 sobre el fondo, el mínimo para texto grande */
+  --color-rosa-texto: #C8323A;
+  /* Rosa para TEXTO: el rosa de marca da 2.9:1 sobre el fondo claro; este, 4.95:1.
+     El rosa de marca queda para fondos, formas y trazos */
   /* Navy profundo — texto sobre rosa (navy solo da 3.5:1 ahí, ink 5.2:1) */
 
   /* ── SEMANTIC COLOR TOKENS ──────────────────────────────── */
   --color-surface: var(--color-bg);
   --color-surface-alt: var(--color-cream);
   --color-text-primary: var(--color-navy);
-  --color-text-accent: var(--color-rosa);
+  --color-text-accent: var(--color-rosa-texto);
   --color-text-light: #FEF6F0;
   --color-border: var(--color-azul);
   --color-highlight: var(--color-rosa);

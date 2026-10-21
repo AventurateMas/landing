@@ -1,6 +1,6 @@
 .valuesSection {
   padding: 130px 24px 80px;
-  background: var(--color-cream);
+  background: var(--color-bg);
   position: relative;
   overflow: hidden;
 }
@@ -13,7 +13,6 @@
   height: auto;
   opacity: 0.5;
   pointer-events: none;
-  animation: float 6s ease-in-out infinite alternate;
 }
 
 .circuloVerde {
@@ -24,7 +23,6 @@
   height: auto;
   opacity: 0.4;
   pointer-events: none;
-  animation: float 8s ease-in-out infinite;
 }
 
 .container {
@@ -49,11 +47,11 @@
 
 .italic {
   font-style: italic;
-  color: var(--color-rosa);
+  color: var(--color-rosa-titulo);
 }
 
-/* ── Bento ────────────────────────────────────────────────── */
-.bentoGrid {
+/* ── Mosaico de valores ───────────────────────────────────── */
+.grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
@@ -64,23 +62,25 @@
 }
 
 .item {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  min-height: 200px;
+  min-height: 230px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   padding: 24px;
-  border-radius: 28px;
+  border-radius: var(--radius-md);
   text-align: left;
-  position: relative;
-  overflow: hidden;
+  background: var(--tile-bg);
+  color: var(--tile-fg);
   transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 
 .item:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .item:active {
@@ -88,46 +88,50 @@
 }
 
 .navy {
-  background: var(--color-navy);
-  color: var(--color-text-light);
+  --tile-bg: var(--color-navy);
+  --tile-fg: var(--color-text-light);
+  --tile-accent: var(--color-amarillo);
 }
 
 .rosa {
-  background: var(--color-rosa);
-  color: var(--color-ink);
-}
-
-.verde {
-  background: var(--color-verde);
-  color: var(--color-navy);
+  --tile-bg: var(--color-rosa);
+  --tile-fg: var(--color-ink);
+  --tile-accent: var(--color-cream);
 }
 
 .amarillo {
-  background: var(--color-amarillo);
-  color: var(--color-navy);
+  --tile-bg: var(--color-amarillo);
+  --tile-fg: var(--color-navy);
+  --tile-accent: var(--color-rosa);
 }
 
-.azul {
-  background: var(--color-azul);
-  color: var(--color-text-light);
+/* Ilustración arriba a la derecha; el texto se apoya abajo */
+.ilus {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 52%;
+  max-width: 220px;
+  pointer-events: none;
+}
+
+.ilus svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
 
 .tag {
-  font-size: 13px;
+  position: relative;
+  font-size: 14px;
   font-weight: var(--fw-bold);
   font-variant-numeric: tabular-nums;
-  letter-spacing: var(--tracking-wide);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-.navy .tag,
-.azul .tag {
-  color: var(--color-amarillo);
-  opacity: 0.9;
-}
-
-/* El título se apoya abajo; el número queda arriba */
 .itemTitle {
+  position: relative;
   margin-top: auto;
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
@@ -137,9 +141,9 @@
 }
 
 .itemDesc {
+  position: relative;
   font-size: 16px;
   line-height: 1.55;
-  opacity: 0.9;
   max-width: 46ch;
   /* Móvil: se ve recortada hasta que se toca la tarjeta */
   display: -webkit-box;
@@ -157,37 +161,168 @@
 
 .cue {
   position: absolute;
-  top: 20px;
-  right: 22px;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* óptico: el signo carga hacia arriba dentro de su caja */
-  padding-bottom: 2px;
+  left: 24px;
+  top: 52px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
   border-radius: var(--radius-full);
-  background: rgba(254, 246, 240, 0.18);
-  color: inherit;
+  border: 2px solid currentColor;
   font-size: 16px;
   font-weight: var(--fw-bold);
   line-height: 1;
 }
 
-.verde .cue,
-.amarillo .cue {
-  background: rgba(51, 56, 109, 0.12);
+/* ── Motion: cada ilustración cuenta su valor ─────────────── */
+/* Quietas por defecto (un solo motivo en movimiento por sección lo pone la
+   ola); se animan con hover, foco de teclado o al tocar la tarjeta */
+.ilus * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Más específico que cada `animation` abreviado, que reinicia el play-state */
+.item .ilus * {
+  animation-play-state: paused;
+}
+
+.item:hover .ilus *,
+.item:focus-visible .ilus *,
+.item[data-open='true'] .ilus * {
+  animation-play-state: running;
+}
+
+.reunir {
+  animation: reunir 1.6s ease-in-out infinite alternate;
+}
+
+.acercarIzq {
+  animation: acercarIzq 2.2s ease-in-out infinite;
+}
+
+.acercarDer {
+  animation: acercarDer 2.2s ease-in-out infinite;
+}
+
+.rebote {
+  animation: rebote 0.9s infinite;
+}
+
+.sombra {
+  animation: sombra 0.9s infinite;
+}
+
+.disparo {
+  animation: disparo 1.8s var(--ease-out) infinite;
+}
+
+.alinear {
+  animation: alinear 2.6s ease-in-out infinite;
+}
+
+.trazo {
+  stroke-dasharray: 230;
+  animation: trazo 2.2s ease-in-out infinite;
+}
+
+@keyframes reunir {
+  to {
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+@keyframes acercarIzq {
+  50% {
+    transform: translateX(28px);
+  }
+}
+
+@keyframes acercarDer {
+  50% {
+    transform: translateX(-28px);
+  }
+}
+
+@keyframes rebote {
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    transform: translateY(46px) scaleY(0.88);
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes sombra {
+  0%,
+  100% {
+    transform: scale(0.6);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes disparo {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translateX(110px);
+    opacity: 1;
+  }
+
+  75%,
+  100% {
+    transform: translateX(110px);
+    opacity: 0;
+  }
+}
+
+@keyframes alinear {
+  0%,
+  15%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50%,
+  70% {
+    transform: translate(-24px, 18px);
+  }
+}
+
+@keyframes trazo {
+  from {
+    stroke-dashoffset: 230;
+  }
+
+  60%,
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* En móvil los puntos quedaban encima del título */
+@media (max-width: 767px) {
+  .puntosAmarillos {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
-  .bentoGrid {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .slotHero {
-    grid-column: span 2;
-  }
-
+  .slotHero,
   .cell:last-child {
     grid-column: span 2;
   }
@@ -198,9 +333,9 @@
     padding: 190px 56px 120px;
   }
 
-  .bentoGrid {
+  .grid {
     grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 236px;
+    grid-auto-rows: 250px;
   }
 
   .slotHero {
@@ -225,13 +360,20 @@
     padding: 36px;
   }
 
+  .slotHero .ilus {
+    width: 70%;
+    max-width: 380px;
+    top: 28px;
+    right: 28px;
+  }
+
   .slotHero .itemTitle {
     font-size: clamp(36px, 4vw, 52px);
     letter-spacing: -0.04em;
   }
 
   .slotHero .itemDesc {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   /* El espacio de la descripción queda reservado: al aparecer no mueve la grilla */
@@ -245,7 +387,7 @@
   .item:hover .itemDesc,
   .item:focus-visible .itemDesc,
   .item[data-open='true'] .itemDesc {
-    opacity: 0.85;
+    opacity: 1;
     transform: none;
   }
 
@@ -255,13 +397,8 @@
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-20px);
+@media (prefers-reduced-motion: reduce) {
+  .ilus * {
+    animation: none;
   }
 }

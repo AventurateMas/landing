@@ -5,6 +5,8 @@ import { SkipLink } from "@/components/layout/SkipLink/SkipLink";
 import { Nav } from "@/components/layout/Nav/Nav";
 import { Footer } from "@/components/layout/Footer/Footer";
 
+// Cuerpo: Nunito, terminaciones redondeadas que acompañan el tono cálido y cercano
+// de un proceso de coaching; se lee bien en párrafos largos.
 const nunito = Nunito({
   subsets: ["latin"],
   weight: ["300", "400", "700", "800"],
@@ -12,6 +14,8 @@ const nunito = Nunito({
   display: "swap",
 });
 
+// Títulos: Space Grotesk, geométrica con formas algo irregulares (la a, la g):
+// le da el punto lúdico a los titulares y contrasta con la suavidad de Nunito.
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -21,16 +25,16 @@ const spaceGrotesk = Space_Grotesk({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://aventuratemas.com";
 const description =
-  "Coaching individual, talleres de equipo y conferencias con Maritza Rodríguez. Liderazgo facilitador, relaciones horizontales y una cultura laboral más humana.";
+  "Coaching y aprendizaje lúdico con Maritza Rodríguez. Para personas: liderazgo, orientación vocacional y coaching individual. Para organizaciones: coaching de equipos, capacitación y selección de talento.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Aventúrate Más — Maritza Rodríguez, coach de talento humano",
+    default: "Aventúrate Más · Maritza Rodríguez, coach de talento humano",
     template: "%s · Aventúrate Más",
   },
   description,
-  keywords: ["coaching", "liderazgo", "cultura laboral", "talleres de equipo", "talento humano"],
+  keywords: ["coaching", "liderazgo", "orientación vocacional", "coaching de equipos", "capacitación", "selección de talento", "talento humano"],
   authors: [{ name: "Maritza Rodríguez" }],
   alternates: { canonical: "/" },
   icons: {
@@ -45,7 +49,7 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: siteUrl,
     siteName: "Aventúrate Más",
-    title: "Aventúrate Más — Maritza Rodríguez",
+    title: "Aventúrate Más · Maritza Rodríguez",
     description,
     images: [
       {
@@ -58,7 +62,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aventúrate Más — Maritza Rodríguez",
+    title: "Aventúrate Más · Maritza Rodríguez",
     description,
     images: ["/assets/itza.webp"],
   },

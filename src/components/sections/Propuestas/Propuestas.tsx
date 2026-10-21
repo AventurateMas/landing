@@ -5,30 +5,45 @@ import Image from 'next/image';
 
 import styles from './Propuestas.module.css';
 import { PropuestaCard } from './PropuestaCard';
-import { Pill } from '@/components/primitives/Pill/Pill';
 import { Reveal } from '@/components/animations/Reveal';
 import { circuloAmarillo, puntosClaros } from '@/lib/decor';
-import type { Audiencia, Propuesta } from '@/lib/propuestas';
+import { rutaPath, type Audiencia, type Propuesta } from '@/lib/propuestas';
 
 type Props = {
   personas: Propuesta[];
   empresas: Propuesta[];
 };
 
-const AUDIENCIAS: Audiencia[] = ['personas', 'empresas'];
+const AUDIENCIAS: Audiencia[] = ['empresas', 'personas'];
 
-const COPY: Record<Audiencia, { kicker: string; titulo: string; resumen: string; bajada: string }> = {
+const PersonaIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21a8 8 0 0 1 16 0" />
+  </svg>
+);
+
+const PersonasIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <circle cx="9" cy="8" r="3.5" />
+    <path d="M2.5 20a6.5 6.5 0 0 1 13 0" />
+    <circle cx="17" cy="9" r="2.8" />
+    <path d="M17.5 14.2A5.5 5.5 0 0 1 22 20" />
+  </svg>
+);
+
+const COPY: Record<Audiencia, { kicker: string; titulo: string; bajada: string; Icon: () => React.JSX.Element }> = {
+  empresas: {
+    kicker: 'Para tu equipo',
+    titulo: 'Organización y Empresas',
+    bajada: 'Diseñados sobre cómo trabaja hoy tu organización, no sobre una plantilla.',
+    Icon: PersonasIcon,
+  },
   personas: {
     kicker: 'Para ti',
     titulo: 'Acompañamiento individual',
-    resumen: 'Procesos 1:1 para decidir con más claridad y liderar sin dejar de ser vos.',
     bajada: 'Trabajamos sobre objetivos que definimos juntos en la primera sesión.',
-  },
-  empresas: {
-    kicker: 'Para tu organización',
-    titulo: 'Equipos y cultura',
-    resumen: 'Programas armados sobre el contexto real del equipo, no sobre una plantilla.',
-    bajada: 'Diseñados sobre cómo trabaja hoy tu organización, no sobre una plantilla.',
+    Icon: PersonaIcon,
   },
 };
 
@@ -36,7 +51,29 @@ const esAudiencia = (value: string): value is Audiencia =>
   value === 'personas' || value === 'empresas';
 
 export function Propuestas({ personas, empresas }: Props) {
-  const [activa, setActiva] = useState<Audiencia>('personas');
+  // null = nada elegido: se ven las pestañas y ninguna lista hasta que haya clic o hash
+  const [activa, setActiva] = useState<Audiencia | null>(null);
+  // Móvil: la ruta es un carrusel horizontal; esto sigue qué tarjeta está a la vista
+  const [slide, setSlide] = useState<Record<Audiencia, number>>({ personas: 0, empresas: 0 });
+  const rutasRef = useRef<Record<Audiencia, HTMLDivElement | null>>({ personas: null, empresas: null });
+
+  const tarjetas = (audiencia: Audiencia) =>
+    [...(rutasRef.current[audiencia]?.querySelectorAll<HTMLElement>(':scope > div') ?? [])];
+
+  const alDeslizar = (audiencia: Audiencia) => {
+    const ruta = rutasRef.current[audiencia];
+    if (!ruta) return;
+    const centro = ruta.scrollLeft + ruta.clientWidth / 2;
+    const cards = tarjetas(audiencia);
+    const i = cards.findIndex(c => c.offsetLeft + c.offsetWidth > centro);
+    setSlide(prev => (prev[audiencia] === i || i < 0 ? prev : { ...prev, [audiencia]: i }));
+  };
+
+  const irA = (audiencia: Audiencia, i: number) => {
+    const ruta = rutasRef.current[audiencia];
+    const card = tarjetas(audiencia)[i];
+    if (ruta && card) ruta.scrollTo({ left: card.offsetLeft - (ruta.clientWidth - card.offsetWidth) / 2, behavior: 'smooth' });
+  };
   const tabsRef = useRef<Record<Audiencia, HTMLButtonElement | null>>({
     personas: null,
     empresas: null,
@@ -78,7 +115,7 @@ export function Propuestas({ personas, empresas }: Props) {
     if (!teclas.includes(event.key)) return;
 
     event.preventDefault();
-    const actual = AUDIENCIAS.indexOf(activa);
+    const actual = activa ? AUDIENCIAS.indexOf(activa) : -1;
     const siguiente =
       event.key === 'Home'
         ? 0
@@ -98,8 +135,8 @@ export function Propuestas({ personas, empresas }: Props) {
         <Reveal>
           <div className={styles.header}>
             <h2 className={styles.title}>
-              ¿Para ti o para<br />
-              <em className={styles.italic}>tu equipo</em>?
+              ¿Para tu equipo<br />
+              o para <em className={styles.italic}>ti</em>?
             </h2>
             <p className={styles.subtitle}>
               Elige un camino y te muestro solo las propuestas que aplican a tu caso.
@@ -113,6 +150,7 @@ export function Propuestas({ personas, empresas }: Props) {
             role="tablist"
             aria-label="Tipo de propuesta"
             onKeyDown={onKeyDown}
+            data-elegida={activa !== null}
           >
             {AUDIENCIAS.map(audiencia => {
               const activo = audiencia === activa;
@@ -130,18 +168,21 @@ export function Propuestas({ personas, empresas }: Props) {
                   role="tab"
                   aria-selected={activo}
                   aria-controls={`panel-${audiencia}`}
-                  tabIndex={activo ? 0 : -1}
+                  // Sin elección, la primera pestaña sigue alcanzable con Tab
+                  tabIndex={activo || (activa === null && audiencia === AUDIENCIAS[0]) ? 0 : -1}
                   className={`${styles.tab} ${styles[audiencia]}`}
                   onClick={() => elegirYVer(audiencia)}
                 >
-                  <span className={styles.tabKicker}>{copy.kicker}</span>
-                  <span className={styles.tabTitle}>{copy.titulo}</span>
-                  <span className={styles.tabResumen}>{copy.resumen}</span>
-                  <span className={styles.tabMeta}>
-                    <Pill color={audiencia === 'personas' ? 'cream' : 'dark'}>
-                      {`${cantidad} ${cantidad === 1 ? 'propuesta' : 'propuestas'}`}
-                    </Pill>
+                  <span className={styles.tabIcon}>
+                    <copy.Icon />
                   </span>
+                  <span className={styles.tabText}>
+                    <span className={styles.tabKicker}>
+                      {`${copy.kicker} · ${cantidad} ${cantidad === 1 ? 'servicio' : 'servicios'}`}
+                    </span>
+                    <span className={styles.tabTitle}>{copy.titulo}</span>
+                  </span>
+                  <span className={styles.tabChevron} aria-hidden="true">↓</span>
                 </button>
               );
             })}
@@ -151,7 +192,6 @@ export function Propuestas({ personas, empresas }: Props) {
         {AUDIENCIAS.map(audiencia => {
           const items = listas[audiencia];
           const otra: Audiencia = audiencia === 'personas' ? 'empresas' : 'personas';
-          const conImagenes = items.some(item => item.imagen);
 
           return (
             <div
@@ -168,32 +208,60 @@ export function Propuestas({ personas, empresas }: Props) {
                 <p className={styles.vacio}>
                   Estoy actualizando las propuestas de esta sección.{' '}
                   <a className={styles.vacioLink} href="#contacto">
-                    Escribime y lo vemos en una llamada
+                    Escríbeme y lo vemos en una llamada
                   </a>
                   .
                 </p>
               ) : (
+                <>
                 <div
-                  className={`${audiencia === 'personas' ? styles.grid : styles.rows} ${
-                    conImagenes ? styles.conImagenes : ''
-                  }`}
+                  className={styles.ruta}
+                  ref={node => {
+                    rutasRef.current[audiencia] = node;
+                  }}
+                  onScroll={() => alDeslizar(audiencia)}
                 >
+                  {/* Camino: base punteada + trazo que se completa con el scroll.
+                      Dos svg porque el recorte animado va sobre el elemento entero */}
+                  {[styles.caminoBase, styles.caminoTrazo].map(clase => (
+                    <svg
+                      key={clase}
+                      className={`${styles.camino} ${clase}`}
+                      viewBox="0 0 100 100"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                    >
+                      <path d={rutaPath(items.length)} vectorEffect="non-scaling-stroke" />
+                    </svg>
+                  ))}
+
                   {items.map((item, i) => (
-                    <PropuestaCard
+                    <PropuestaCard key={item.titulo} propuesta={item} index={i} />
+                  ))}
+
+                  <span className={styles.meta} aria-hidden="true" />
+                </div>
+
+                {/* Solo móvil: puntos del carrusel, también se pueden tocar */}
+                <div className={styles.puntosCarrusel}>
+                  {items.map((item, i) => (
+                    <button
                       key={item.titulo}
-                      propuesta={item}
-                      index={i}
-                      reservaMedia={audiencia === 'empresas' && conImagenes}
+                      type="button"
+                      className={styles.puntoCarrusel}
+                      aria-label={`Ver servicio ${i + 1}: ${item.titulo}`}
+                      aria-current={slide[audiencia] === i ? 'true' : undefined}
+                      onClick={() => irA(audiencia, i)}
                     />
                   ))}
                 </div>
+                </>
               )}
 
               <button type="button" className={styles.cruce} onClick={() => elegirYVer(otra)}>
                 {otra === 'empresas'
-                  ? '¿Buscabas algo para tu equipo? Ver propuestas para empresas'
-                  : '¿Buscabas algo para ti? Ver propuestas para personas'}
-                <span className={styles.cruceArrow} aria-hidden="true">→</span>
+                  ? '¿Buscabas algo para tu equipo? Ver servicios para organizaciones y empresas'
+                  : '¿Buscabas algo para ti? Ver servicios para personas'}
               </button>
             </div>
           );
