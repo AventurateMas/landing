@@ -144,3 +144,55 @@ collections:
                 widget: boolean
                 default: true
                 hint: Apagar esconde la propuesta sin borrarla.
+
+  - name: partners
+    label: Partners
+    icon: group
+    files:
+      - name: partners
+        label: Partners
+        file: content/partners.json
+        description: >-
+          Colaboradores de otras áreas que no trabajan para Aventúrate Más. El
+          orden de la lista es el orden en la web; el color se asigna solo.
+        fields:
+          - label: Partners
+            name: items
+            widget: list
+            label_singular: Partner
+            summary: '{{fields.nombre}} · {{fields.area}}'
+            fields:
+              - { label: Nombre, name: nombre, widget: string }
+              - { label: Área, name: area, widget: string, hint: 'Ej.: Psicología clínica' }
+              - label: Descripción
+                name: descripcion
+                widget: text
+                required: false
+                hint: Una frase sobre cómo colabora.
+              - label: Foto
+                name: foto
+                widget: image
+                required: false
+                hint: Opcional. Se recorta en círculo; sin foto se muestran las iniciales.
+                media_folder: /public/assets/partners
+                public_folder: /assets/partners
+              - label: Link
+                name: link
+                widget: string
+                required: false
+                pattern:
+                  - '^(https://.*)?$'
+                  - 'Tiene que empezar con https://'
+                hint: LinkedIn, Instagram o web del partner. Opcional.
+              - label: Texto del pie
+                name: pie
+                widget: string
+                required: false
+                hint: >-
+                  Línea al final de la tarjeta (ej.: Powered by Nosterlab). Si hay
+                  link, es el texto del link; vacío con link muestra "Ver perfil".
+              - label: Visible en la web
+                name: visible
+                widget: boolean
+                default: true
+                hint: Apagar esconde al partner sin borrarlo.

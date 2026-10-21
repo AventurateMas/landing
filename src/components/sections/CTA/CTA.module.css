@@ -11,26 +11,13 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
-  align-items: start;
+  align-items: center;
 }
 
-.bgDeco {
-  position: absolute;
-  right: -140px;
-  top: -120px;
-  width: 560px;
-  height: 560px;
-  border-radius: var(--radius-full);
-  background: radial-gradient(circle, rgba(255, 221, 120, 0.35), transparent 70%);
-  pointer-events: none;
-}
-
-/* ── Left column ─────────────────────────────────────────── */
+/* ── Columna de texto ────────────────────────────────────── */
 .eyebrow {
   font-size: var(--text-sm);
   font-weight: var(--fw-bold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
   color: var(--color-azul);
   margin-bottom: var(--space-4);
 }
@@ -46,7 +33,7 @@
 
 .italic {
   font-style: italic;
-  color: var(--color-rosa);
+  color: var(--color-rosa-titulo);
 }
 
 .lead {
@@ -57,60 +44,123 @@
   color: var(--color-navy);
 }
 
-.actions {
+/* ── Tarjetas de redes ───────────────────────────────────── */
+.redes {
+  list-style: none;
   margin-top: var(--space-7);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.red {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-5);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
 }
 
-.primaryAction {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-6);
+/* Burbuja de luz que crece desde la esquina al pasar el cursor */
+.red::before {
+  content: '';
+  position: absolute;
+  right: -60px;
+  bottom: -60px;
+  width: 180px;
+  height: 180px;
   border-radius: var(--radius-full);
-  background: var(--color-navy);
-  color: var(--color-cream);
-  font-weight: var(--fw-bold);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-fast) var(--ease-out),
-    background-color var(--dur-fast) var(--ease-out);
+  background: rgba(255, 255, 255, 0.16);
+  transform: scale(0.5);
+  transition: transform var(--dur-slow) var(--ease-out);
+  pointer-events: none;
 }
 
-.primaryAction:hover {
+.rosa {
+  background: var(--color-rosa);
+  color: var(--color-ink);
+}
+
+.azul {
   background: var(--color-azul);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  color: var(--color-text-light);
 }
 
-.primaryAction:active {
-  transform: translateY(1px) scale(0.99);
-  box-shadow: var(--shadow-sm);
+.red:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
-.actionArrow {
+.red:hover::before {
+  transform: scale(2.4);
+}
+
+.red:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.redIcon {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.2);
   transition: transform var(--dur-base) var(--ease-out);
 }
 
-.primaryAction:hover .actionArrow {
-  transform: translateX(4px);
+.redIcon svg {
+  width: 28px;
+  height: 28px;
 }
 
-.secondaryAction {
-  font-weight: var(--fw-semibold);
-  color: var(--color-azul);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-  transition: color var(--dur-fast) var(--ease-out),
-    text-decoration-color var(--dur-fast) var(--ease-out);
+.red:hover .redIcon {
+  transform: rotate(-8deg) scale(1.08);
 }
 
-.secondaryAction:hover {
-  color: var(--color-rosa);
+.redBody {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.redNombre {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.redDetalle {
+  font-size: 15px;
+  font-weight: var(--fw-bold);
+}
+
+.redTexto {
+  margin-top: var(--space-2);
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: var(--fw-regular);
+}
+
+.redArrow {
+  position: relative;
+  font-size: 24px;
+  font-weight: var(--fw-bold);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.red:hover .redArrow {
+  transform: translate(4px, -4px);
 }
 
 .meta {
@@ -120,61 +170,147 @@
 }
 
 .metaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--color-azul);
+  font-weight: var(--fw-semibold);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* ── Right column: how it works ──────────────────────────── */
-.steps {
-  list-style: none;
-  background: var(--color-navy);
-  color: var(--color-text-light);
-  border-radius: var(--radius-xl);
-  padding: var(--space-7) var(--space-6);
+.metaLink svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Motion graphic: órbita ──────────────────────────────── */
+.orbitWrapper {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  box-shadow: var(--shadow-lg);
+  justify-content: center;
 }
 
-.step {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-5);
-  align-items: start;
+.orbit {
+  position: relative;
+  width: min(320px, 100%);
+  aspect-ratio: 1;
 }
 
-.step + .step {
-  padding-top: var(--space-6);
-  border-top: 1px solid rgba(254, 246, 240, 0.14);
+.ringText {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: spin 36s linear infinite reverse;
 }
 
-.stepNumber {
+.ringText text {
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
-  font-size: var(--text-sm);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-amarillo);
-  padding-top: 4px;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  fill: var(--color-navy);
 }
 
-.stepTitle {
-  font-family: var(--font-display);
-  font-weight: var(--fw-semibold);
-  font-size: var(--text-lg);
-  line-height: var(--leading-snug);
-  letter-spacing: -0.02em;
+.ring {
+  position: absolute;
+  inset: 18%;
+  border-radius: var(--radius-full);
+  border: 2px dashed rgba(51, 56, 109, 0.25);
+  animation: spin 24s linear infinite;
+}
+
+/* Los planetas giran al revés que el anillo: así se mantienen derechos */
+.planet {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  animation: counterSpin 24s linear infinite;
+}
+
+.planet svg {
+  width: 24px;
+  height: 24px;
+}
+
+.planetRosa {
+  left: 50%;
+  top: 0;
+  background: var(--color-rosa);
+  color: var(--color-ink);
+}
+
+.planetAzul {
+  left: 93.3%;
+  top: 75%;
+  background: var(--color-azul);
   color: var(--color-text-light);
 }
 
-.stepDesc {
-  margin-top: var(--space-2);
+.planetAmarillo {
+  left: 6.7%;
+  top: 75%;
+  background: var(--color-amarillo);
+  color: var(--color-navy);
+}
+
+.avatar {
+  position: absolute;
+  inset: 32%;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 5px solid var(--color-cream);
+}
+
+.avatarImg {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.handle {
+  position: absolute;
+  left: 50%;
+  bottom: 2%;
+  translate: -50% 0;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: var(--color-navy);
+  color: var(--color-amarillo);
+  font-weight: var(--fw-bold);
   font-size: 15px;
-  line-height: var(--leading-normal);
-  color: rgba(254, 246, 240, 0.85);
-  max-width: 42ch;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ringText,
+  .ring {
+    animation: none;
+  }
+
+  .planet {
+    animation: none;
+    transform: translate(-50%, -50%);
+  }
+
 }
 
 @media (min-width: 900px) {
@@ -183,16 +319,21 @@
   }
 
   .container {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: var(--space-9);
   }
 
-  /* Offset the panel so the two columns don't sit on the same baseline */
-  .stepsWrapper {
-    margin-top: var(--space-8);
+  .orbit {
+    width: min(440px, 100%);
   }
 
-  .steps {
-    padding: var(--space-8) var(--space-7);
+  .planet {
+    width: 60px;
+    height: 60px;
+  }
+
+  .planet svg {
+    width: 28px;
+    height: 28px;
   }
 }

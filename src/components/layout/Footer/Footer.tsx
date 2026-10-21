@@ -4,41 +4,44 @@ import Link from 'next/link';
 import styles from './Footer.module.css';
 import { Reveal } from '@/components/animations/Reveal';
 import { SectionDivider } from '@/components/decor/SectionDivider/SectionDivider';
+import { NAV_SECTIONS } from '../navSections';
 import { CONTACT, mailtoHref } from '@/lib/contact';
 
-type FooterLink = { label: string; href: string; external?: boolean };
+const SECCIONES = [
+  { label: 'Para empresas', href: '/#empresas' },
+  { label: 'Para personas', href: '/#personas' },
+  ...NAV_SECTIONS.filter(s => s.id !== 'propuestas').map(s => ({ label: s.label, href: `/#${s.id}` })),
+];
 
-const columns: { title: string; items: FooterLink[] }[] = [
-  {
-    title: 'Navegación',
-    items: [
-      { label: 'Para personas', href: '/#personas' },
-      { label: 'Para empresas', href: '/#empresas' },
-      { label: 'Valores', href: '/#valores' },
-      { label: 'Sobre Maritza', href: '/#equipo' },
-      { label: 'Agendar', href: '/#contacto' },
-    ],
-  },
-  {
-    title: 'Contacto',
-    items: [
-      { label: CONTACT.email, href: mailtoHref },
-      { label: `Instagram ${CONTACT.instagramHandle}`, href: CONTACT.instagram, external: true },
-      { label: 'LinkedIn de Maritza', href: CONTACT.linkedin, external: true },
-    ],
-  },
+const REDES = [
+  { label: `Instagram ${CONTACT.instagramHandle}`, href: CONTACT.instagram },
+  { label: 'LinkedIn de Aventúrate Más', href: CONTACT.linkedinPrograma },
 ];
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <SectionDivider src="/assets/ondas-claras.png" variant="end" />
-      <div className={styles.glow} aria-hidden="true" />
 
       <div className={`container ${styles.inner}`}>
+        {/* Cierre: el lema del Hero con su palabra final, "más" */}
+        <Reveal className={styles.cierre}>
+          <p className={styles.lema}>
+            Aventúrate a <span className={styles.capsula}>más</span>
+          </p>
+          <div className={styles.acciones}>
+            <Link href="/#propuestas" className={styles.cta}>
+              ¿Por dónde empiezo?
+            </Link>
+            <a href={mailtoHref} className={styles.mail}>
+              {CONTACT.email}
+            </a>
+          </div>
+        </Reveal>
+
         <div className={styles.grid}>
           <Reveal className={styles.brand}>
-            <Link href="/" className={styles.logoGroup} aria-label="Aventúrate Más — inicio">
+            <Link href="/" className={styles.logoGroup} aria-label="Aventúrate Más, ir al inicio">
               <Image
                 src="/logo/amarillo.svg"
                 alt="Aventúrate Más"
@@ -53,44 +56,50 @@ export function Footer() {
             </p>
           </Reveal>
 
-          {columns.map((col, i) => (
-            <Reveal key={col.title} delay={120 * (i + 1)} className={styles.column}>
-              <nav aria-label={col.title}>
-                <h2 className={styles.colTitle}>{col.title}</h2>
-                <ul className={styles.list}>
-                  {col.items.map(item => (
-                    <li key={item.label}>
-                      <a
-                        className={styles.listLink}
-                        href={item.href}
-                        {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      >
-                        {item.label}
-                        <span className={styles.linkArrow} aria-hidden="true">
-                          {item.external ? '↗' : '→'}
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </Reveal>
-          ))}
+          <Reveal delay={120} className={styles.column}>
+            <nav aria-label="Secciones">
+              <h2 className={styles.colTitle}>Secciones</h2>
+              <ul className={`${styles.list} ${styles.listDos}`}>
+                {SECCIONES.map(item => (
+                  <li key={item.label}>
+                    <a className={styles.listLink} href={item.href}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </Reveal>
+
+          <Reveal delay={240} className={styles.column}>
+            <nav aria-label="Redes">
+              <h2 className={styles.colTitle}>Redes</h2>
+              <ul className={styles.list}>
+                {REDES.map(item => (
+                  <li key={item.label}>
+                    <a className={styles.listLink} href={item.href} target="_blank" rel="noopener noreferrer">
+                      {item.label}
+                      <span className={styles.linkArrow} aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </Reveal>
         </div>
 
         <div className={styles.bottom}>
-          <span>© {new Date().getFullYear()} Aventúrate Más · Todos los derechos reservados</span>
+          <span>© {new Date().getFullYear()} Aventúrate Más</span>
 
           <span className={styles.bottomLinks}>
             <a className={styles.link} href="/legal#privacidad">Privacidad</a>
             <a className={styles.link} href="/legal#terminos">Términos</a>
             <a className={styles.link} href="https://nosterlabs.com" target="_blank" rel="noopener noreferrer">
-              Powered by NosterLabs <span className={styles.externalArrow}>↗</span>
+              Powered by NosterLabs <span aria-hidden="true">↗</span>
             </a>
           </span>
 
-          <a className={styles.top} href="#inicio">
-            Volver arriba
+          <a className={styles.top} href="#inicio" aria-label="Volver arriba">
             <span className={styles.topArrow} aria-hidden="true">↑</span>
           </a>
         </div>

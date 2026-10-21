@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { FALLBACK_HREF, normalizePropuesta, safeHref } from './propuestas.ts';
+import { FALLBACK_HREF, normalizePropuesta, rutaPath, safeHref } from './propuestas.ts';
 
 test('safeHref acepta lo que el panel debería producir', () => {
   assert.equal(safeHref('https://docs.google.com/forms/d/e/ABC/viewform'), 'https://docs.google.com/forms/d/e/ABC/viewform');
@@ -46,4 +46,12 @@ test('normalizePropuesta rellena los huecos que deja el panel', () => {
 test('normalizePropuesta descarta una fila sin título', () => {
   assert.equal(normalizePropuesta({ descripcion: 'huérfana' }), null);
   assert.equal(normalizePropuesta({ titulo: '   ' }), null);
+});
+
+test('rutaPath pasa por el centro de cada parada', () => {
+  const d = rutaPath(3);
+  // 3 paradas + tramo final = 4 curvas, cada una termina en x=50
+  assert.equal(d.match(/C/g)?.length, 4);
+  for (const y of ['16.67', '50', '83.33', '100']) assert.ok(d.includes(` 50 ${y}`), y);
+  assert.equal(rutaPath(0), 'M50 0 C85 25 85 75 50 100');
 });

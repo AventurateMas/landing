@@ -1,105 +1,151 @@
-'use client';
-
 import Image from 'next/image';
+import type { CSSProperties } from 'react';
+
 import styles from './Team.module.css';
 import { Reveal } from '@/components/animations/Reveal';
 import { formaManchaVerde, puntosRosados } from '@/lib/decor';
+import { CONTACT } from '@/lib/contact';
+
+const profile = {
+  name: 'Maritza Rodríguez',
+  role: 'Fundadora de Aventúrate más',
+  quote:
+    'Detrás de cada equipo y de cada proceso hay personas: con historias, talentos y posibilidades. Y ahí es donde me gusta estar.',
+  tags: ['Coach Ontológica profesional', 'Licenciada en Psicología', 'Scrum Master', 'Aprendizaje Lúdico'],
+  years: '+10 años',
+  image: '/assets/itza.webp',
+};
+
+// Las cuatro disciplinas que integra (el segundo párrafo de su bio, hecho visual)
+const DISCIPLINAS = ['Psicología organizacional', 'Coaching ontológico', 'Aprendizaje lúdico', 'Marcos de agilidad'];
+
+const IconoEquipo = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <circle cx="9" cy="8" r="3.5" />
+    <path d="M2.5 20a6.5 6.5 0 0 1 13 0" />
+    <circle cx="17" cy="9" r="2.8" />
+    <path d="M17.5 14.2A5.5 5.5 0 0 1 22 20" />
+  </svg>
+);
+
+const IconoPersona = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 21a8 8 0 0 1 16 0" />
+  </svg>
+);
+
+// Sello circular: versión corta de las especialidades para que entre en el círculo
+const SELLO = 'Coach ontológica · Psicología · Scrum Master · Aprendizaje lúdico · ';
 
 export function Team() {
-  const profile = {
-    name: 'Maritza Rodríguez',
-    role: 'Fundadora de Aventúrate más',
-    bio: 'Hace más de diez años acompaño a personas y equipos a crecer, comunicarse mejor y dar lo mejor de sí: a reconocer sus talentos, a animarse a los cambios y a construir vínculos más sanos y colaborativos.',
-    tags: ['Coach Ontológica profesional', 'Licenciada en Psicología', 'Scrum Master', 'Aprendizaje Lúdico'],
-    color: 'var(--color-rosa)',
-    accent: 'var(--color-amarillo)',
-    label: 'Fundadora',
-    years: '+10 años',
-    image: '/assets/itza.webp'
-  };
-
   return (
     <section id="equipo" className={styles.teamSection}>
       <Image src={formaManchaVerde} alt="" className={styles.blobVerde} />
       <Image src={puntosRosados} alt="" className={styles.puntosRosados} />
 
       <div className={`container ${styles.container}`}>
-        <Reveal>
-          <div className={styles.header}>
-            <div>
-              <h2 className={styles.title}>
-                Conoce a <em className={styles.italic}>Maritza</em>, tu guía en esta aventura.
-              </h2>
-            </div>
+        {/* Título y sello en la misma fila: el sello ya no tapa la foto */}
+        <Reveal className={styles.cabecera}>
+          <h2 className={styles.title}>
+            Conoce a <em className={styles.italic}>Maritza</em>, tu guía en esta aventura.
+          </h2>
+          <div className={styles.sello} aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <defs>
+                <path id="team-sello" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+              </defs>
+              <text>
+                <textPath href="#team-sello" textLength="488">
+                  {SELLO}
+                </textPath>
+              </text>
+            </svg>
+            <span className={styles.selloCentro} />
           </div>
         </Reveal>
 
-        <div className={styles.profileContainer}>
-          <Reveal delay={150} className={styles.visualContentWrapper}>
-            <div className={styles.visualContent}>
-              <div className={styles.card} style={{ backgroundColor: profile.color }}>
-                <div className={styles.cardGradient}></div>
-                <div className={styles.cardIllustration}>
-                  <Image
-                    src={profile.image}
-                    alt={`Imagen de: ${profile.name}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    priority
-                    className={styles.cardImage}
-                  />
-                </div>
-                <div className={styles.cardTop}>
-                  <div className={styles.labelBadge} style={{ color: profile.color }}>
-                    ● {profile.label}
-                  </div>
-                  <div className={styles.yearsText}>{profile.years}</div>
-                </div>
-              </div>
+        <div className={styles.perfil}>
+          {/* Foto en arco: se descubre de abajo hacia arriba al entrar */}
+          <Reveal delay={100} className={styles.visual}>
+            <div className={styles.arco}>
+              <Image
+                src={profile.image}
+                alt={`Retrato de ${profile.name}`}
+                fill
+                sizes="(max-width: 900px) 90vw, 440px"
+                className={styles.foto}
+              />
+          </div>
 
-              <div className={styles.floatingBadge}>
-                <div className={styles.floatingTop}>Coaching</div>
-                <div className={styles.floatingBottom}>Certificada</div>
-              </div>
-
-              <div className={styles.floatingBadgeLeft}>
-                <div className={styles.floatingTop}>Liderazgo</div>
-                <div className={styles.floatingBottom}>Humano</div>
-              </div>
-            </div>
+            <span className={styles.anios}>{profile.years}</span>
           </Reveal>
-          <div className={styles.textContent}>
-            <Reveal delay={200}>
+
+          {/* Debajo de la foto: llena la columna y deja el texto de la derecha más liviano */}
+          <Reveal delay={250} className={styles.extras}>
+            <h4 className={styles.tagsLabel}>Especialidades y herramientas</h4>
+            <ul className={styles.tags}>
+              {profile.tags.map((tag, i) => (
+                <li key={tag} className={styles.tag} style={{ '--i': i } as CSSProperties}>
+                  {tag}
+                </li>
+              ))}
+            </ul>
+
+            <a href={CONTACT.linkedin} className={styles.linkedin} target="_blank" rel="noopener noreferrer">
+              Conecta conmigo en LinkedIn
+              <span aria-hidden="true">↗</span>
+              <span className="sr-only">(se abre en una pestaña nueva)</span>
+            </a>
+          </Reveal>
+
+          <div className={styles.texto}>
+            <Reveal delay={150}>
               <h3 className={styles.name}>{profile.name}</h3>
-              <div className={styles.role} style={{ color: profile.color }}>
-                {profile.role}
-              </div>
+              <p className={styles.role}>{profile.role}</p>
             </Reveal>
 
-            <Reveal delay={300}>
+            <Reveal delay={250} className={styles.cita}>
+              <span className={styles.comillas} aria-hidden="true">“</span>
+              <p className={styles.citaTexto}>{profile.quote}</p>
+            </Reveal>
+
+            <Reveal delay={350}>
+              <p className={styles.lead}>
+                Hace <mark className={styles.mark}>más de diez años</mark> acompaño a personas y equipos a
+                crecer, comunicarse mejor y dar lo mejor de sí: a reconocer sus talentos, a animarse a los
+                cambios y a construir <mark className={styles.mark}>vínculos más sanos y colaborativos</mark>.
+              </p>
+            </Reveal>
+
+            <Reveal delay={420} className={styles.mezcla}>
               <p className={styles.bio}>
-                {profile.bio}
+                Trabajo desde una mirada profesional pero profundamente humana, integrando:
               </p>
-              <p className={styles.bioSecondary}>
-                Trabajo desde una mirada profesional pero profundamente humana, integrando la psicología organizacional, el coaching ontológico, aprendizaje lúdico y los marcos de agilidad. Esa combinación me permite acompañar tanto a una empresa que quiere fortalecer a su equipo, como a una persona que busca reencontrarse, decidir o reinventarse.
-              </p>
-            </Reveal>
-
-            <Reveal delay={400} className={styles.quoteBlock}>
-              <span className={styles.quoteIcon}>“</span>
-              <p className={styles.quoteText}>
-                Detrás de cada equipo y de cada proceso hay personas: con historias, talentos y posibilidades. Y ahí es donde me gusta estar.
-              </p>
+              <ul className={styles.disciplinas}>
+                {DISCIPLINAS.map((d, i) => (
+                  <li key={d} className={styles.disciplina} style={{ '--i': i } as CSSProperties}>
+                    {d}
+                  </li>
+                ))}
+              </ul>
             </Reveal>
 
             <Reveal delay={500}>
-              <div className={styles.tagsLabel}>Especialidades & Herramientas:</div>
-              <div className={styles.tags}>
-                {profile.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>
-                    {tag}
+              <p className={styles.bio}>Esa combinación me permite acompañar tanto a</p>
+              <div className={styles.paraQuien}>
+                <div className={`${styles.quien} ${styles.quienEmpresa}`}>
+                  <span className={styles.quienIcono}>
+                    <IconoEquipo />
                   </span>
-                ))}
+                  una empresa que quiere fortalecer a su equipo,
+                </div>
+                <div className={`${styles.quien} ${styles.quienPersona}`}>
+                  <span className={styles.quienIcono}>
+                    <IconoPersona />
+                  </span>
+                  como a una persona que busca reencontrarse, decidir o reinventarse.
+                </div>
               </div>
             </Reveal>
           </div>

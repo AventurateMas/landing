@@ -4,7 +4,9 @@ import { Marquee } from '@/components/sections/Marquee/Marquee';
 import { Team } from '@/components/sections/Team/Team';
 import { Values } from '@/components/sections/Values/Values';
 import { CTA } from '@/components/sections/CTA/CTA';
+import { Partners } from '@/components/sections/Partners/Partners';
 import { getPropuestas } from '@/lib/getPropuestas';
+import { getPartners } from '@/lib/getPartners';
 
 export default function Home() {
   return (
@@ -15,6 +17,7 @@ export default function Home() {
       <CTA />
       <Values />
       <Team />
+      <Partners partners={getPartners()} />
     </>
   );
 }

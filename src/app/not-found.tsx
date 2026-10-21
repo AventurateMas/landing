@@ -24,7 +24,6 @@ export default function NotFound() {
         <div className={styles.actions}>
           <Link href="/" className={styles.action}>
             Volver al inicio
-            <span aria-hidden="true">→</span>
           </Link>
           <a href={mailtoHref} className={styles.actionGhost}>
             o escríbeme directamente

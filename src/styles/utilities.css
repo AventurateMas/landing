@@ -23,7 +23,7 @@
 }
 
 /* Color text utils */
-.text-rosa    { color: var(--color-rosa); }
+.text-rosa    { color: var(--color-rosa-texto); }
 .text-azul    { color: var(--color-azul); }
 .text-navy    { color: var(--color-navy); }
 .text-white   { color: #FFFFFF; }

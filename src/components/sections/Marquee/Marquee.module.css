@@ -1,12 +1,17 @@
 .marqueeSection {
+  position: relative;
   background: var(--color-navy);
-  padding: 40px 0;
+  /* Las olas miden ~7.8% del ancho (+12% al mecerse): el aire crece con ellas para no
+     tapar nunca las palabras, en cualquier ancho de pantalla */
+  padding: max(64px, calc(8.8vw + 24px)) 0;
   overflow: hidden;
   user-select: none;
 }
 
 
 .marqueeTrack {
+  position: relative;
+  z-index: 2;
   display: flex;
   gap: 40px;
   white-space: nowrap;
@@ -45,7 +50,12 @@
   color: #fff;
 }
 
+/* Separador: el círculo de la marca */
 .star {
-  color: var(--color-rosa);
-  font-size: 24px;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-rosa);
 }
+

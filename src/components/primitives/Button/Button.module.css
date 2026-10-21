@@ -27,7 +27,7 @@
 }
 .button[data-variant="secondary"] {
   background-color: var(--color-rosa);
-  color: var(--color-cream);
+  color: var(--color-ink);
 }
 .button[data-variant="ghost"] {
   background-color: transparent;
@@ -38,7 +38,7 @@
 .button[data-variant="ghost"]:hover {
   transform: translateX(4px);
   box-shadow: none;
-  color: var(--color-rosa);
+  color: var(--color-rosa-texto);
 }
 
 .button[data-variant="ghost"]:active {
