@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.css';
 
-import { Button } from '@/components/primitives/Button/Button';
 import { Reveal } from '@/components/animations/Reveal';
 import { SectionDivider } from '@/components/decor/SectionDivider/SectionDivider';
 import { circuloAmarillo, puntosRosados } from '@/lib/decor';
@@ -70,7 +69,6 @@ export function Hero() {
 
   return (
     <section id="inicio" className={styles.hero}>
-      <div className={styles.bgGradient} aria-hidden="true"></div>
 
       <Image src={circuloAmarillo} alt="" className={styles.shapeAmarillo} priority />
       <Image src={puntosRosados} alt="" className={styles.shapeRosado} priority />
@@ -80,55 +78,57 @@ export function Hero() {
 
           <Reveal delay={100} className={styles.titleWrapper}>
             <h1 className={styles.title}>
-              Aventúrate a <em className={styles.italic}>
-                {currentText}
-                <span className={styles.cursor}>|</span>
-              </em>
+              {/* El lector de pantalla oye la frase entera, no cada letra que se escribe */}
+              <span className="sr-only">Aventúrate a {ANIMATED_WORDS.slice(0, 3).join(', ')} y más</span>
+              <span aria-hidden="true">
+                <span className={styles.titleLead}>
+                  {'Aventúrate a'.split('').map((letra, i) => (
+                    <span key={i} className={styles.letra} style={{ '--l': i } as React.CSSProperties}>
+                      {letra === ' ' ? ' ' : letra}
+                    </span>
+                  ))}
+                </span>
+                <span className={styles.wordRow}>
+                  {/* La cápsula crece con cada letra que se escribe */}
+                  <em className={styles.capsula}>
+                    {currentText || ' '}
+                    <span className={styles.cursor} />
+                  </em>
+                </span>
+              </span>
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
             <p className={styles.paragraph}>
-              <mark className={styles.mark}>Aprendizaje lúdico</mark>, coaching y desarrollo humano
-              para que personas y equipos ganen claridad y se animen a avanzar. Porque crecer
-              también puede ser <mark className={`${styles.mark} ${styles.markLate}`}>una aventura</mark>.
+              Coaching y <mark className={styles.mark}>aprendizaje lúdico</mark> para que personas y
+              equipos pasen de
+              {/* Mini motion graphic: la duda tambalea, un punto viaja y la acción late al llegar */}
+              <span className={styles.trayecto}>
+                <span className={styles.duda}>
+                  la duda<span className={styles.dudaSigno} aria-hidden="true">?</span>
+                </span>
+                <span className={styles.camino} aria-hidden="true" />
+                <span className={styles.accion}>a la acción</span>
+              </span>
             </p>
           </Reveal>
 
           <Reveal delay={300} className={styles.actions}>
-            <Button as="a" href="#contacto" variant="primary">Agendar sesión</Button>
-            <Button as="a" href="#propuestas" variant="ghost">Conoce mis programas</Button>
-          </Reveal>
-        </div>
-
-        <div className={styles.visualCluster}>
-          <Reveal delay={200} className={styles.largeCardWrapper}>
-            <a href="#personas" className={styles.largeCard}>
-              <div className={styles.cardGradient} aria-hidden="true"></div>
-              <div className={styles.cardContent}>
-                <div className={styles.cardHeader}>Programa<br />vocacional<span className={styles.dot}>.</span></div>
-                <div className={styles.cardCenter}>Más<br />info</div>
-                <div className={styles.cardFooter}>
-                  <div>
-                    <div className={styles.specialtyLabel}>Temas destacados:</div>
-                    <div className={styles.specialtyValue}>Confianza, propósito y desarrollo</div>
-                  </div>
-                  <div className={styles.arrowIcon}>↗</div>
-                </div>
-              </div>
+            {/* Si no hay scroll en 5s, el botón se transforma en el ícono de scroll
+                (un mouse con la rueda que baja); al primer scroll vuelve a ser botón */}
+            <a href="#propuestas" className={styles.servicios} data-invita={showScroll}>
+              <span className={styles.serviciosTexto}>Conoce todos los servicios</span>
+              <span className={styles.serviciosIcono} aria-hidden="true">
+                <span className={styles.serviciosFlecha}>↓</span>
+              </span>
+              <span className={styles.raton} aria-hidden="true">
+                <span className={styles.rueda} />
+              </span>
             </a>
-
           </Reveal>
         </div>
       </div>
-      {showScroll && (
-        <a href="#propuestas" className={`${styles.scrollIndicator} ${styles.scrollVisible}`} aria-label="Scroll hacia abajo">
-          <div className={styles.scrollMouse}>
-            <div className={styles.scrollDot}></div>
-          </div>
-          <span className={styles.scrollLabel}>Scroll</span>
-        </a>
-      )}
       <SectionDivider src="/assets/ondas-rosadas.png" variant="start" />
     </section>
   );
