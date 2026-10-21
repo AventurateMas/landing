@@ -1,0 +1,21 @@
+{
+  "items": [
+    {
+      "nombre": "David García",
+      "area": "Desarrollo Web",
+      "descripcion": "Diseña y desarrolla la presencia digital de Aventúrate Más desde Nosterlabs.",
+      "foto": "/assets/partners/david.webp",
+      "link": "https://nosterlabs.com/",
+      "visible": true,
+      "pie": "Powered by Nosterlab"
+    },
+    {
+      "nombre": "Melissa Rodriguez",
+      "area": "Marketing y Comunicaciones",
+      "descripcion": "Crea el contenido y la estrategia de comunicación en redes.",
+      "foto": "/assets/partners/melissa.webp",
+      "link": "https://www.instagram.com/meli_contenido",
+      "visible": true
+    }
+  ]
+}
