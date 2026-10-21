@@ -17,18 +17,16 @@ export type Propuesta = {
 
 /**
  * Paleta cerrada: el CMS elige un nombre, no un color. Cada combinación ya tiene
- * el contraste resuelto. `accentDark` es el acento cuando la tarjeta no lleva
- * relleno propio y se apoya sobre la placa navy (variante de empresas).
+ * el contraste resuelto.
  */
 export const PALETTE: Record<
   ColorToken,
-  { bg: string; fg: string; accent: string; accentDark: string; rule: string }
+  { bg: string; fg: string; accent: string; rule: string }
 > = {
   navy: {
     bg: 'var(--color-navy)',
     fg: 'var(--color-text-light)',
     accent: 'var(--color-amarillo)',
-    accentDark: 'var(--color-amarillo)',
     rule: 'rgba(254, 246, 240, 0.2)',
   },
   amarillo: {
@@ -36,21 +34,18 @@ export const PALETTE: Record<
     fg: 'var(--color-navy)',
     // rosa sobre amarillo da 2.3:1, ilegible en el número de la tarjeta
     accent: 'var(--color-azul)',
-    accentDark: 'var(--color-amarillo)',
     rule: 'rgba(51, 56, 109, 0.2)',
   },
   verde: {
     bg: 'var(--color-verde)',
     fg: 'var(--color-navy)',
     accent: 'var(--color-navy)',
-    accentDark: 'var(--color-verde)',
     rule: 'rgba(51, 56, 109, 0.2)',
   },
   azul: {
     bg: 'var(--color-azul)',
     fg: 'var(--color-text-light)',
     accent: 'var(--color-amarillo)',
-    accentDark: 'var(--color-amarillo)',
     rule: 'rgba(254, 246, 240, 0.2)',
   },
 };
@@ -110,4 +105,22 @@ export function normalizeLista(items: RawPropuesta[]): Propuesta[] {
     .filter(item => item.visible !== false)
     .map(normalizePropuesta)
     .filter((item): item is Propuesta => item !== null);
+}
+
+/**
+ * Camino serpenteante para la "ruta" de propuestas, en un viewBox 0–100.
+ * Pasa por x=50 justo a la altura del centro de cada parada (filas de igual
+ * alto), así los pines quedan siempre sobre la línea; entre parada y parada
+ * se curva hacia un lado distinto.
+ */
+export function rutaPath(paradas: number): string {
+  const ys = [0, ...Array.from({ length: paradas }, (_, i) => ((i + 0.5) / paradas) * 100), 100];
+  let d = 'M50 0';
+  for (let k = 1; k < ys.length; k++) {
+    const [a, b] = [ys[k - 1], ys[k]];
+    const x = k % 2 ? 85 : 15;
+    const r = (n: number) => +n.toFixed(2);
+    d += ` C${x} ${r(a + (b - a) * 0.25)} ${x} ${r(a + (b - a) * 0.75)} 50 ${r(b)}`;
+  }
+  return d;
 }
