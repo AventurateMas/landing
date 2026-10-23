@@ -36,9 +36,9 @@ const redes = [
   },
   {
     nombre: 'LinkedIn',
-    detalle: 'Maritza Rodríguez',
-    texto: 'Liderazgo, cultura y talento humano para equipos y organizaciones.',
-    href: CONTACT.linkedin,
+    detalle: 'Aventúrate Más',
+    texto: 'Ideas para liderar equipos, cultura y conversaciones con impacto.',
+    href: CONTACT.linkedinPrograma,
     Icon: LinkedinIcon,
     color: styles.azul,
   },
