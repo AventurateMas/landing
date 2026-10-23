@@ -5,7 +5,6 @@ import Image from 'next/image';
 import styles from './Nav.module.css';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { NAV_SECTIONS } from '../navSections';
-import { CONTACT } from '@/lib/contact';
 
 type Ruta = { punto: number; inicio: number; fin: number } | null;
 
@@ -112,10 +111,9 @@ export function Nav() {
           ))}
         </div>
 
-        <a href={CONTACT.primeraSesion} className={styles.cta} target="_blank" rel="noopener noreferrer">
+        <Link href="/#propuestas" className={styles.cta}>
           1ª sesión sin costo
-          <span className="sr-only">(formulario, se abre en una pestaña nueva)</span>
-        </a>
+        </Link>
 
         {/* Móvil: el anillo del botón se llena con lo recorrido de la página */}
         <button
