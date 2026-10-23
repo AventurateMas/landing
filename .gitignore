@@ -32,9 +32,10 @@ desktop.ini
 *.bak
 *~
 
-# IDEs
+# IDEs & tools
 .vscode/
 .idea/
+.markdown-collab/
 
 # debug & logs
 *.log
