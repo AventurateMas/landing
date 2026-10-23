@@ -30,9 +30,11 @@ export function Footer() {
             Aventúrate a <span className={styles.capsula}>más</span>
           </p>
           <div className={styles.acciones}>
-            <Link href="/#propuestas" className={styles.cta}>
+            {/* <a> y no <Link>: Link ignora el clic si la URL ya es la misma, y entonces no vuelve a bajar a la sección */}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/#propuestas" className={styles.cta}>
               ¿Por dónde empiezo?
-            </Link>
+            </a>
             <a href={mailtoHref} className={styles.mail}>
               {CONTACT.email}
             </a>

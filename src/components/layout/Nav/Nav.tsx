@@ -111,9 +111,11 @@ export function Nav() {
           ))}
         </div>
 
-        <Link href="/#propuestas" className={styles.cta}>
+        {/* <a> y no <Link>: Link ignora el clic si la URL ya es la misma, y entonces no vuelve a bajar a la sección */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/#propuestas" className={styles.cta}>
           1ª sesión sin costo
-        </Link>
+        </a>
 
         {/* Móvil: el anillo del botón se llena con lo recorrido de la página */}
         <button
