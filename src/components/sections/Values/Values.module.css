@@ -145,33 +145,7 @@
   font-size: 16px;
   line-height: 1.55;
   max-width: 46ch;
-  /* Móvil: se ve recortada hasta que se toca la tarjeta */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  overflow: hidden;
   transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
-}
-
-.item[data-open='true'] .itemDesc {
-  -webkit-line-clamp: unset;
-  line-clamp: unset;
-}
-
-.cue {
-  position: absolute;
-  left: 24px;
-  top: 52px;
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  border-radius: var(--radius-full);
-  border: 2px solid currentColor;
-  font-size: 16px;
-  font-weight: var(--fw-bold);
-  line-height: 1;
 }
 
 /* ── Motion: cada ilustración cuenta su valor ─────────────── */
@@ -312,8 +286,22 @@
 
 /* En móvil los puntos quedaban encima del título */
 @media (max-width: 767px) {
-  .puntosAmarillos {
+  .puntosAmarillos,
+  .circuloVerde {
     display: none;
+  }
+}
+
+/* Sin la grilla fija de escritorio, la ilustración va en el flujo (arriba a la
+   derecha) para no pisar el título ni la descripción */
+@media (max-width: 1023px) {
+  .ilus {
+    position: relative;
+    top: auto;
+    right: auto;
+    align-self: flex-end;
+    width: 46%;
+    margin-bottom: -6px;
   }
 }
 
@@ -360,6 +348,12 @@
     padding: 36px;
   }
 
+  /* Tarjetas chicas: ilustración más contenida para que no roce el título */
+  .ilus {
+    width: 40%;
+    max-width: 170px;
+  }
+
   .slotHero .ilus {
     width: 70%;
     max-width: 380px;
@@ -378,8 +372,6 @@
 
   /* El espacio de la descripción queda reservado: al aparecer no mueve la grilla */
   .itemDesc {
-    -webkit-line-clamp: unset;
-    line-clamp: unset;
     opacity: 0;
     transform: translateY(6px);
   }
@@ -389,11 +381,6 @@
   .item[data-open='true'] .itemDesc {
     opacity: 1;
     transform: none;
-  }
-
-  /* Con cursor disponible no hace falta el signo de desplegar */
-  .cue {
-    display: none;
   }
 }
 

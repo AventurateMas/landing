@@ -76,7 +76,7 @@ export function Team() {
                 sizes="(max-width: 900px) 90vw, 440px"
                 className={styles.foto}
               />
-          </div>
+            </div>
 
             <span className={styles.anios}>{profile.years}</span>
           </Reveal>
@@ -138,7 +138,7 @@ export function Team() {
                   <span className={styles.quienIcono}>
                     <IconoEquipo />
                   </span>
-                  una empresa que quiere fortalecer a su equipo,
+                  un equipo que quiere fortalecer sus dinámicas,
                 </div>
                 <div className={`${styles.quien} ${styles.quienPersona}`}>
                   <span className={styles.quienIcono}>
