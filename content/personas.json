@@ -1,9 +1,13 @@
 {
   "items": [
     {
-      "titulo": "Aventurate a Liderar",
+      "titulo": "Aventúrate a liderar",
       "descripcion": "Sesiones 1:1 para potenciar tu liderazgo y descubrir tu talento.",
-      "puntos": ["8 sesiones", "Plan personalizado", "Acompañamiento continuo"],
+      "puntos": [
+        "8 sesiones",
+        "Plan personalizado",
+        "Acompañamiento continuo"
+      ],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Reservar una sesión",
@@ -14,7 +18,11 @@
     {
       "titulo": "Programa vocacional",
       "descripcion": "Para quienes están eligiendo carrera o replanteando su camino profesional.",
-      "puntos": ["4 encuentros grupales", "3 sesiones 1 a 1", "Diseño de plan de acción"],
+      "puntos": [
+        "4 encuentros grupales",
+        "3 sesiones 1 a 1",
+        "Diseño de plan de acción"
+      ],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Quiero empezar",
@@ -25,7 +33,11 @@
     {
       "titulo": "Coaching individual",
       "descripcion": "Una conversación de 45 minutos para poner en claro qué te está frenando.",
-      "puntos": ["45 minutos", "Primera sesión sin costo", "Online"],
+      "puntos": [
+        "45 minutos",
+        "Primera sesión sin costo",
+        "Online"
+      ],
       "imagen": "",
       "imagenAlt": "",
       "ctaTexto": "Agendar la llamada",

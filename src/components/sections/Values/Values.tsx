@@ -109,7 +109,7 @@ const VALORES = [
 ];
 
 export function Values() {
-  // Solo cuenta en móvil: en escritorio la descripción se revela al pasar el cursor
+  // En móvil la descripción se ve completa; tocar la tarjeta solo anima la ilustración
   const [abierto, setAbierto] = useState<string | null>(null);
 
   return (
@@ -138,7 +138,6 @@ export function Values() {
                   type="button"
                   className={`${styles.item} ${valor.color}`}
                   data-open={activo}
-                  aria-expanded={activo}
                   onClick={() => setAbierto(activo ? null : valor.titulo)}
                 >
                   <span className={styles.ilus}>{ILUS[valor.ilus]}</span>
@@ -146,10 +145,6 @@ export function Values() {
                   <span className={styles.tag}>{String(i + 1).padStart(2, '0')}</span>
                   <span className={styles.itemTitle}>{valor.titulo}</span>
                   <span className={styles.itemDesc}>{valor.desc}</span>
-
-                  <span className={styles.cue} aria-hidden="true">
-                    {activo ? '−' : '+'}
-                  </span>
                 </button>
               </Reveal>
             );
