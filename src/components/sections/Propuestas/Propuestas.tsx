@@ -35,7 +35,7 @@ const PersonasIcon = () => (
 const COPY: Record<Audiencia, { kicker: string; titulo: string; bajada: string; Icon: () => React.JSX.Element }> = {
   empresas: {
     kicker: 'Para tu equipo',
-    titulo: 'Organización y Empresas',
+    titulo: 'Organizaciones y empresas',
     bajada: 'Diseñados sobre cómo trabaja hoy tu organización, no sobre una plantilla.',
     Icon: PersonasIcon,
   },
@@ -214,47 +214,47 @@ export function Propuestas({ personas, empresas }: Props) {
                 </p>
               ) : (
                 <>
-                <div
-                  className={styles.ruta}
-                  ref={node => {
-                    rutasRef.current[audiencia] = node;
-                  }}
-                  onScroll={() => alDeslizar(audiencia)}
-                >
-                  {/* Camino: base punteada + trazo que se completa con el scroll.
+                  <div
+                    className={styles.ruta}
+                    ref={node => {
+                      rutasRef.current[audiencia] = node;
+                    }}
+                    onScroll={() => alDeslizar(audiencia)}
+                  >
+                    {/* Camino: base punteada + trazo que se completa con el scroll.
                       Dos svg porque el recorte animado va sobre el elemento entero */}
-                  {[styles.caminoBase, styles.caminoTrazo].map(clase => (
-                    <svg
-                      key={clase}
-                      className={`${styles.camino} ${clase}`}
-                      viewBox="0 0 100 100"
-                      preserveAspectRatio="none"
-                      aria-hidden="true"
-                    >
-                      <path d={rutaPath(items.length)} vectorEffect="non-scaling-stroke" />
-                    </svg>
-                  ))}
+                    {[styles.caminoBase, styles.caminoTrazo].map(clase => (
+                      <svg
+                        key={clase}
+                        className={`${styles.camino} ${clase}`}
+                        viewBox="0 0 100 100"
+                        preserveAspectRatio="none"
+                        aria-hidden="true"
+                      >
+                        <path d={rutaPath(items.length)} vectorEffect="non-scaling-stroke" />
+                      </svg>
+                    ))}
 
-                  {items.map((item, i) => (
-                    <PropuestaCard key={item.titulo} propuesta={item} index={i} />
-                  ))}
+                    {items.map((item, i) => (
+                      <PropuestaCard key={item.titulo} propuesta={item} index={i} />
+                    ))}
 
-                  <span className={styles.meta} aria-hidden="true" />
-                </div>
+                    <span className={styles.meta} aria-hidden="true" />
+                  </div>
 
-                {/* Solo móvil: puntos del carrusel, también se pueden tocar */}
-                <div className={styles.puntosCarrusel}>
-                  {items.map((item, i) => (
-                    <button
-                      key={item.titulo}
-                      type="button"
-                      className={styles.puntoCarrusel}
-                      aria-label={`Ver servicio ${i + 1}: ${item.titulo}`}
-                      aria-current={slide[audiencia] === i ? 'true' : undefined}
-                      onClick={() => irA(audiencia, i)}
-                    />
-                  ))}
-                </div>
+                  {/* Solo móvil: puntos del carrusel, también se pueden tocar */}
+                  <div className={styles.puntosCarrusel}>
+                    {items.map((item, i) => (
+                      <button
+                        key={item.titulo}
+                        type="button"
+                        className={styles.puntoCarrusel}
+                        aria-label={`Ver servicio ${i + 1}: ${item.titulo}`}
+                        aria-current={slide[audiencia] === i ? 'true' : undefined}
+                        onClick={() => irA(audiencia, i)}
+                      />
+                    ))}
+                  </div>
                 </>
               )}
 
