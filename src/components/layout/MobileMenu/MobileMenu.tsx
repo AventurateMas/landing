@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef, type CSSProperties } from 'react';
-import Link from 'next/link';
 import styles from './MobileMenu.module.css';
 
 import { NAV_SECTIONS } from '../navSections';
@@ -42,7 +41,8 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
           <ol className={styles.nav}>
             {NAV_SECTIONS.map((item, i) => (
               <li key={item.id} style={{ '--i': i } as CSSProperties}>
-                <Link
+                {/* <a> y no <Link>: Link ignora el clic si la URL ya es la misma, y entonces no vuelve a bajar a la sección */}
+                <a
                   href={`/#${item.id}`}
                   className={`${styles.navLink} ${activeId === item.id ? styles.navLinkActive : ''}`}
                   aria-current={activeId === item.id ? 'true' : undefined}
@@ -52,16 +52,17 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   {item.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ol>
         </nav>
 
         <div className={styles.pie}>
-          <Link href="/#propuestas" className={styles.cta} onClick={onClose}>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/#propuestas" className={styles.cta} onClick={onClose}>
             ¿Por dónde empiezo?
-          </Link>
+          </a>
           <div className={styles.redes}>
             <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer">
               Instagram <span aria-hidden="true">↗</span>
