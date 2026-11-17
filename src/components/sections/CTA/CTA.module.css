@@ -91,6 +91,11 @@
   color: var(--color-text-light);
 }
 
+.amarillo {
+  background: var(--color-amarillo);
+  color: var(--color-navy);
+}
+
 .red:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
@@ -237,25 +242,33 @@
   height: 24px;
 }
 
+/* Cuatro planetas en las diagonales del anillo: abajo al centro queda la píldora */
 .planetRosa {
-  left: 50%;
-  top: 0;
+  left: 14.6%;
+  top: 14.6%;
   background: var(--color-rosa);
   color: var(--color-ink);
 }
 
 .planetAzul {
-  left: 93.3%;
-  top: 75%;
+  left: 85.4%;
+  top: 14.6%;
   background: var(--color-azul);
   color: var(--color-text-light);
 }
 
 .planetAmarillo {
-  left: 6.7%;
-  top: 75%;
+  left: 85.4%;
+  top: 85.4%;
   background: var(--color-amarillo);
   color: var(--color-navy);
+}
+
+.planetNavy {
+  left: 14.6%;
+  top: 85.4%;
+  background: var(--color-navy);
+  color: var(--color-cream);
 }
 
 .avatar {
