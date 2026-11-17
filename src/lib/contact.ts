@@ -5,6 +5,8 @@ export const CONTACT = {
   instagramHandle: '@aventuratemas',
   linkedin: 'https://www.linkedin.com/in/maritzarodr%C3%ADguezacero/',
   linkedinPrograma: 'https://www.linkedin.com/company/avent%C3%BArate-m%C3%A1s/',
+  youtube: 'https://www.youtube.com/@Aventuratemas',
+  youtubeHandle: '@Aventuratemas',
 } as const;
 
 export const mailtoHref = `mailto:${CONTACT.email}?subject=${encodeURIComponent(
