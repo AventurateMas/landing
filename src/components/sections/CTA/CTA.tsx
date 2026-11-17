@@ -18,6 +18,13 @@ const LinkedinIcon = () => (
   </svg>
 );
 
+const YoutubeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true">
+    <rect x="2.5" y="5" width="19" height="14" rx="4" />
+    <path d="M10 9.2v5.6l4.8-2.8Z" fill="currentColor" />
+  </svg>
+);
+
 const MailIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
     <rect x="3" y="5" width="18" height="14" rx="3" />
@@ -41,6 +48,14 @@ const redes = [
     href: CONTACT.linkedinPrograma,
     Icon: LinkedinIcon,
     color: styles.azul,
+  },
+  {
+    nombre: 'YouTube',
+    detalle: CONTACT.youtubeHandle,
+    texto: 'Videos y charlas sobre liderazgo, aprendizaje lúdico y desarrollo humano.',
+    href: CONTACT.youtube,
+    Icon: YoutubeIcon,
+    color: styles.amarillo,
   },
 ];
 
@@ -120,6 +135,9 @@ export function CTA() {
                 <LinkedinIcon />
               </span>
               <span className={`${styles.planet} ${styles.planetAmarillo}`}>
+                <YoutubeIcon />
+              </span>
+              <span className={`${styles.planet} ${styles.planetNavy}`}>
                 <MailIcon />
               </span>
             </div>

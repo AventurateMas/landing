@@ -70,6 +70,9 @@ export function MobileMenu({ isOpen, onClose, activeId }: MobileMenuProps) {
             <a href={CONTACT.linkedinPrograma} target="_blank" rel="noopener noreferrer">
               LinkedIn <span aria-hidden="true">↗</span>
             </a>
+            <a href={CONTACT.youtube} target="_blank" rel="noopener noreferrer">
+              YouTube <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </div>
