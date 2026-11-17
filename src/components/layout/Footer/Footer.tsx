@@ -16,6 +16,7 @@ const SECCIONES = [
 const REDES = [
   { label: `Instagram ${CONTACT.instagramHandle}`, href: CONTACT.instagram },
   { label: 'LinkedIn de Aventúrate Más', href: CONTACT.linkedinPrograma },
+  { label: `YouTube ${CONTACT.youtubeHandle}`, href: CONTACT.youtube },
 ];
 
 export function Footer() {
