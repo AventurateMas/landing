@@ -30,6 +30,7 @@ desktop.ini
 *.swo
 *.tmp
 *.bak
+*.orig
 *~
 
 # IDEs & tools
